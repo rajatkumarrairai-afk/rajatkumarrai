@@ -5,21 +5,30 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rajat Kumar Rai | Professional Portfolio</title>
   <meta name="description" content="Logistics and Freight Forwarding Professional - Pricing, Sales, Documentation Expert">
-  <meta name="robots" content="noindex, nofollow">
+  <meta name="author" content="Rajat Kumar Rai">
+  <meta name="keywords" content="logistics, freight forwarding, pricing, sales, documentation, supply chain">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph Meta Tags -->
+  <meta property="og:title" content="Rajat Kumar Rai | Professional Portfolio">
+  <meta property="og:description" content="Experienced Logistics & Freight Forwarding Professional">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="profile.jpg">
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
   <style>
     :root {
-      --bg-main: #e9edf3;
-      --bg-light: #f5f6fa;
-      --bg-dark: #dadfea;
+      --bg-main: #ffffff;
+      --bg-light: #ffffff;
+      --bg-card: #f8f9fa;
       --accent: #4c81ff;
       --accent-soft: #b8ccff;
       --text-main: #1f2940;
-      --shadow-light: #ffffff;
-      --shadow-dark: #b5bccb;
-      --radius-main: 20px;
+      --shadow: rgba(0,0,0,0.08);
+      --border-color: rgba(76, 129, 255, 0.1);
     }
     
     * { 
@@ -32,11 +41,60 @@
       scroll-behavior: smooth;
     }
     
+    /* AIRPLANE CURSOR */
     body {
       font-family: 'Montserrat', system-ui, sans-serif;
-      background: #e9edf3;
+      background: #ffffff;
       color: var(--text-main);
       overflow-x: hidden;
+      cursor: none;
+    }
+    
+    #airplane-cursor {
+      pointer-events: none;
+      position: fixed;
+      left: 0;
+      top: 0;
+      width: 50px;
+      height: 50px;
+      margin-left: -25px;
+      margin-top: -25px;
+      z-index: 10000;
+      transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+      opacity: 0.35;
+      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
+    }
+    
+    .airplane-icon {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+    
+    .smoke-particle {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: radial-gradient(circle, rgba(76,129,255,0.4) 0%, transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      animation: smokeFloat 1.2s ease-out forwards;
+    }
+    
+    @keyframes smokeFloat {
+      0% {
+        opacity: 0.35;
+        transform: scale(1);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(3) translateY(-40px);
+      }
+    }
+    
+    a, button, input, textarea, select {
+      cursor: none;
     }
     
     a { color: inherit; text-decoration: none; }
@@ -46,19 +104,19 @@
       position: fixed;
       top: 0; left: 0; right: 0;
       z-index: 30;
-      background: transparent;
+      background: white;
       padding: 14px 0;
       display: flex;
       justify-content: center;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     
     .nav-inner {
       width: min(1400px, 96vw);
       padding: 10px 20px;
       border-radius: 999px;
-      background: var(--bg-light);
-      box-shadow: 7px 7px 16px var(--shadow-dark),
-                  -7px -7px 16px var(--shadow-light);
+      background: white;
+      border: 2px solid var(--border-color);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -94,9 +152,8 @@
     .nav-links a:hover,
     .nav-links a.active {
       color: var(--accent);
+      background: rgba(76, 129, 255, 0.08);
       transform: translateY(-2px);
-      box-shadow: 3px 3px 8px var(--shadow-dark),
-                  -3px -3px 8px var(--shadow-light);
     }
 
     /* SECTIONS */
@@ -109,16 +166,7 @@
       justify-content: center;
       align-items: center;
       position: relative;
-      background: var(--bg-light);
-      transition: box-shadow .3s ease;
-    }
-    
-    section:nth-child(even) {
-      background: #e9edf3;
-    }
-    
-    section:hover {
-      box-shadow: inset 0 0 40px rgba(0,0,0,0.03);
+      background: white;
     }
     
     .section-content {
@@ -152,7 +200,7 @@
 
     /* HERO */
     #hero {
-      background: linear-gradient(135deg, #f5f6fa 0%, #e9edf3 100%);
+      background: white;
       overflow: hidden;
     }
     
@@ -171,7 +219,9 @@
       border-radius: 50%;
       overflow: hidden;
       animation: float 3s ease-in-out infinite;
-      transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: transform;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.1);
     }
     
     @keyframes float {
@@ -241,21 +291,19 @@
     }
     
     .chip-btn {
-      border: none;
+      border: 2px solid var(--border-color);
       outline: none;
       border-radius: 999px;
       padding: 10px 16px;
       font-size: clamp(0.75rem, 2vw, 0.85rem);
       font-weight: 600;
-      background: var(--bg-light);
-      box-shadow: 5px 5px 10px var(--shadow-dark),
-                  -5px -5px 10px var(--shadow-light);
-      cursor: pointer;
+      background: white;
+      cursor: none;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: transform .17s, box-shadow .17s;
+      transition: all .2s;
       white-space: nowrap;
     }
     
@@ -265,20 +313,19 @@
     
     .chip-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 8px 8px 16px var(--shadow-dark),
-                  -8px -8px 16px var(--shadow-light);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+      border-color: var(--accent);
     }
     
     .chip-btn.primary {
       color: white;
       background: linear-gradient(135deg, var(--accent) 0, #6f9dff 100%);
-      box-shadow: 6px 6px 14px rgba(48,79,174,.4),
-                  -3px -3px 8px rgba(255,255,255,.7);
+      border: none;
     }
     
     .chip-btn.locked {
       opacity: 0.6;
-      cursor: not-allowed;
+      cursor: none;
       position: relative;
     }
 
@@ -301,10 +348,10 @@
       width: min(400px, 90vw);
       padding: 30px;
       border-radius: 20px;
-      background: var(--bg-light);
-      box-shadow: 20px 20px 40px var(--shadow-dark),
-                  -20px -20px 40px var(--shadow-light);
+      background: white;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
       text-align: center;
+      border: 2px solid var(--border-color);
     }
     
     .password-box h3 {
@@ -317,19 +364,19 @@
       width: 100%;
       padding: 12px 16px;
       border-radius: 12px;
-      border: none;
-      background: var(--bg-light);
-      box-shadow: inset 5px 5px 10px var(--shadow-dark),
-                  inset -5px -5px 10px var(--shadow-light);
+      border: 2px solid var(--border-color);
+      background: white;
       font-family: inherit;
       font-size: 1rem;
       margin-bottom: 20px;
       text-align: center;
       letter-spacing: 0.1em;
+      cursor: none;
     }
     
     .password-box input:focus {
-      outline: 2px solid var(--accent);
+      outline: none;
+      border-color: var(--accent);
     }
     
     .password-box button {
@@ -340,7 +387,7 @@
       background: linear-gradient(135deg, var(--accent), #6f9dff);
       color: white;
       font-weight: 600;
-      cursor: pointer;
+      cursor: none;
       transition: transform 0.2s;
     }
     
@@ -381,16 +428,17 @@
       font-size: clamp(0.7rem, 2vw, 0.75rem);
       padding: 8px 14px;
       border-radius: 999px;
-      background: var(--bg-light);
-      box-shadow: 3px 3px 7px var(--shadow-dark),
-                  -3px -3px 7px var(--shadow-light);
+      background: white;
+      border: 2px solid var(--border-color);
       color: #6b7593;
       font-weight: 600;
-      transition: transform 0.2s;
+      transition: all 0.2s;
     }
     
     .mini-tag:hover {
       transform: scale(1.05);
+      border-color: var(--accent);
+      color: var(--accent);
     }
 
     /* SKILLS */
@@ -406,19 +454,19 @@
       padding: 18px 12px 14px;
       text-align: center;
       border-radius: 18px;
-      background: var(--bg-light);
-      box-shadow: none;
+      background: white;
+      border: 2px solid var(--border-color);
       font-size: clamp(0.75rem, 2vw, 0.85rem);
       font-weight: 600;
       color: #5b6683;
       overflow: hidden;
-      transition: box-shadow .3s ease, transform .3s ease;
+      transition: all .3s ease;
     }
     
     .skill-card:hover {
-      box-shadow: 6px 6px 14px var(--shadow-dark),
-                  -6px -6px 14px var(--shadow-light);
+      border-color: var(--accent);
       transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .skill-label {
@@ -445,17 +493,15 @@
       z-index: 2;
     }
 
-    /* TICKER - WHITE BOX WITH RECTANGLE */
+    /* TICKER */
     .ticker-shell {
       margin-bottom: 30px;
       padding: 20px 15px;
       border-radius: 16px;
       background: white;
-      box-shadow: 6px 6px 14px var(--shadow-dark),
-                  -6px -6px 14px var(--shadow-light);
+      border: 2px solid var(--border-color);
       overflow: hidden;
       width: 100%;
-      border: 1px solid rgba(0,0,0,0.05);
     }
     
     .ticker-track {
@@ -499,6 +545,7 @@
       100% { transform: translateX(-50%); }
     }
 
+    /* EXPERIENCE TIMELINE */
     .exp-timeline {
       margin-top: 24px;
       position: relative;
@@ -529,8 +576,8 @@
       height: clamp(14px, 3vw, 18px);
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 4px var(--bg-light),
-                  0 0 0 6px var(--accent-soft);
+      border: 3px solid white;
+      box-shadow: 0 0 0 3px var(--accent-soft);
       z-index: 2;
       animation: pulse 2s infinite;
     }
@@ -544,17 +591,17 @@
       margin-left: clamp(6px, 2vw, 12px);
       padding: 16px;
       border-radius: 18px;
-      background: var(--bg-light);
-      box-shadow: none;
+      background: white;
+      border: 2px solid var(--border-color);
+      border-left: 4px solid var(--accent);
       font-size: clamp(0.8rem, 2vw, 0.88rem);
-      transition: box-shadow .3s ease, transform .3s ease;
-      border-left: 4px solid var(--accent-soft);
+      transition: all .3s ease;
     }
     
     .exp-card:hover {
-      box-shadow: 6px 6px 14px var(--shadow-dark),
-                  -6px -6px 14px var(--shadow-light);
+      border-color: var(--accent);
       transform: translateX(6px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .exp-role-line {
@@ -589,18 +636,18 @@
       padding: 18px 16px 50px;
       text-align: left;
       border-radius: 20px;
-      background: var(--bg-light);
-      box-shadow: none;
+      background: white;
+      border: 2px solid var(--border-color);
       position: relative;
       overflow: hidden;
-      transition: box-shadow .3s ease, transform .3s ease;
+      transition: all .3s ease;
       min-height: 180px;
     }
     
     .edu-card:hover {
-      box-shadow: 8px 8px 18px var(--shadow-dark),
-                  -8px -8px 18px var(--shadow-light);
+      border-color: var(--accent);
       transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .edu-headline {
@@ -629,11 +676,10 @@
       font-size: clamp(0.8rem, 2vw, 0.85rem);
       color: var(--accent);
       font-weight: 700;
-      background: var(--bg-light);
+      background: white;
       padding: 6px 12px;
       border-radius: 999px;
-      box-shadow: 3px 3px 6px var(--shadow-dark),
-                  -3px -3px 6px var(--shadow-light);
+      border: 2px solid var(--border-color);
     }
     
     .grad-projects {
@@ -646,17 +692,17 @@
     .grad-box {
       padding: 14px 16px;
       border-radius: 18px;
-      background: var(--bg-light);
-      box-shadow: none;
+      background: white;
+      border: 2px solid var(--border-color);
       font-size: clamp(0.75rem, 2vw, 0.8rem);
       color: #5b6683;
-      transition: box-shadow .3s ease;
+      transition: all .3s ease;
       line-height: 1.6;
     }
     
     .grad-box:hover {
-      box-shadow: 5px 5px 12px var(--shadow-dark),
-                  -5px -5px 12px var(--shadow-light);
+      border-color: var(--accent);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
     }
 
     /* CERTIFICATIONS */
@@ -669,19 +715,19 @@
     .cert-card {
       padding: 16px 14px;
       border-radius: 18px;
-      background: var(--bg-light);
-      box-shadow: none;
+      background: white;
+      border: 2px solid var(--border-color);
       font-size: clamp(0.75rem, 2vw, 0.8rem);
       position: relative;
       overflow: visible;
-      transition: box-shadow .3s ease, transform .3s ease;
-      cursor: pointer;
+      transition: all .3s ease;
+      cursor: none;
     }
     
     .cert-card:hover {
-      box-shadow: 8px 8px 16px var(--shadow-dark),
-                  -8px -8px 16px var(--shadow-light);
+      border-color: var(--accent);
       transform: translateY(-4px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .cert-title {
@@ -697,7 +743,7 @@
       line-height: 1.5;
     }
 
-    /* CERTIFICATE MODAL - SCREEN FIT */
+    /* CERTIFICATE MODAL */
     .cert-modal {
       position: fixed;
       inset: 0;
@@ -709,6 +755,11 @@
       z-index: 200;
       padding: 20px;
       animation: fadeIn 0.3s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
     }
     
     .cert-modal.show { display: flex; }
@@ -729,6 +780,11 @@
       justify-content: center;
     }
     
+    @keyframes zoomIn {
+      from { transform: scale(0.8); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+    
     .cert-modal-content img {
       width: 100%;
       height: 100%;
@@ -743,21 +799,20 @@
       width: 46px;
       height: 46px;
       border-radius: 50%;
-      background: rgba(255,255,255,0.95);
-      border: none;
+      background: white;
+      border: 2px solid var(--border-color);
       font-size: 1.8rem;
-      cursor: pointer;
+      cursor: none;
       display: flex;
       align-items: center;
       justify-content: center;
       z-index: 10;
-      transition: transform 0.2s, background 0.2s;
-      box-shadow: 0 4px 12px rgba(0,0,0,.3);
+      transition: all 0.2s;
     }
     
     .cert-modal-close:hover {
       transform: rotate(90deg) scale(1.1);
-      background: white;
+      border-color: var(--accent);
     }
 
     /* CONTACT */
@@ -766,15 +821,15 @@
       margin: 10px auto 0;
       padding: 24px 20px;
       border-radius: 26px;
-      background: var(--bg-light);
-      box-shadow: none;
-      transition: box-shadow .3s ease;
+      background: white;
+      border: 2px solid var(--border-color);
+      transition: all .3s ease;
       width: 100%;
     }
     
     .contact-inner:hover {
-      box-shadow: 10px 10px 22px var(--shadow-dark),
-                  -10px -10px 22px var(--shadow-light);
+      border-color: var(--accent);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .contact-row {
@@ -785,25 +840,22 @@
     
     .contact-row input,
     .contact-row textarea {
-      border: none;
+      border: 2px solid var(--border-color);
       outline: none;
       padding: 12px 16px;
       border-radius: 16px;
-      background: var(--bg-light);
-      box-shadow: inset 5px 5px 10px var(--shadow-dark),
-                  inset -5px -5px 10px var(--shadow-light);
+      background: white;
       font-family: inherit;
       font-size: clamp(0.85rem, 2vw, 0.9rem);
       color: var(--text-main);
       resize: vertical;
-      transition: box-shadow 0.3s;
+      transition: border-color 0.3s;
+      cursor: none;
     }
     
     .contact-row input:focus,
     .contact-row textarea:focus {
-      box-shadow: inset 6px 6px 12px var(--shadow-dark),
-                  inset -6px -6px 12px var(--shadow-light),
-                  0 0 0 2px var(--accent-soft);
+      border-color: var(--accent);
     }
     
     .contact-row button {
@@ -816,16 +868,13 @@
       font-weight: 600;
       background: linear-gradient(135deg, var(--accent), #6f9dff);
       color: #fff;
-      cursor: pointer;
-      box-shadow: 8px 8px 18px rgba(48,79,174,.5),
-                  -4px -4px 8px rgba(255,255,255,.8);
-      transition: transform .2s, box-shadow .2s;
+      cursor: none;
+      transition: transform .2s;
     }
     
     .contact-row button:hover {
       transform: translateY(-3px);
-      box-shadow: 12px 12px 24px rgba(48,79,174,.6),
-                  -6px -6px 10px rgba(255,255,255,.9);
+      box-shadow: 0 8px 20px rgba(76, 129, 255, 0.3);
     }
     
     .contact-msg {
@@ -848,129 +897,62 @@
       font-size: clamp(0.75rem, 2vw, 0.8rem);
       padding: 20px;
       color: #7b8397;
-      background: var(--bg-light);
+      background: white;
+      border-top: 2px solid var(--border-color);
     }
 
-    /* MOBILE OPTIMIZATIONS */
+    /* MOBILE */
     @media (max-width: 768px) {
-      .nav-inner {
-        padding: 8px 12px;
-        gap: 8px;
-      }
-      
-      .nav-links {
-        gap: 6px;
-      }
-      
-      .nav-links a {
-        padding: 6px 10px;
-      }
-      
-      section {
-        padding: 80px 4vw 40px;
-      }
-      
-      .hero-contact {
-        grid-template-columns: 1fr;
-      }
-      
-      .chip-btn {
-        width: 100%;
-        justify-content: center;
-      }
-      
-      .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 15px;
-      }
-      
-      .ticker-shell {
-        padding: 15px 10px;
-      }
-      
-      .logo-pill {
-        min-width: 100px;
-      }
-      
-      .exp-timeline {
-        padding-left: 30px;
-      }
-      
-      .edu-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .cert-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .cert-modal-content {
-        width: 95vw;
-        height: 80vh;
-      }
+      #airplane-cursor, .smoke-particle { display: none; }
+      body { cursor: auto; }
+      a, button, input, textarea, select { cursor: pointer; }
+      .nav-inner { padding: 8px 12px; gap: 8px; }
+      .nav-links { gap: 6px; }
+      .nav-links a { padding: 6px 10px; }
+      section { padding: 80px 4vw 40px; }
+      .hero-contact { grid-template-columns: 1fr; }
+      .chip-btn { width: 100%; justify-content: center; }
+      .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; }
+      .ticker-shell { padding: 15px 10px; }
+      .logo-pill { min-width: 100px; }
+      .exp-timeline { padding-left: 30px; }
+      .edu-grid { grid-template-columns: 1fr; }
+      .cert-grid { grid-template-columns: 1fr; }
+      .cert-modal-content { width: 95vw; height: 80vh; }
     }
     
     @media (max-width: 480px) {
-      .nav-brand {
-        font-size: 0.7rem;
-      }
-      
-      .nav-links a {
-        font-size: 0.65rem;
-        padding: 5px 8px;
-      }
-      
-      section h2 {
-        font-size: 1.3rem;
-      }
-      
-      .hero-text h1 {
-        font-size: 1.4rem;
-      }
+      .nav-brand { font-size: 0.7rem; }
+      .nav-links a { font-size: 0.65rem; padding: 5px 8px; }
+      section h2 { font-size: 1.3rem; }
+      .hero-text h1 { font-size: 1.4rem; }
     }
 
-    /* TABLET OPTIMIZATIONS */
+    /* TABLET */
     @media (min-width: 769px) and (max-width: 1024px) {
-      .hero-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-      }
-      
-      .cert-grid {
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      }
+      .hero-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); }
+      .cert-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
     }
 
-    /* DESKTOP LARGE */
+    /* DESKTOP */
     @media (min-width: 1025px) {
       .hero-grid {
         grid-template-columns: 300px 1fr;
         text-align: left;
         gap: 50px;
       }
-      
-      .hero-img-wrap {
-        margin: 0;
-      }
-      
-      .hero-desc-container {
-        margin-left: 0;
-      }
-      
-      .hero-contact {
-        margin-left: 0;
-      }
-      
-      .about-tag-row {
-        justify-content: flex-start;
-      }
+      .hero-img-wrap { margin: 0; }
+      .hero-desc-container { margin-left: 0; }
+      .hero-contact { margin-left: 0; }
+      .about-tag-row { justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
+  <!-- AIRPLANE CURSOR -->
+  <img id="airplane-cursor" class="airplane-icon" src="Pngtree-vector-airplane-icon_4277896.jpg" alt="">
+
   <!-- NAVBAR -->
   <nav>
     <div class="nav-inner">
@@ -1011,10 +993,10 @@
               <button class="chip-btn locked" id="downloadCVBtn" onclick="requestPassword('cv')">
                 <span class="icon">⬇️</span> Download CV
               </button>
-              <a class="chip-btn" href="https://www.linkedin.com/in/rajat-r-438ba9306/" target="_blank">
+              <a class="chip-btn" href="https://www.linkedin.com/in/rajat-r-438ba9306/" target="_blank" rel="noopener noreferrer">
                 <span class="icon">in</span> LinkedIn
               </a>
-              <a class="chip-btn" href="https://twitter.com/YOUR_TWITTER_ID" target="_blank">
+              <a class="chip-btn" href="https://twitter.com/YOUR_TWITTER_ID" target="_blank" rel="noopener noreferrer">
                 <span class="icon">𝕏</span> Twitter
               </a>
               <button class="chip-btn locked" id="emailBtn" onclick="requestPassword('email')">
@@ -1111,23 +1093,23 @@
         <div class="section-top-line"></div>
         <h2>Professional Experience</h2>
 
-        <!-- WHITE BOX TICKER -->
+        <!-- TICKER -->
         <div class="ticker-shell">
           <div class="ticker-track">
             <div class="logo-pill">
-              <img src="ATLAS.jpg" alt="Atlas">
+              <img src="ATLAS.jpg" alt="Atlas Group">
               <span>Atlas Group</span>
             </div>
             <div class="logo-pill">
-              <img src="NEDLLOYD.jpg" alt="Nedlloyd">
+              <img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics">
               <span>Nedlloyd Logistics</span>
             </div>
             <div class="logo-pill">
-              <img src="SYB.jpg" alt="SYB">
+              <img src="SYB.jpg" alt="SYB International">
               <span>SYB International</span>
             </div>
             <div class="logo-pill">
-              <img src="ORCHID.jpg" alt="Orchid">
+              <img src="ORCHID.jpg" alt="Orchid Shipping">
               <span>Orchid Shipping</span>
             </div>
             <div class="logo-pill">
@@ -1135,11 +1117,11 @@
               <span>HMM</span>
             </div>
             <div class="logo-pill">
-              <img src="HSUD.jpg" alt="Hamburg Sud">
+              <img src="HSUD.jpg" alt="Hamburg Süd">
               <span>Hamburg Süd</span>
             </div>
             <div class="logo-pill">
-              <img src="CEEKAY.jpg" alt="Ceekay">
+              <img src="CEEKAY.jpg" alt="Ceekay Shipping">
               <span>Ceekay Shipping</span>
             </div>
             <div class="logo-pill">
@@ -1147,15 +1129,15 @@
               <span>DAL</span>
             </div>
             <div class="logo-pill">
-              <img src="TSLINES.jpg" alt="TS Lines">
+              <img src="TSLINES.jpg" alt="T.S. Lines">
               <span>T.S. Lines</span>
             </div>
             <div class="logo-pill">
-              <img src="ESL.jpg" alt="ESL">
+              <img src="ESL.jpg" alt="Ethiopian Shipping Lines">
               <span>Ethiopian S&L</span>
             </div>
             <div class="logo-pill">
-              <img src="CHINASHIPPING.jpg" alt="China">
+              <img src="CHINASHIPPING.jpg" alt="China Shipping">
               <span>China Shipping</span>
             </div>
             <div class="logo-pill">
@@ -1167,32 +1149,32 @@
               <span>LMT</span>
             </div>
             <div class="logo-pill">
-              <img src="DELMAS.jpg" alt="Delmas">
+              <img src="DELMAS.jpg" alt="Delmas SAS">
               <span>Delmas SAS</span>
             </div>
             <div class="logo-pill">
-              <img src="STX.jpg" alt="STX">
+              <img src="STX.jpg" alt="STX Ocean">
               <span>STX Ocean</span>
             </div>
             <div class="logo-pill">
-              <img src="MSC.jpg" alt="STX">
+              <img src="MSC.jpg" alt="MSC">
               <span>MSC</span>
             </div>
-            <!-- Duplicate -->
+            <!-- Duplicate for seamless loop -->
             <div class="logo-pill">
-              <img src="ATLAS.jpg" alt="Atlas">
+              <img src="ATLAS.jpg" alt="Atlas Group">
               <span>Atlas Group</span>
             </div>
             <div class="logo-pill">
-              <img src="NEDLLOYD.jpg" alt="Nedlloyd">
+              <img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics">
               <span>Nedlloyd Logistics</span>
             </div>
             <div class="logo-pill">
-              <img src="SYB.jpg" alt="SYB">
+              <img src="SYB.jpg" alt="SYB International">
               <span>SYB International</span>
             </div>
             <div class="logo-pill">
-              <img src="ORCHID.jpg" alt="Orchid">
+              <img src="ORCHID.jpg" alt="Orchid Shipping">
               <span>Orchid Shipping</span>
             </div>
             <div class="logo-pill">
@@ -1200,11 +1182,11 @@
               <span>HMM</span>
             </div>
             <div class="logo-pill">
-              <img src="HSUD.jpg" alt="Hamburg Sud">
+              <img src="HSUD.jpg" alt="Hamburg Süd">
               <span>Hamburg Süd</span>
             </div>
             <div class="logo-pill">
-              <img src="CEEKAY.jpg" alt="Ceekay">
+              <img src="CEEKAY.jpg" alt="Ceekay Shipping">
               <span>Ceekay Shipping</span>
             </div>
             <div class="logo-pill">
@@ -1212,15 +1194,15 @@
               <span>DAL</span>
             </div>
             <div class="logo-pill">
-              <img src="TSLINES.jpg" alt="TS Lines">
+              <img src="TSLINES.jpg" alt="T.S. Lines">
               <span>T.S. Lines</span>
             </div>
             <div class="logo-pill">
-              <img src="ESL.jpg" alt="ESL">
+              <img src="ESL.jpg" alt="Ethiopian Shipping Lines">
               <span>Ethiopian S&L</span>
             </div>
             <div class="logo-pill">
-              <img src="CHINASHIPPING.jpg" alt="China">
+              <img src="CHINASHIPPING.jpg" alt="China Shipping">
               <span>China Shipping</span>
             </div>
             <div class="logo-pill">
@@ -1232,15 +1214,15 @@
               <span>LMT</span>
             </div>
             <div class="logo-pill">
-              <img src="DELMAS.jpg" alt="Delmas">
+              <img src="DELMAS.jpg" alt="Delmas SAS">
               <span>Delmas SAS</span>
             </div>
             <div class="logo-pill">
-              <img src="STX.jpg" alt="STX">
+              <img src="STX.jpg" alt="STX Ocean">
               <span>STX Ocean</span>
             </div>
             <div class="logo-pill">
-              <img src="MSC.jpg" alt="STX">
+              <img src="MSC.jpg" alt="MSC">
               <span>MSC</span>
             </div>
           </div>
@@ -1278,7 +1260,7 @@
               <div class="exp-role-line">Manager – Documentation & Customer Service</div>
               <div class="exp-meta">SYB International, Ludhiana · Nov 2021 – Mar 2024</div>
               <div class="exp-desc">
-                Led export/import and third country (X-Trade) documentation and customer service with rates procurement and administration ensuring error-free documentation and smooth shipment execution. 
+                Led export/import and third country (X-Trade) documentation and customer service with rates procurement and administration ensuring error-free documentation and smooth shipment execution.
               </div>
             </div>
           </div>
@@ -1366,7 +1348,7 @@
 
         <div style="font-size:clamp(0.85rem,2.2vw,0.9rem);margin-bottom:10px;font-weight:600;color:#58627e;margin-top:20px;">Graduation Projects</div>
         <div class="grad-projects">
-          <div class="grad-box">Appraisal of ULIP Plans offered by insurance companies – analysed customer views and secured 92%.</div> 
+          <div class="grad-box">Appraisal of ULIP Plans offered by insurance companies – analysed customer views and secured 92%.</div>
           <div class="grad-box">Comparative study of customer preferences: BSNL vs AIRTEL – assessed service perception and loyalty drivers.</div>
         </div>
       </div>
@@ -1410,6 +1392,22 @@
             <div class="cert-title">Google Gemini AI</div>
             <div class="cert-provider">LinkedIn Learning – AI assistant fundamentals</div>
           </div>
+          <div class="cert-card" onclick="openCertModal('Public-Speaking-Skills.jpg')">
+            <div class="cert-title">Public Speaking Skills</div>
+            <div class="cert-provider">LinkedIn Learning – Public Speaking</div>
+          </div>
+          <div class="cert-card" onclick="openCertModal('Public-Speaking-Foundations.jpg')">
+            <div class="cert-title">Public Speaking Foundations</div>
+            <div class="cert-provider">LinkedIn Learning – Public Speaking Foundations</div>
+          </div>
+          <div class="cert-card" onclick="openCertModal('Mind-Controlling-Program-2.jpg')">
+            <div class="cert-title">Mind Controlling Program Level 2</div>
+            <div class="cert-provider">NIFM - Mind Controlling Program Level 2</div>
+          </div>
+          <div class="cert-card" onclick="openCertModal('Mind-Controlling-Program-1.jpg')">
+            <div class="cert-title">Mind Controlling Program Level 1</div>
+            <div class="cert-provider">NIFM - Mind Controlling Program Level 1</div>
+          </div>
         </div>
       </div>
     </section>
@@ -1441,14 +1439,14 @@
   </main>
 
   <footer>
-    &copy; 2025 Rajat Kumar Rai. Professional Portfolio.
+    &copy; 2025 Rajat Kumar Rai. Professional Portfolio. All Rights Reserved.
   </footer>
 
   <!-- PASSWORD MODAL -->
   <div class="password-modal" id="passwordModal">
     <div class="password-box">
       <h3>🔒 Enter Password</h3>
-      <input type="password" id="passwordInput" placeholder="Enter password">
+      <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
       <div class="password-error" id="passwordError">Incorrect password. Try again.</div>
       <button onclick="verifyPassword()">Unlock</button>
     </div>
@@ -1457,13 +1455,90 @@
   <!-- CERTIFICATE MODAL -->
   <div class="cert-modal" id="certModal" onclick="closeCertModal()">
     <div class="cert-modal-content" onclick="event.stopPropagation()">
-      <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
+      <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close">&times;</button>
       <img id="certModalImg" src="" alt="Certificate">
     </div>
   </div>
 
   <script>
-    // Password System
+    // ==================== AIRPLANE CURSOR ====================
+    const airplaneCursor = document.getElementById('airplane-cursor');
+    
+    let mouseX = 0, mouseY = 0;
+    let cursorX = 0, cursorY = 0;
+    let lastX = 0, lastY = 0;
+    let angle = 0;
+    let smokeCounter = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      
+      const deltaX = mouseX - lastX;
+      const deltaY = mouseY - lastY;
+      
+      if (Math.abs(deltaX) > 0.5 || Math.abs(deltaY) > 0.5) {
+        angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        
+        smokeCounter++;
+        if (smokeCounter % 3 === 0) {
+          createSmoke(cursorX, cursorY);
+        }
+      }
+      
+      lastX = mouseX;
+      lastY = mouseY;
+    });
+
+    function createSmoke(x, y) {
+      const smoke = document.createElement('div');
+      smoke.className = 'smoke-particle';
+      smoke.style.left = x + 'px';
+      smoke.style.top = y + 'px';
+      document.body.appendChild(smoke);
+      
+      setTimeout(() => smoke.remove(), 1200);
+    }
+
+    function animateCursor() {
+      cursorX += (mouseX - cursorX) * 0.18;
+      cursorY += (mouseY - cursorY) * 0.18;
+      
+      airplaneCursor.style.left = `${cursorX}px`;
+      airplaneCursor.style.top = `${cursorY}px`;
+      airplaneCursor.style.transform = `rotate(${angle + 90}deg)`;
+      
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.addEventListener('mousedown', () => {
+      airplaneCursor.style.transform += ' scale(0.85)';
+    });
+    
+    document.addEventListener('mouseup', () => {
+      airplaneCursor.style.transform = airplaneCursor.style.transform.replace(' scale(0.85)', '');
+    });
+    
+    document.addEventListener('mouseleave', () => airplaneCursor.style.opacity = '0');
+    document.addEventListener('mouseenter', () => airplaneCursor.style.opacity = '0.35');
+
+    // ==================== PROFILE IMAGE ZOOM ====================
+    window.addEventListener('scroll', function() {
+      const heroImage = document.getElementById('heroImage');
+      const hero = document.getElementById('hero');
+      if (!heroImage || !hero) return;
+      
+      const rect = hero.getBoundingClientRect();
+      const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
+      
+      let scrollRatio = Math.min(1, Math.max(0, -rect.top / viewportHeight));
+      let scaleValue = 1 - scrollRatio * 0.4;
+      
+      heroImage.style.transform = `scale(${scaleValue})`;
+    });
+
+    // ==================== PASSWORD SYSTEM ====================
     let passwordAction = '';
     const correctPassword = 'open';
     let isUnlocked = false;
@@ -1497,7 +1572,6 @@
       document.querySelectorAll('.locked').forEach(el => {
         el.classList.remove('locked');
         el.style.opacity = '1';
-        el.style.cursor = 'pointer';
       });
       document.getElementById('contactLocked').style.display = 'none';
       document.getElementById('contactSection').style.display = 'block';
@@ -1508,9 +1582,6 @@
       const emailEncoded = atob('cmFqYXRrdW1hcnJhaS5yYWlAZ21haWwuY29t');
       
       switch(action) {
-        case 'resume':
-          alert('Resume viewing feature - Add your resume PDF link here');
-          break;
         case 'cv':
           window.location.href = 'Rajat-Kumar-Rai-Resume.docx';
           break;
@@ -1524,19 +1595,17 @@
           window.open(`https://wa.me/91${phoneEncoded}`, '_blank');
           break;
         case 'contact':
-          // Already unlocked by unlockAll()
           break;
       }
     }
 
-    // Enter key for password
     document.addEventListener('DOMContentLoaded', () => {
       document.getElementById('passwordInput').addEventListener('keypress', (e) => {
         if (e.key === 'Enter') verifyPassword();
       });
     });
 
-    // Typewriter
+    // ==================== TYPEWRITER ====================
     class TypeWriter {
         constructor(el, words, wait = 3000, colors = []) {
             this.el = el;
@@ -1584,7 +1653,6 @@
         }
     }
 
-    // Init
     document.addEventListener('DOMContentLoaded', init);
 
     function init() {
@@ -1599,7 +1667,7 @@
         new TypeWriter(tw2, words2, 1500, myColors);
     }
 
-    // Intersection Observer
+    // ==================== INTERSECTION OBSERVER ====================
     const observerOptions = {
       threshold: 0.2,
       rootMargin: '0px'
@@ -1617,7 +1685,7 @@
       observer.observe(section);
     });
 
-    // Smooth scroll + active nav
+    // ==================== NAVIGATION ====================
     document.querySelectorAll('.nav-links a').forEach(a => {
       a.addEventListener('click', e => {
         e.preventDefault();
@@ -1633,7 +1701,6 @@
       });
     });
 
-    // Update active nav on scroll
     window.addEventListener('scroll', () => {
       let current = '';
       document.querySelectorAll('section').forEach(section => {
@@ -1649,15 +1716,9 @@
           a.classList.add('active');
         }
       });
-
-      // Parallax zoom effect on hero image
-      const heroImage = document.getElementById('heroImage');
-      const scrollY = window.scrollY;
-      const scale = Math.max(0.5, 1 - scrollY / 1000);
-      heroImage.style.transform = `scale(${scale})`;
     });
 
-    // Certificate modal
+    // ==================== CERTIFICATE MODAL ====================
     function openCertModal(imgSrc) {
       document.getElementById('certModalImg').src = imgSrc;
       document.getElementById('certModal').classList.add('show');
@@ -1667,7 +1728,7 @@
       document.getElementById('certModal').classList.remove('show');
     }
 
-    // Contact submit
+    // ==================== CONTACT FORM ====================
     function fakeSubmit() {
       const msg = document.getElementById('contactMsg');
       msg.style.display = 'block';
@@ -1677,7 +1738,6 @@
       document.getElementById('cmsg').value = '';
     }
 
-    // Close password modal on outside click
     document.getElementById('passwordModal').addEventListener('click', (e) => {
       if (e.target.id === 'passwordModal') {
         document.getElementById('passwordModal').classList.remove('show');
