@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rajat Kumar Rai | Professional Portfolio</title>
   <meta name="description" content="Logistics and Freight Forwarding Professional - Pricing, Sales, Documentation Expert">
   <meta name="author" content="Rajat Kumar Rai">
   <meta name="keywords" content="logistics, freight forwarding, pricing, sales, documentation, supply chain">
   <meta name="robots" content="index, follow">
   
-  <!-- Open Graph Meta Tags -->
   <meta property="og:title" content="Rajat Kumar Rai | Professional Portfolio">
   <meta property="og:description" content="Experienced Logistics & Freight Forwarding Professional">
   <meta property="og:type" content="website">
@@ -41,7 +40,7 @@
       scroll-behavior: smooth;
     }
     
-    /* AIRPLANE CURSOR */
+    /* AIRPLANE CURSOR - NO SHADOW */
     body {
       font-family: 'Montserrat', system-ui, sans-serif;
       background: #ffffff;
@@ -60,9 +59,8 @@
       margin-left: -25px;
       margin-top: -25px;
       z-index: 10000;
-      transition: transform 0.12s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: transform 0.1s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
       opacity: 0.35;
-      filter: drop-shadow(0 2px 8px rgba(0,0,0,0.15));
     }
     
     .airplane-icon {
@@ -156,17 +154,22 @@
       transform: translateY(-2px);
     }
 
-    /* SECTIONS */
+    /* SECTIONS - FIXED SPACING */
     section {
       width: 100%;
-      min-height: 100vh;
-      padding: 100px 5vw 60px;
+      min-height: auto;
+      padding: 80px 5vw 80px;
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
       position: relative;
       background: white;
+    }
+    
+    #hero {
+      min-height: 100vh;
+      justify-content: center;
     }
     
     .section-content {
@@ -895,7 +898,7 @@
     footer {
       text-align: center;
       font-size: clamp(0.75rem, 2vw, 0.8rem);
-      padding: 20px;
+      padding: 30px 20px;
       color: #7b8397;
       background: white;
       border-top: 2px solid var(--border-color);
@@ -909,7 +912,7 @@
       .nav-inner { padding: 8px 12px; gap: 8px; }
       .nav-links { gap: 6px; }
       .nav-links a { padding: 6px 10px; }
-      section { padding: 80px 4vw 40px; }
+      section { padding: 60px 4vw 60px; }
       .hero-contact { grid-template-columns: 1fr; }
       .chip-btn { width: 100%; justify-content: center; }
       .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 15px; }
@@ -1093,230 +1096,105 @@
         <div class="section-top-line"></div>
         <h2>Professional Experience</h2>
 
-        <!-- TICKER -->
         <div class="ticker-shell">
           <div class="ticker-track">
-            <div class="logo-pill">
-              <img src="ATLAS.jpg" alt="Atlas Group">
-              <span>Atlas Group</span>
-            </div>
-            <div class="logo-pill">
-              <img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics">
-              <span>Nedlloyd Logistics</span>
-            </div>
-            <div class="logo-pill">
-              <img src="SYB.jpg" alt="SYB International">
-              <span>SYB International</span>
-            </div>
-            <div class="logo-pill">
-              <img src="ORCHID.jpg" alt="Orchid Shipping">
-              <span>Orchid Shipping</span>
-            </div>
-            <div class="logo-pill">
-              <img src="HMM.jpg" alt="HMM">
-              <span>HMM</span>
-            </div>
-            <div class="logo-pill">
-              <img src="HSUD.jpg" alt="Hamburg Süd">
-              <span>Hamburg Süd</span>
-            </div>
-            <div class="logo-pill">
-              <img src="CEEKAY.jpg" alt="Ceekay Shipping">
-              <span>Ceekay Shipping</span>
-            </div>
-            <div class="logo-pill">
-              <img src="DAL.jpg" alt="DAL">
-              <span>DAL</span>
-            </div>
-            <div class="logo-pill">
-              <img src="TSLINES.jpg" alt="T.S. Lines">
-              <span>T.S. Lines</span>
-            </div>
-            <div class="logo-pill">
-              <img src="ESL.jpg" alt="Ethiopian Shipping Lines">
-              <span>Ethiopian S&L</span>
-            </div>
-            <div class="logo-pill">
-              <img src="CHINASHIPPING.jpg" alt="China Shipping">
-              <span>China Shipping</span>
-            </div>
-            <div class="logo-pill">
-              <img src="HEUNG-A.jpg" alt="Heung-A">
-              <span>Heung-A</span>
-            </div>
-            <div class="logo-pill">
-              <img src="LMT.jpg" alt="LMT">
-              <span>LMT</span>
-            </div>
-            <div class="logo-pill">
-              <img src="DELMAS.jpg" alt="Delmas SAS">
-              <span>Delmas SAS</span>
-            </div>
-            <div class="logo-pill">
-              <img src="STX.jpg" alt="STX Ocean">
-              <span>STX Ocean</span>
-            </div>
-            <div class="logo-pill">
-              <img src="MSC.jpg" alt="MSC">
-              <span>MSC</span>
-            </div>
-            <!-- Duplicate for seamless loop -->
-            <div class="logo-pill">
-              <img src="ATLAS.jpg" alt="Atlas Group">
-              <span>Atlas Group</span>
-            </div>
-            <div class="logo-pill">
-              <img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics">
-              <span>Nedlloyd Logistics</span>
-            </div>
-            <div class="logo-pill">
-              <img src="SYB.jpg" alt="SYB International">
-              <span>SYB International</span>
-            </div>
-            <div class="logo-pill">
-              <img src="ORCHID.jpg" alt="Orchid Shipping">
-              <span>Orchid Shipping</span>
-            </div>
-            <div class="logo-pill">
-              <img src="HMM.jpg" alt="HMM">
-              <span>HMM</span>
-            </div>
-            <div class="logo-pill">
-              <img src="HSUD.jpg" alt="Hamburg Süd">
-              <span>Hamburg Süd</span>
-            </div>
-            <div class="logo-pill">
-              <img src="CEEKAY.jpg" alt="Ceekay Shipping">
-              <span>Ceekay Shipping</span>
-            </div>
-            <div class="logo-pill">
-              <img src="DAL.jpg" alt="DAL">
-              <span>DAL</span>
-            </div>
-            <div class="logo-pill">
-              <img src="TSLINES.jpg" alt="T.S. Lines">
-              <span>T.S. Lines</span>
-            </div>
-            <div class="logo-pill">
-              <img src="ESL.jpg" alt="Ethiopian Shipping Lines">
-              <span>Ethiopian S&L</span>
-            </div>
-            <div class="logo-pill">
-              <img src="CHINASHIPPING.jpg" alt="China Shipping">
-              <span>China Shipping</span>
-            </div>
-            <div class="logo-pill">
-              <img src="HEUNG-A.jpg" alt="Heung-A">
-              <span>Heung-A</span>
-            </div>
-            <div class="logo-pill">
-              <img src="LMT.jpg" alt="LMT">
-              <span>LMT</span>
-            </div>
-            <div class="logo-pill">
-              <img src="DELMAS.jpg" alt="Delmas SAS">
-              <span>Delmas SAS</span>
-            </div>
-            <div class="logo-pill">
-              <img src="STX.jpg" alt="STX Ocean">
-              <span>STX Ocean</span>
-            </div>
-            <div class="logo-pill">
-              <img src="MSC.jpg" alt="MSC">
-              <span>MSC</span>
-            </div>
+            <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas Group"><span>Atlas Group</span></div>
+            <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics"><span>Nedlloyd Logistics</span></div>
+            <div class="logo-pill"><img src="SYB.jpg" alt="SYB International"><span>SYB International</span></div>
+            <div class="logo-pill"><img src="ORCHID.jpg" alt="Orchid Shipping"><span>Orchid Shipping</span></div>
+            <div class="logo-pill"><img src="HMM.jpg" alt="HMM"><span>HMM</span></div>
+            <div class="logo-pill"><img src="HSUD.jpg" alt="Hamburg Süd"><span>Hamburg Süd</span></div>
+            <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay Shipping"><span>Ceekay Shipping</span></div>
+            <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
+            <div class="logo-pill"><img src="TSLINES.jpg" alt="T.S. Lines"><span>T.S. Lines</span></div>
+            <div class="logo-pill"><img src="ESL.jpg" alt="Ethiopian S&L"><span>Ethiopian S&L</span></div>
+            <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
+            <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
+            <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT</span></div>
+            <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas SAS"><span>Delmas SAS</span></div>
+            <div class="logo-pill"><img src="STX.jpg" alt="STX Ocean"><span>STX Ocean</span></div>
+            <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas Group"><span>Atlas Group</span></div>
+            <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics"><span>Nedlloyd Logistics</span></div>
+            <div class="logo-pill"><img src="SYB.jpg" alt="SYB International"><span>SYB International</span></div>
+            <div class="logo-pill"><img src="ORCHID.jpg" alt="Orchid Shipping"><span>Orchid Shipping</span></div>
+            <div class="logo-pill"><img src="HMM.jpg" alt="HMM"><span>HMM</span></div>
+            <div class="logo-pill"><img src="HSUD.jpg" alt="Hamburg Süd"><span>Hamburg Süd</span></div>
+            <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay Shipping"><span>Ceekay Shipping</span></div>
+            <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
+            <div class="logo-pill"><img src="TSLINES.jpg" alt="T.S. Lines"><span>T.S. Lines</span></div>
+            <div class="logo-pill"><img src="ESL.jpg" alt="Ethiopian S&L"><span>Ethiopian S&L</span></div>
+            <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
+            <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
+            <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT</span></div>
+            <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas SAS"><span>Delmas SAS</span></div>
+            <div class="logo-pill"><img src="STX.jpg" alt="STX Ocean"><span>STX Ocean</span></div>
           </div>
         </div>
 
-        <!-- TIMELINE -->
         <div class="exp-timeline">
           <div class="exp-line"></div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Assistant Manager – Pricing</div>
               <div class="exp-meta">Atlas Group, Noida · Jan 2025 – Present</div>
-              <div class="exp-desc">
-                Handling USA trade lane pricing, contract management and reverse auctions; customer services and driving competitive bids and margin optimisation.
-              </div>
+              <div class="exp-desc">Handling USA trade lane pricing, contract management and reverse auctions; customer services and driving competitive bids and margin optimisation.</div>
             </div>
           </div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Assistant Manager – Pricing</div>
               <div class="exp-meta">Nedlloyd Logistics, Ludhiana / Delhi · Mar 2024 – Jan 2025</div>
-              <div class="exp-desc">
-                Managed rate negotiation and pricing support for multiple lanes, aligning customer needs with carrier offerings.
-              </div>
+              <div class="exp-desc">Managed rate negotiation and pricing support for multiple lanes, aligning customer needs with carrier offerings.</div>
             </div>
           </div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Manager – Documentation & Customer Service</div>
               <div class="exp-meta">SYB International, Ludhiana · Nov 2021 – Mar 2024</div>
-              <div class="exp-desc">
-                Led export/import and third country (X-Trade) documentation and customer service with rates procurement and administration ensuring error-free documentation and smooth shipment execution.
-              </div>
+              <div class="exp-desc">Led export/import and third country (X-Trade) documentation and customer service with rates procurement and administration ensuring error-free documentation and smooth shipment execution.</div>
             </div>
           </div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Sales Coordinator Team Lead</div>
               <div class="exp-meta">Orchid Shipping, Ludhiana · Sep 2020 – Nov 2021</div>
-              <div class="exp-desc">
-                Managed team and pricing for USA, SAWC and third-country routes, coordinating quotes and follow-ups with clients.
-              </div>
+              <div class="exp-desc">Managed team and pricing for USA, SAWC and third-country routes, coordinating quotes and follow-ups with clients.</div>
             </div>
           </div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Sr. Executive – Customer Service</div>
               <div class="exp-meta">Samsara Group, Moradabad · Apr 2019 – Nov 2019</div>
-              <div class="exp-desc">
-                Handled MSC customer service for USA liner operations and export vessel planning ex-Moradabad.
-              </div>
+              <div class="exp-desc">Handled MSC customer service for USA liner operations and export vessel planning ex-Moradabad.</div>
             </div>
           </div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Sr. Executive – Sales & Customer Service</div>
               <div class="exp-meta">Parekh Group, Ludhiana · Nov 2016 – Mar 2019</div>
-              <div class="exp-desc">
-                Performing Export Sales and Customer service for carriers including Hamburg Süd, STX Pan Ocean, HMM, CEEKAY Gulf Lines and LMT Gulf Lines.
-              </div>
+              <div class="exp-desc">Performing Export Sales and Customer service for carriers including Hamburg Süd, STX Pan Ocean, HMM, CEEKAY Gulf Lines and LMT Gulf Lines.</div>
             </div>
           </div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Sr. Executive – Documentation & Customer Service</div>
               <div class="exp-meta">Samsara Group, Ludhiana · Oct 2014 – Nov 2016</div>
-              <div class="exp-desc">
-                Documentation, Customer Service & Sales support for Shipping line/NVOCC: T.S. LINES, Ethiopian Shipping Lines, DAL, Times Chartering Pvt. Ltd., China Shipping, Qatar Navigation Line.
-              </div>
+              <div class="exp-desc">Documentation, Customer Service & Sales support for Shipping line/NVOCC: T.S. LINES, Ethiopian Shipping Lines, DAL, Times Chartering Pvt. Ltd., China Shipping, Qatar Navigation Line.</div>
             </div>
           </div>
-
           <div class="exp-item">
             <div class="exp-dot"></div>
             <div class="exp-card">
               <div class="exp-role-line">Executive – Documentation & Customer Service</div>
               <div class="exp-meta">Parekh Group, Ludhiana · Jul 2011 – Oct 2014</div>
-              <div class="exp-desc">
-                Exports/Imports and Customer Service for Shipping line/NVOCC: Hamburg Süd, STX Pan Ocean, HMM, CEEKAY Gulf Lines and LMT Gulf Lines. Previously served Delmas SAS.
-              </div>
+              <div class="exp-desc">Exports/Imports and Customer Service for Shipping line/NVOCC: Hamburg Süd, STX Pan Ocean, HMM, CEEKAY Gulf Lines and LMT Gulf Lines. Previously served Delmas SAS.</div>
             </div>
           </div>
         </div>
@@ -1345,7 +1223,6 @@
             <div class="edu-percent">73%</div>
           </div>
         </div>
-
         <div style="font-size:clamp(0.85rem,2.2vw,0.9rem);margin-bottom:10px;font-weight:600;color:#58627e;margin-top:20px;">Graduation Projects</div>
         <div class="grad-projects">
           <div class="grad-box">Appraisal of ULIP Plans offered by insurance companies – analysed customer views and secured 92%.</div>
@@ -1392,22 +1269,6 @@
             <div class="cert-title">Google Gemini AI</div>
             <div class="cert-provider">LinkedIn Learning – AI assistant fundamentals</div>
           </div>
-          <div class="cert-card" onclick="openCertModal('Public-Speaking-Skills.jpg')">
-            <div class="cert-title">Public Speaking Skills</div>
-            <div class="cert-provider">LinkedIn Learning – Public Speaking</div>
-          </div>
-          <div class="cert-card" onclick="openCertModal('Public-Speaking-Foundations.jpg')">
-            <div class="cert-title">Public Speaking Foundations</div>
-            <div class="cert-provider">LinkedIn Learning – Public Speaking Foundations</div>
-          </div>
-          <div class="cert-card" onclick="openCertModal('Mind-Controlling-Program-2.jpg')">
-            <div class="cert-title">Mind Controlling Program Level 2</div>
-            <div class="cert-provider">NIFM - Mind Controlling Program Level 2</div>
-          </div>
-          <div class="cert-card" onclick="openCertModal('Mind-Controlling-Program-1.jpg')">
-            <div class="cert-title">Mind Controlling Program Level 1</div>
-            <div class="cert-provider">NIFM - Mind Controlling Program Level 1</div>
-          </div>
         </div>
       </div>
     </section>
@@ -1427,12 +1288,8 @@
           </div>
         </div>
         <div style="text-align:center;padding:40px 20px;" id="contactLocked">
-          <p style="font-size:clamp(0.9rem,2.5vw,1.1rem);color:#6b7593;margin-bottom:20px;">
-            🔒 Contact information is protected
-          </p>
-          <button class="chip-btn primary" onclick="requestPassword('contact')">
-            Unlock Contact Section
-          </button>
+          <p style="font-size:clamp(0.9rem,2.5vw,1.1rem);color:#6b7593;margin-bottom:20px;">🔒 Contact information is protected</p>
+          <button class="chip-btn primary" onclick="requestPassword('contact')">Unlock Contact Section</button>
         </div>
       </div>
     </section>
@@ -1461,13 +1318,14 @@
   </div>
 
   <script>
-    // ==================== AIRPLANE CURSOR ====================
+    // ==================== SUPER SMOOTH AIRPLANE CURSOR ====================
     const airplaneCursor = document.getElementById('airplane-cursor');
     
     let mouseX = 0, mouseY = 0;
     let cursorX = 0, cursorY = 0;
     let lastX = 0, lastY = 0;
-    let angle = 0;
+    let targetAngle = 0;
+    let smoothedAngle = 0;
     let smokeCounter = 0;
 
     document.addEventListener('mousemove', (e) => {
@@ -1478,10 +1336,10 @@
       const deltaY = mouseY - lastY;
       
       if (Math.abs(deltaX) > 0.5 || Math.abs(deltaY) > 0.5) {
-        angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        targetAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
         
         smokeCounter++;
-        if (smokeCounter % 3 === 0) {
+        if (smokeCounter % 4 === 0) {
           createSmoke(cursorX, cursorY);
         }
       }
@@ -1496,30 +1354,28 @@
       smoke.style.left = x + 'px';
       smoke.style.top = y + 'px';
       document.body.appendChild(smoke);
-      
       setTimeout(() => smoke.remove(), 1200);
     }
 
     function animateCursor() {
-      cursorX += (mouseX - cursorX) * 0.18;
-      cursorY += (mouseY - cursorY) * 0.18;
+      cursorX += (mouseX - cursorX) * 0.1;
+      cursorY += (mouseY - cursorY) * 0.1;
       
+      let angleDiff = targetAngle - smoothedAngle;
+      while (angleDiff < -180) angleDiff += 360;
+      while (angleDiff > 180) angleDiff -= 360;
+      smoothedAngle += angleDiff * 0.1;
+
       airplaneCursor.style.left = `${cursorX}px`;
       airplaneCursor.style.top = `${cursorY}px`;
-      airplaneCursor.style.transform = `rotate(${angle + 90}deg)`;
+      airplaneCursor.style.transform = `rotate(${smoothedAngle + 90}deg)`;
       
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
 
-    document.addEventListener('mousedown', () => {
-      airplaneCursor.style.transform += ' scale(0.85)';
-    });
-    
-    document.addEventListener('mouseup', () => {
-      airplaneCursor.style.transform = airplaneCursor.style.transform.replace(' scale(0.85)', '');
-    });
-    
+    document.addEventListener('mousedown', () => airplaneCursor.style.transform += ' scale(0.85)');
+    document.addEventListener('mouseup', () => airplaneCursor.style.transform = airplaneCursor.style.transform.replace(' scale(0.85)', ''));
     document.addEventListener('mouseleave', () => airplaneCursor.style.opacity = '0');
     document.addEventListener('mouseenter', () => airplaneCursor.style.opacity = '0.35');
 
@@ -1528,13 +1384,10 @@
       const heroImage = document.getElementById('heroImage');
       const hero = document.getElementById('hero');
       if (!heroImage || !hero) return;
-      
       const rect = hero.getBoundingClientRect();
       const viewportHeight = window.innerHeight || document.documentElement.clientHeight;
-      
       let scrollRatio = Math.min(1, Math.max(0, -rect.top / viewportHeight));
       let scaleValue = 1 - scrollRatio * 0.4;
-      
       heroImage.style.transform = `scale(${scaleValue})`;
     });
 
@@ -1544,10 +1397,7 @@
     let isUnlocked = false;
 
     function requestPassword(action) {
-      if (isUnlocked) {
-        executeAction(action);
-        return;
-      }
+      if (isUnlocked) { executeAction(action); return; }
       passwordAction = action;
       document.getElementById('passwordModal').classList.add('show');
       document.getElementById('passwordInput').value = '';
@@ -1580,145 +1430,68 @@
     function executeAction(action) {
       const phoneEncoded = atob('OTg3Nzk4MjYyMg==');
       const emailEncoded = atob('cmFqYXRrdW1hcnJhaS5yYWlAZ21haWwuY29t');
-      
       switch(action) {
-        case 'cv':
-          window.location.href = 'Rajat-Kumar-Rai-Resume.docx';
-          break;
-        case 'email':
-          window.location.href = `mailto:${emailEncoded}`;
-          break;
-        case 'call':
-          window.location.href = `tel:+91${phoneEncoded}`;
-          break;
-        case 'whatsapp':
-          window.open(`https://wa.me/91${phoneEncoded}`, '_blank');
-          break;
-        case 'contact':
-          break;
+        case 'cv': window.location.href = 'Rajat-Kumar-Rai-Resume.docx'; break;
+        case 'email': window.location.href = `mailto:${emailEncoded}`; break;
+        case 'call': window.location.href = `tel:+91${phoneEncoded}`; break;
+        case 'whatsapp': window.open(`https://wa.me/91${phoneEncoded}`, '_blank'); break;
       }
     }
 
-    document.addEventListener('DOMContentLoaded', () => {
-      document.getElementById('passwordInput').addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') verifyPassword();
-      });
-    });
-
     // ==================== TYPEWRITER ====================
     class TypeWriter {
-        constructor(el, words, wait = 3000, colors = []) {
-            this.el = el;
-            this.words = words;
-            this.txt = '';
-            this.wordIndex = 0;
-            this.wait = parseInt(wait, 10);
-            this.isDeleting = false;
-            this.colors = colors;
-            this.type();
+        constructor(el, words, wait = 3000) {
+            this.el = el; this.words = words; this.txt = ''; this.wordIndex = 0;
+            this.wait = parseInt(wait, 10); this.isDeleting = false; this.type();
         }
-
         type() {
             const current = this.wordIndex % this.words.length;
             const fullTxt = this.words[current];
-
-            if (this.colors.length > 0) {
-                this.el.style.color = this.colors[current % this.colors.length];
-            }
-
-            if (this.isDeleting) {
-                this.txt = fullTxt.substring(0, this.txt.length - 1);
-            } else {
-                this.txt = fullTxt.substring(0, this.txt.length + 1);
-            }
-
+            this.txt = this.isDeleting ? fullTxt.substring(0, this.txt.length - 1) : fullTxt.substring(0, this.txt.length + 1);
             this.el.innerHTML = this.txt;
-
             let typeSpeed = 80;
-
-            if (this.isDeleting) {
-                typeSpeed /= 2;
-            }
-
-            if (!this.isDeleting && this.txt === fullTxt) {
-                typeSpeed = this.wait;
-                this.isDeleting = true;
-            } else if (this.isDeleting && this.txt === '') {
-                this.isDeleting = false;
-                this.wordIndex++;
-                typeSpeed = 300;
-            }
-
+            if (this.isDeleting) typeSpeed /= 2;
+            if (!this.isDeleting && this.txt === fullTxt) { typeSpeed = this.wait; this.isDeleting = true; } 
+            else if (this.isDeleting && this.txt === '') { this.isDeleting = false; this.wordIndex++; typeSpeed = 300; }
             setTimeout(() => this.type(), typeSpeed);
         }
     }
 
-    document.addEventListener('DOMContentLoaded', init);
+    // ==================== INIT & EVENT LISTENERS ====================
+    document.addEventListener('DOMContentLoaded', () => {
+      new TypeWriter(document.getElementById('typewriter1'), ["Logistics", "Freight Forwarding", "Shipping"], 2000);
+      new TypeWriter(document.getElementById('typewriter2'), ["Customer Service", "Pricing", "Documentation", "Liner Sales", "Agent Networking"], 1500);
 
-    function init() {
-        const myColors = ["#4c81ff", "#1f2940", "#00b894", "#8e44ad", "#2c3e50"];
+      document.getElementById('passwordInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyPassword(); });
 
-        const tw1 = document.getElementById('typewriter1');
-        const words1 = ["Logistics", "Freight Forwarding", "Shipping"];
-        new TypeWriter(tw1, words1, 2000, myColors);
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-        const tw2 = document.getElementById('typewriter2');
-        const words2 = ["Customer Service", "Pricing", "Documentation", "Liner Sales", "Agent Networking", "Sales Coordinator"];
-        new TypeWriter(tw2, words2, 1500, myColors);
-    }
-
-    // ==================== INTERSECTION OBSERVER ====================
-    const observerOptions = {
-      threshold: 0.2,
-      rootMargin: '0px'
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
-      });
-    }, observerOptions);
-
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
-
-    // ==================== NAVIGATION ====================
-    document.querySelectorAll('.nav-links a').forEach(a => {
-      a.addEventListener('click', e => {
-        e.preventDefault();
-        const id = a.getAttribute('href');
-        const target = document.querySelector(id);
-        if (!target) return;
-        window.scrollTo({
-          top: target.offsetTop - 70,
-          behavior: 'smooth'
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const target = document.querySelector(a.getAttribute('href'));
+          if (!target) return;
+          window.scrollTo({ top: target.offsetTop - 70, behavior: 'smooth' });
+          document.querySelectorAll('.nav-links a').forEach(n => n.classList.remove('active'));
+          a.classList.add('active');
         });
-        document.querySelectorAll('.nav-links a').forEach(n => n.classList.remove('active'));
-        a.classList.add('active');
       });
     });
 
     window.addEventListener('scroll', () => {
       let current = '';
       document.querySelectorAll('section').forEach(section => {
-        const sectionTop = section.offsetTop;
-        if (pageYOffset >= sectionTop - 100) {
-          current = section.getAttribute('id');
-        }
+        if (pageYOffset >= section.offsetTop - 100) current = section.getAttribute('id');
       });
-
       document.querySelectorAll('.nav-links a').forEach(a => {
         a.classList.remove('active');
-        if (a.getAttribute('href') === `#${current}`) {
-          a.classList.add('active');
-        }
+        if (a.getAttribute('href') === `#${current}`) a.classList.add('active');
       });
     });
 
-    // ==================== CERTIFICATE MODAL ====================
     function openCertModal(imgSrc) {
       document.getElementById('certModalImg').src = imgSrc;
       document.getElementById('certModal').classList.add('show');
@@ -1728,22 +1501,18 @@
       document.getElementById('certModal').classList.remove('show');
     }
 
-    // ==================== CONTACT FORM ====================
     function fakeSubmit() {
       const msg = document.getElementById('contactMsg');
       msg.style.display = 'block';
-      setTimeout(() => { msg.style.display = 'none'; }, 5000);
+      setTimeout(() => msg.style.display = 'none', 5000);
       document.getElementById('cname').value = '';
       document.getElementById('cemail').value = '';
       document.getElementById('cmsg').value = '';
     }
 
     document.getElementById('passwordModal').addEventListener('click', (e) => {
-      if (e.target.id === 'passwordModal') {
-        document.getElementById('passwordModal').classList.remove('show');
-      }
+      if (e.target.id === 'passwordModal') document.getElementById('passwordModal').classList.remove('show');
     });
   </script>
 </body>
 </html>
-
