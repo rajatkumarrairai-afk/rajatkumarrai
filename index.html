@@ -50,7 +50,7 @@
       line-height: 1.6;
     }
     
-    /* AIRPLANE CURSOR - FIXED (NO WHITE SQUARE) */
+    /* AIRPLANE CURSOR - FIXED WHITE BOX ISSUE */
     #airplane-cursor {
       pointer-events: none;
       position: fixed;
@@ -63,15 +63,11 @@
       z-index: 10000;
       transition: opacity 0.25s ease-out;
       opacity: 0;
-    }
-    
-    .airplane-icon {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      image-rendering: auto;
       background: transparent;
-      filter: none;
+      object-fit: contain;
+      image-rendering: crisp-edges;
+      filter: drop-shadow(0 2px 6px rgba(76, 129, 255, 0.4));
+      mix-blend-mode: lighten;
     }
     
     .smoke-particle {
@@ -1103,8 +1099,8 @@
   </style>
 </head>
 <body>
-  <!-- AIRPLANE CURSOR -->
-  <img id="airplane-cursor" class="airplane-icon" src="Pngtree-vector-airplane-icon_4277896.png" alt="">
+  <!-- AIRPLANE CURSOR - JPG IMAGE WITH CSS MASKING -->
+  <img id="airplane-cursor" src="Pngtree-vector-airplane-icon_4277896.jpg" alt="cursor">
 
   <!-- NAVBAR -->
   <nav>
@@ -1258,6 +1254,7 @@
             <div class="logo-pill"><img src="STX.jpg" alt="STX Ocean"><span>STX Ocean</span></div>
             <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
             <div class="logo-pill"><img src="QNL.jpg" alt="QNL-MILAHA"><span>QNL-MILAHA</span></div>
+            
             <!-- DUPLICATE FOR CONTINUOUS LOOP -->
             <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas Group"><span>Atlas Group</span></div>
             <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics"><span>Nedlloyd Logistics</span></div>
@@ -1275,7 +1272,7 @@
             <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas SAS"><span>Delmas SAS</span></div>
             <div class="logo-pill"><img src="STX.jpg" alt="STX Ocean"><span>STX Ocean</span></div>
             <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
-            <div class="logo-pill"><img src="QNL.jpg" alt="QNL-MILAHA"><span>QNL-MILAHA</span></div>
+            <div class="logo-pill"><img src="qnl-milaha.png" alt="QNL-MILAHA"><span>QNL-MILAHA</span></div>
           </div>
         </div>
 
@@ -1466,7 +1463,7 @@
   </div>
 
   <script>
-    // ==================== SUPER SMOOTH AIRPLANE CURSOR (v2 - FIXED) ====================
+    // ==================== AIRPLANE CURSOR - JPG WITH CSS FIXES ====================
     const airplaneCursor = document.getElementById('airplane-cursor');
 
     let mouseX = window.innerWidth / 2;
