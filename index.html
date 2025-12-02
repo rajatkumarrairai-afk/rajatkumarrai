@@ -4,31 +4,17 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Rajat Kumar Rai | Professional Portfolio</title>
-  <meta name="description" content="Logistics and Freight Forwarding Professional - Pricing, Sales, Documentation Expert">
-  <meta name="author" content="Rajat Kumar Rai">
-  <meta name="keywords" content="logistics, freight forwarding, pricing, sales, documentation, supply chain">
   <meta name="robots" content="index, follow">
-
-  <meta property="og:title" content="Rajat Kumar Rai | Professional Portfolio">
-  <meta property="og:description" content="Experienced Logistics & Freight Forwarding Professional">
-  <meta property="og:type" content="website">
-  <meta property="og:image" content="profile.jpg">
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --bg-primary: #ffffff;
-      --bg-secondary: #f8f9fa;
-      --bg-card: #ffffff;
       --accent: #4c81ff;
-      --accent-soft: #b8ccff;
       --text-primary: #1f2940;
       --text-secondary: #6b7593;
       --border: rgba(76, 129, 255, 0.1);
-      --shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
     }
 
     * {
@@ -37,13 +23,10 @@
       padding: 0;
     }
 
-    html {
-      scroll-behavior: smooth;
-    }
-
+    html { scroll-behavior: smooth; }
     body {
-      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: var(--bg-primary);
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: #ffffff;
       color: var(--text-primary);
       overflow-x: hidden;
       cursor: none;
@@ -54,74 +37,61 @@
     }
 
     /* ========================================
-       AIRPLANE CURSOR - COMPLETE FIX
+       AIRPLANE CURSOR - CLEAN, NO EFFECTS
        ======================================== */
     
-    /* Custom cursor container */
     #airplane-cursor {
       pointer-events: none;
       position: fixed;
       left: 0;
       top: 0;
-      width: 48px;
-      height: 48px;
+      width: 40px;
+      height: 40px;
       z-index: 10000;
-      transition: opacity 0.3s ease;
       opacity: 1;
       will-change: transform;
       transform-origin: center center;
     }
 
-    /* Ensure image loads and displays properly */
     #airplane-cursor img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      filter: drop-shadow(0 2px 8px rgba(76, 129, 255, 0.5));
       pointer-events: none;
       display: block;
+      background: transparent !important;
     }
 
-    /* Smoke trail particles */
-    .smoke-particle {
+    /* PURE SMOKE TRAIL - NO SHADOW/BORDER */
+    .smoke-trail {
       position: fixed;
-      width: 8px;
-      height: 8px;
-      background: radial-gradient(circle, rgba(76,129,255,0.7) 0%, rgba(76,129,255,0.3) 40%, transparent 70%);
-      border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
-      animation: smokeFloat 1.2s ease-out forwards;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: smokeRise 1.5s ease-out forwards;
     }
 
-    @keyframes smokeFloat {
+    @keyframes smokeRise {
       0% {
-        opacity: 0.7;
-        transform: scale(1) translateY(0);
+        opacity: 0.8;
+        transform: translateY(0) scale(1);
       }
       50% {
-        opacity: 0.4;
+        opacity: 0.5;
       }
       100% {
         opacity: 0;
-        transform: scale(2.8) translateY(-40px);
+        transform: translateY(-40px) scale(1.4);
       }
     }
 
-    /* Hide default cursor on interactive elements */
-    a, button, input, textarea, select, .cert-card, .chip-btn, .skill-card, 
-    .edu-card, .exp-card, .mini-tag, .nav-links a { 
-      cursor: none !important; 
-    }
-
-    a { 
-      color: inherit; 
-      text-decoration: none; 
-    }
+    /* Hide default cursor */
+    a, button, input, textarea, select { cursor: none !important; }
+    a { text-decoration: none; }
 
     /* ======================================== */
 
-    /* NAVBAR */
     nav {
       position: fixed;
       top: 0; left: 0; right: 0;
@@ -129,14 +99,13 @@
       background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(10px);
       padding: 16px 0;
-      display: flex;
-      justify-content: center;
       border-bottom: 1px solid var(--border);
       box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .nav-inner {
       width: min(1400px, 96vw);
+      margin: 0 auto;
       padding: 10px 20px;
       border-radius: 999px;
       background: white;
@@ -154,7 +123,6 @@
       letter-spacing: 0.08em;
       font-size: clamp(0.75rem, 2vw, 0.9rem);
       color: var(--accent);
-      white-space: nowrap;
       text-transform: uppercase;
     }
 
@@ -172,7 +140,6 @@
       font-weight: 600;
       color: var(--text-secondary);
       transition: all .2s;
-      white-space: nowrap;
       letter-spacing: 0.02em;
     }
 
@@ -183,30 +150,21 @@
       transform: translateY(-2px);
     }
 
-    /* SECTIONS */
     section {
       width: 100%;
       min-height: auto;
-      padding: 100px 5vw 100px;
+      padding: 100px 5vw;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
       align-items: center;
       position: relative;
-      background: var(--bg-primary);
+      background: #ffffff;
     }
 
-    section:nth-child(even) {
-      background: var(--bg-secondary);
-    }
+    section:nth-child(even) { background: #f8f9fa; }
+    #hero { min-height: 100vh; justify-content: center; }
 
-    #hero {
-      min-height: 100vh;
-      justify-content: center;
-      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
-    }
-
-    /* SCROLL ANIMATIONS */
     .section-content {
       width: min(1400px, 100%);
       opacity: 0;
@@ -219,89 +177,22 @@
       transform: translateY(0);
     }
 
-    .animate-item {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease, transform 0.6s ease;
-    }
-
-    section.visible .animate-item {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section.visible .animate-item:nth-child(1) { transition-delay: 0.1s; }
-    section.visible .animate-item:nth-child(2) { transition-delay: 0.2s; }
-    section.visible .animate-item:nth-child(3) { transition-delay: 0.3s; }
-    section.visible .animate-item:nth-child(4) { transition-delay: 0.4s; }
-    section.visible .animate-item:nth-child(5) { transition-delay: 0.5s; }
-    section.visible .animate-item:nth-child(6) { transition-delay: 0.6s; }
-    section.visible .animate-item:nth-child(7) { transition-delay: 0.7s; }
-    section.visible .animate-item:nth-child(8) { transition-delay: 0.8s; }
-
-    .fade-left {
-      opacity: 0;
-      transform: translateX(-50px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    section.visible .fade-left {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .fade-right {
-      opacity: 0;
-      transform: translateX(50px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    section.visible .fade-right {
-      opacity: 1;
-      transform: translateX(0);
-    }
-
-    .scale-up {
-      opacity: 0;
-      transform: scale(0.8);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    section.visible .scale-up {
-      opacity: 1;
-      transform: scale(1);
-    }
-
-    .rotate-in {
-      opacity: 0;
-      transform: rotate(-10deg) scale(0.9);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    section.visible .rotate-in {
-      opacity: 1;
-      transform: rotate(0deg) scale(1);
-    }
-
     section h2 {
-      margin: 0 0 16px 0;
+      margin: 0 0 16px;
       font-size: clamp(1.8rem, 4vw, 2.4rem);
       letter-spacing: 0.03em;
       text-transform: uppercase;
       font-weight: 700;
-      color: var(--text-primary);
-      text-align: center;
     }
 
     .section-top-line {
       height: 3px;
       width: 80px;
       border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent) 0, var(--accent-soft) 100%);
+      background: linear-gradient(90deg, var(--accent) 0, rgba(76,129,255,0.5) 100%);
       margin: 0 auto 32px;
     }
 
-    /* HERO */
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr;
@@ -318,9 +209,7 @@
       overflow: hidden;
       animation: float 3s ease-in-out infinite;
       will-change: transform;
-      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       border: 3px solid var(--border);
-      box-shadow: 0 10px 40px rgba(76,129,255,0.15);
       position: relative;
     }
 
@@ -338,26 +227,16 @@
     .hero-text h1 {
       margin: 0 0 16px;
       font-size: clamp(1.8rem, 5vw, 2.8rem);
-      animation: slideInRight 0.8s ease;
       font-weight: 700;
     }
 
-    @keyframes slideInRight {
-      from { opacity: 0; transform: translateX(-30px); }
-      to { opacity: 1; transform: translateX(0); }
-    }
-
-    .hero-text h1 span {
-      color: var(--accent);
-    }
+    .hero-text h1 span { color: var(--accent); }
 
     .hero-role-container {
       font-size: clamp(1.1rem, 3vw, 1.4rem);
       font-weight: 700;
       margin-bottom: 16px;
-      min-height: 1.5em;
       color: var(--accent);
-      letter-spacing: 0.02em;
     }
 
     .hero-desc-container {
@@ -365,7 +244,6 @@
       line-height: 1.7;
       max-width: 700px;
       margin: 0 auto 28px;
-      min-height: 3.4em;
       color: var(--text-secondary);
       font-weight: 400;
     }
@@ -376,7 +254,6 @@
       background-color: var(--accent);
       animation: blink 1s infinite;
       margin-left: 3px;
-      vertical-align: text-bottom;
       height: 1em;
     }
 
@@ -405,15 +282,9 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
-      transition: all .25s cubic-bezier(0.4, 0, 0.2, 1);
-      white-space: nowrap;
+      transition: all .25s ease;
       letter-spacing: 0.01em;
       color: var(--text-primary);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .chip-btn span.icon {
-      font-size: 1rem;
     }
 
     .chip-btn:hover {
@@ -421,24 +292,19 @@
       color: var(--accent);
       background: rgba(76, 129, 255, 0.05);
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(76,129,255,0.2);
     }
 
     .chip-btn.primary {
       color: white;
       background: linear-gradient(135deg, var(--accent), #6f9dff);
       border-color: var(--accent);
-      box-shadow: 0 4px 15px rgba(76,129,255,0.3);
     }
 
     .chip-btn.primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 25px rgba(76,129,255,0.4);
     }
 
-    .chip-btn.locked {
-      opacity: 0.6;
-    }
+    .chip-btn.locked { opacity: 0.6; }
 
     /* PASSWORD MODAL */
     .password-modal {
@@ -476,7 +342,7 @@
       padding: 12px 16px;
       border-radius: 12px;
       border: 2px solid var(--border);
-      background: var(--bg-secondary);
+      background: #f8f9fa;
       font-family: inherit;
       font-size: 1rem;
       margin-bottom: 20px;
@@ -505,10 +371,7 @@
       font-size: 0.9rem;
     }
 
-    .password-box button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(76,129,255,0.3);
-    }
+    .password-box button:hover { transform: translateY(-2px); }
 
     .password-error {
       color: #ff4444;
@@ -517,21 +380,8 @@
       display: none;
     }
 
-    /* ABOUT */
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 28px;
-    }
-
-    .about-text p {
-      margin: 0 0 18px;
-      line-height: 1.8;
-      font-size: clamp(0.9rem, 2.4vw, 1rem);
-      text-align: justify;
-      color: var(--text-secondary);
-      font-weight: 400;
-    }
+    .about-grid { display: grid; gap: 28px; }
+    .about-text p { margin: 0 0 18px; line-height: 1.8; text-align: justify; color: var(--text-secondary); }
 
     .about-tag-row {
       display: flex;
@@ -549,19 +399,15 @@
       border: 2px solid var(--border);
       color: var(--accent);
       font-weight: 600;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      letter-spacing: 0.01em;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
     }
 
     .mini-tag:hover {
       transform: translateY(-4px) scale(1.05);
       border-color: var(--accent);
       background: rgba(76, 129, 255, 0.1);
-      box-shadow: 0 8px 20px rgba(76,129,255,0.15);
     }
 
-    /* SKILLS */
     .skills-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -578,49 +424,19 @@
       font-size: clamp(0.75rem, 2vw, 0.85rem);
       font-weight: 600;
       color: var(--text-primary);
-      overflow: hidden;
-      transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-    }
-
-    .skill-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      border-radius: 16px;
-      border: 2px solid transparent;
-      background: conic-gradient(
-        var(--accent) 0deg calc(var(--progress, 50%) * 3.6deg),
-        var(--border) calc(var(--progress, 50%) * 3.6deg)
-      ) border-box;
-      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
+      border: 2px solid var(--border);
+      transition: all .4s ease;
     }
 
     .skill-card:hover {
       background: rgba(76, 129, 255, 0.05);
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 12px 30px rgba(76,129,255,0.2);
+      transform: translateY(-8px);
+      border-color: var(--accent);
     }
 
-    .skill-label {
-      position: relative;
-      z-index: 2;
-      margin-bottom: 10px;
-    }
+    .skill-label { margin-bottom: 10px; }
+    .skill-percent { margin-top: 10px; font-size: 0.8rem; color: var(--accent); font-weight: 700; }
 
-    .skill-percent {
-      margin-top: 10px;
-      font-size: 0.8rem;
-      color: var(--accent);
-      position: relative;
-      z-index: 2;
-      font-weight: 700;
-    }
-
-    /* TICKER */
     .ticker-shell {
       margin-bottom: 32px;
       padding: 20px 16px;
@@ -629,14 +445,12 @@
       border: 2px solid var(--border);
       overflow: hidden;
       width: 100%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
     }
 
     .ticker-track {
       display: inline-flex;
       white-space: nowrap;
       animation: tickerMove 60s linear infinite;
-      align-items: center;
       gap: 40px;
     }
 
@@ -652,7 +466,6 @@
       height: clamp(40px, 8vw, 50px);
       width: auto;
       object-fit: contain;
-      display: block;
       margin: 0 auto 8px;
       filter: grayscale(60%);
       opacity: 0.85;
@@ -669,9 +482,6 @@
       font-size: clamp(0.65rem, 1.6vw, 0.75rem);
       font-weight: 600;
       color: var(--text-secondary);
-      line-height: 1.3;
-      text-align: center;
-      letter-spacing: 0.01em;
     }
 
     @keyframes tickerMove {
@@ -679,12 +489,10 @@
       100% { transform: translateX(-50%); }
     }
 
-    /* EXPERIENCE TIMELINE */
     .exp-timeline {
       margin-top: 32px;
       position: relative;
       padding-left: clamp(35px, 7vw, 50px);
-      width: 100%;
     }
 
     .exp-line {
@@ -693,14 +501,11 @@
       bottom: 0;
       left: clamp(14px, 3vw, 24px);
       width: 3px;
-      background: linear-gradient(to bottom, var(--accent) 0%, var(--accent-soft) 100%);
+      background: linear-gradient(to bottom, var(--accent) 0%, rgba(76,129,255,0.5) 100%);
       border-radius: 999px;
     }
 
-    .exp-item {
-      position: relative;
-      margin-bottom: 32px;
-    }
+    .exp-item { position: relative; margin-bottom: 32px; }
 
     .exp-dot {
       position: absolute;
@@ -711,14 +516,13 @@
       border-radius: 50%;
       background: var(--accent);
       border: 4px solid white;
-      box-shadow: 0 0 0 4px var(--accent-soft), 0 4px 12px rgba(76,129,255,0.3);
       z-index: 2;
       animation: pulse 2.5s infinite;
     }
 
     @keyframes pulse {
-      0%, 100% { transform: scale(1); box-shadow: 0 0 0 4px var(--accent-soft), 0 4px 12px rgba(76,129,255,0.3); }
-      50% { transform: scale(1.15); box-shadow: 0 0 0 6px var(--accent-soft), 0 6px 16px rgba(76,129,255,0.5); }
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
     }
 
     .exp-card {
@@ -729,45 +533,23 @@
       border: 2px solid var(--border);
       border-left: 4px solid var(--accent);
       font-size: clamp(0.8rem, 2vw, 0.9rem);
-      transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: all .4s ease;
     }
 
     .exp-card:hover {
       border-color: var(--accent);
       background: rgba(76, 129, 255, 0.02);
       transform: translateX(8px);
-      box-shadow: 0 8px 30px rgba(76,129,255,0.15);
     }
 
-    .exp-role-line {
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 6px;
-      font-size: clamp(0.85rem, 2.2vw, 1rem);
-      letter-spacing: 0.01em;
-    }
+    .exp-role-line { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
+    .exp-meta { font-size: clamp(0.7rem, 1.8vw, 0.8rem); color: var(--text-secondary); margin-bottom: 10px; }
+    .exp-desc { font-size: clamp(0.75rem, 2vw, 0.85rem); color: var(--text-secondary); line-height: 1.7; }
 
-    .exp-meta {
-      font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-      color: var(--text-secondary);
-      margin-bottom: 10px;
-      font-weight: 600;
-    }
-
-    .exp-desc {
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      color: var(--text-secondary);
-      line-height: 1.7;
-      font-weight: 400;
-    }
-
-    /* EDUCATION */
     .edu-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
       gap: 24px;
-      margin-bottom: 24px;
     }
 
     .edu-card {
@@ -777,39 +559,19 @@
       background: white;
       border: 2px solid var(--border);
       position: relative;
-      overflow: hidden;
-      transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all .4s ease;
       min-height: 180px;
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
 
     .edu-card:hover {
       border-color: var(--accent);
       background: rgba(76, 129, 255, 0.02);
       transform: translateY(-8px);
-      box-shadow: 0 12px 35px rgba(76,129,255,0.15);
     }
 
-    .edu-headline {
-      font-size: clamp(0.85rem, 2.2vw, 1rem);
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-    }
-
-    .edu-meta {
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      color: var(--text-secondary);
-      margin-bottom: 12px;
-      font-weight: 500;
-    }
-
-    .edu-desc {
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      color: var(--text-secondary);
-      line-height: 1.6;
-      font-weight: 400;
-    }
+    .edu-headline { font-size: clamp(0.85rem, 2.2vw, 1rem); font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .edu-meta { font-size: clamp(0.75rem, 2vw, 0.85rem); color: var(--text-secondary); margin-bottom: 12px; }
+    .edu-desc { font-size: clamp(0.75rem, 2vw, 0.85rem); color: var(--text-secondary); line-height: 1.6; }
 
     .edu-percent {
       position: absolute;
@@ -822,7 +584,6 @@
       padding: 8px 14px;
       border-radius: 999px;
       border: 2px solid var(--border);
-      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
     }
 
     .grad-projects {
@@ -839,20 +600,16 @@
       border: 2px solid var(--border);
       font-size: clamp(0.75rem, 2vw, 0.85rem);
       color: var(--text-secondary);
-      transition: all .3s cubic-bezier(0.4, 0, 0.2, 1);
+      transition: all .3s ease;
       line-height: 1.7;
-      font-weight: 400;
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
 
     .grad-box:hover {
       border-color: var(--accent);
       background: rgba(76, 129, 255, 0.02);
       transform: translateY(-4px);
-      box-shadow: 0 8px 25px rgba(76,129,255,0.12);
     }
 
-    /* CERTIFICATIONS */
     .cert-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -866,33 +623,18 @@
       border: 2px solid var(--border);
       font-size: clamp(0.75rem, 2vw, 0.85rem);
       position: relative;
-      overflow: visible;
-      transition: all .4s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: all .4s ease;
     }
 
     .cert-card:hover {
       border-color: var(--accent);
       background: rgba(76, 129, 255, 0.02);
       transform: translateY(-8px) rotate(2deg);
-      box-shadow: 0 12px 35px rgba(76,129,255,0.2);
     }
 
-    .cert-title {
-      font-weight: 700;
-      color: var(--accent);
-      margin-bottom: 8px;
-      font-size: clamp(0.8rem, 2.2vw, 0.9rem);
-    }
+    .cert-title { font-weight: 700; color: var(--accent); margin-bottom: 8px; }
+    .cert-provider { font-size: clamp(0.7rem, 1.8vw, 0.8rem); color: var(--text-secondary); line-height: 1.5; }
 
-    .cert-provider {
-      font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-      color: var(--text-secondary);
-      line-height: 1.5;
-      font-weight: 400;
-    }
-
-    /* CERTIFICATE MODAL */
     .cert-modal {
       position: fixed;
       inset: 0;
@@ -903,12 +645,6 @@
       justify-content: center;
       z-index: 200;
       padding: 20px;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
     }
 
     .cert-modal.show { display: flex; }
@@ -921,8 +657,6 @@
       max-height: 800px;
       border-radius: 16px;
       overflow: hidden;
-      box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
-      animation: zoomIn 0.3s ease;
       background: white;
       display: flex;
       align-items: center;
@@ -930,16 +664,10 @@
       border: 2px solid var(--border);
     }
 
-    @keyframes zoomIn {
-      from { transform: scale(0.8); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
     .cert-modal-content img {
       width: 100%;
       height: 100%;
       object-fit: contain;
-      display: block;
     }
 
     .cert-modal-close {
@@ -958,7 +686,6 @@
       z-index: 10;
       transition: all 0.2s;
       color: var(--accent);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     }
 
     .cert-modal-close:hover {
@@ -967,7 +694,6 @@
       background: rgba(76, 129, 255, 0.1);
     }
 
-    /* CONTACT */
     .contact-inner {
       max-width: 600px;
       margin: 16px auto 0;
@@ -977,13 +703,11 @@
       border: 2px solid var(--border);
       transition: all .3s ease;
       width: 100%;
-      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
     }
 
     .contact-inner:hover {
       border-color: var(--accent);
       background: rgba(76, 129, 255, 0.02);
-      box-shadow: 0 10px 35px rgba(76,129,255,0.15);
     }
 
     .contact-row {
@@ -998,7 +722,7 @@
       outline: none;
       padding: 12px 16px;
       border-radius: 12px;
-      background: var(--bg-secondary);
+      background: #f8f9fa;
       font-family: inherit;
       font-size: clamp(0.85rem, 2vw, 0.95rem);
       color: var(--text-primary);
@@ -1028,10 +752,7 @@
       letter-spacing: 0.05em;
     }
 
-    .contact-row button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(76,129,255,0.4);
-    }
+    .contact-row button:hover { transform: translateY(-3px); }
 
     .contact-msg {
       margin-top: 14px;
@@ -1039,108 +760,44 @@
       color: #22c55e;
       display: none;
       text-align: center;
-      animation: slideInUp 0.5s ease;
       font-weight: 600;
     }
 
-    @keyframes slideInUp {
-      from { opacity: 0; transform: translateY(15px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* FOOTER */
     footer {
       text-align: center;
       font-size: clamp(0.75rem, 2vw, 0.85rem);
       padding: 36px 20px;
       color: var(--text-secondary);
-      background: var(--bg-secondary);
+      background: #f8f9fa;
       border-top: 2px solid var(--border);
-      font-weight: 400;
     }
 
-    /* MOBILE */
     @media (max-width: 768px) {
       #airplane-cursor { display: none !important; }
-      .smoke-particle { display: none !important; }
+      .smoke-trail { display: none !important; }
       body { cursor: auto !important; }
-      a, button, input, textarea, select, .cert-card, .chip-btn, .skill-card { cursor: pointer !important; }
+      a, button, input, textarea, select { cursor: pointer !important; }
 
-      .nav-inner {
-        padding: 8px 14px;
-        gap: 8px;
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        gap: 4px;
-        width: 100%;
-        overflow-x: auto;
-      }
-
-      .nav-links a { padding: 6px 12px; }
-
-      section {
-        padding: 80px 4vw 70px;
-      }
-
-      .hero-contact {
-        grid-template-columns: 1fr;
-      }
-
-      .chip-btn {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .skills-grid {
-        grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-        gap: 16px;
-      }
-
-      .ticker-shell { padding: 16px 10px; }
-      .logo-pill { min-width: 95px; }
-      .exp-timeline { padding-left: 30px; }
+      .nav-inner { padding: 8px 14px; gap: 8px; flex-direction: column; }
+      .nav-links { gap: 4px; width: 100%; }
+      section { padding: 80px 4vw 70px; }
+      .hero-contact { grid-template-columns: 1fr; }
+      .chip-btn { width: 100%; justify-content: center; }
+      .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; }
       .edu-grid { grid-template-columns: 1fr; }
       .cert-grid { grid-template-columns: 1fr; }
-      .cert-modal-content { width: 95vw; height: 80vh; }
     }
 
-    @media (max-width: 480px) {
-      .nav-brand { font-size: 0.7rem; }
-      .nav-links a { font-size: 0.65rem; padding: 5px 10px; }
-      section h2 { font-size: 1.4rem; }
-      .hero-text h1 { font-size: 1.5rem; }
-    }
-
-    /* TABLET */
-    @media (min-width: 769px) and (max-width: 1024px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); }
-      .cert-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-    }
-
-    /* DESKTOP */
     @media (min-width: 1025px) {
-      .hero-grid {
-        grid-template-columns: 300px 1fr;
-        text-align: left;
-        gap: 60px;
-      }
+      .hero-grid { grid-template-columns: 300px 1fr; text-align: left; gap: 60px; }
       .hero-img-wrap { margin: 0; }
-      .hero-desc-container { margin-left: 0; }
-      .hero-contact { margin-left: 0; }
-      .about-tag-row { justify-content: flex-start; }
     }
   </style>
 </head>
 <body>
-  <!-- ========================================
-       AIRPLANE CURSOR ELEMENT
-       ======================================== -->
+  <!-- AIRPLANE CURSOR -->
   <div id="airplane-cursor">
-    <img src="Pngtree-vector-airplane-icon_4277896.png" alt="airplane cursor" draggable="false">
+    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/cf1ae6b9-a241-4ff8-93ca-8c654adb6c46" alt="airplane" draggable="false">
   </div>
 
   <!-- NAVBAR -->
@@ -1159,333 +816,131 @@
   </nav>
 
   <main>
-    <!-- HERO -->
     <section id="hero">
       <div class="section-content">
         <div class="hero-grid">
-          <div class="hero-img-wrap scale-up" id="heroImage">
-            <img src="profile.jpg" alt="Rajat Kumar Rai">
+          <div class="hero-img-wrap" id="heroImage">
+            <img src="image.jpg" alt="Rajat Kumar Rai">
           </div>
           <div class="hero-text">
-            <div class="section-top-line fade-right"></div>
-            <h1 class="fade-left">Rajat Kumar <span>Rai</span></h1>
-
-            <div class="hero-role-container fade-right">
-               <span id="typewriter1"></span><span class="type-cursor"></span>
-            </div>
-
-            <div class="hero-desc-container fade-left">
-              Logistics & Freight Forwarding Professional<br>
-              <span id="typewriter2" style="font-weight:600;"></span><span class="type-cursor"></span>
-            </div>
-
-            <div class="hero-contact fade-right">
-              <button class="chip-btn locked animate-item" id="downloadCVBtn" onclick="requestPassword('cv')">
-                <span class="icon">⬇️</span> Download CV
-              </button>
-              <a class="chip-btn animate-item" href="https://www.linkedin.com/in/rajat-r-438ba9306/" target="_blank" rel="noopener noreferrer">
-                <span class="icon">in</span> LinkedIn
-              </a>
-              <a class="chip-btn animate-item" href="https://twitter.com/YOUR_TWITTER_ID" target="_blank" rel="noopener noreferrer">
-                <span class="icon">𝕏</span> Twitter
-              </a>
-              <button class="chip-btn locked animate-item" id="emailBtn" onclick="requestPassword('email')">
-                <span class="icon">✉️</span> Gmail
-              </button>
-              <button class="chip-btn locked animate-item" id="callBtn" onclick="requestPassword('call')">
-                <span class="icon">📞</span> Call
-              </button>
-              <button class="chip-btn locked animate-item" id="whatsappBtn" onclick="requestPassword('whatsapp')">
-                <span class="icon">💬</span> WhatsApp
-              </button>
+            <div class="section-top-line"></div>
+            <h1>Rajat Kumar <span>Rai</span></h1>
+            <div class="hero-role-container"><span id="typewriter1"></span><span class="type-cursor"></span></div>
+            <div class="hero-desc-container">Logistics & Freight Forwarding Professional<br><span id="typewriter2"></span><span class="type-cursor"></span></div>
+            <div class="hero-contact">
+              <button class="chip-btn locked" onclick="requestPassword('cv')"><span>⬇️</span> Download CV</button>
+              <a class="chip-btn" href="https://www.linkedin.com/in/rajat-r-438ba9306/" target="_blank"><span>in</span> LinkedIn</a>
+              <button class="chip-btn locked" onclick="requestPassword('email')"><span>✉️</span> Gmail</button>
+              <button class="chip-btn locked" onclick="requestPassword('call')"><span>📞</span> Call</button>
+              <button class="chip-btn locked" onclick="requestPassword('whatsapp')"><span>💬</span> WhatsApp</button>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ABOUT -->
     <section id="about">
       <div class="section-content">
-        <div class="section-top-line scale-up"></div>
-        <h2 class="fade-left">About Me</h2>
+        <div class="section-top-line"></div>
+        <h2>About Me</h2>
         <div class="about-grid">
           <div class="about-text">
-            <p class="fade-right">
-              Experienced logistics and freight forwarding professional with 12+ years across pricing, sales, documentation and customer service for leading shipping lines, NVOCC and freight forwarders.
-            </p>
-            <p class="fade-left">
-              Proven ability to apply competitive pricing models, manage end-to-end trade lane operations and execute contract and reverse auctions, particularly on USA trade lanes and other sectors too.
-            </p>
-            <p class="fade-right">
-              Strong at building long-term customer relationships, coordinating multi-vendor teams and trade compliance while optimising margins and service performance.
-            </p>
+            <p>Experienced logistics and freight forwarding professional with 12+ years across pricing, sales, documentation and customer service for leading shipping lines, NVOCC and freight forwarders.</p>
+            <p>Proven ability to design competitive pricing models, manage end-to-end trade lane operations and execute complex tenders and reverse auctions, particularly on USA trade lanes.</p>
+            <p>Strong at building long-term customer relationships, coordinating multi-stakeholder teams and maintaining regulatory and trade compliance while optimising margins and service performance.</p>
             <div class="about-tag-row">
-              <div class="mini-tag animate-item">Pricing Strategy</div>
-              <div class="mini-tag animate-item">Trade Lane Management</div>
-              <div class="mini-tag animate-item">Export/Import Documentation</div>
-              <div class="mini-tag animate-item">Customer Services</div>
-              <div class="mini-tag animate-item">Reverse Auctions</div>
+              <div class="mini-tag">Pricing Strategy</div>
+              <div class="mini-tag">Trade Lane Management</div>
+              <div class="mini-tag">Documentation</div>
+              <div class="mini-tag">Customer Service</div>
             </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- SKILLS -->
     <section id="skills">
       <div class="section-content">
-        <div class="section-top-line scale-up"></div>
-        <h2 class="fade-right">Skills & Strengths</h2>
+        <div class="section-top-line"></div>
+        <h2>Skills & Strengths</h2>
         <div class="skills-grid">
-          <div class="skill-card animate-item" style="--progress:90;">
-            <div class="skill-label">Pricing & Negotiation</div>
-            <div class="skill-percent">90%</div>
-          </div>
-          <div class="skill-card animate-item" style="--progress:93;">
-            <div class="skill-label">Client Relations</div>
-            <div class="skill-percent">93%</div>
-          </div>
-          <div class="skill-card animate-item" style="--progress:70;">
-            <div class="skill-label">Team Collaboration</div>
-            <div class="skill-percent">70%</div>
-          </div>
-          <div class="skill-card animate-item" style="--progress:95;">
-            <div class="skill-label">Documentation Mgmt</div>
-            <div class="skill-percent">95%</div>
-          </div>
-          <div class="skill-card animate-item" style="--progress:90;">
-            <div class="skill-label">Customer Service</div>
-            <div class="skill-percent">90%</div>
-          </div>
-          <div class="skill-card animate-item" style="--progress:70;">
-            <div class="skill-label">Contract Management</div>
-            <div class="skill-percent">70%</div>
-          </div>
-          <div class="skill-card animate-item" style="--progress:95;">
-            <div class="skill-label">Trade Lane Planning</div>
-            <div class="skill-percent">95%</div>
-          </div>
+          <div class="skill-card"><div class="skill-label">Pricing</div><div class="skill-percent">95%</div></div>
+          <div class="skill-card"><div class="skill-label">Trade Compliance</div><div class="skill-percent">88%</div></div>
+          <div class="skill-card"><div class="skill-label">Sales Development</div><div class="skill-percent">90%</div></div>
+          <div class="skill-card"><div class="skill-label">Client Relations</div><div class="skill-percent">93%</div></div>
+          <div class="skill-card"><div class="skill-label">Documentation</div><div class="skill-percent">89%</div></div>
+          <div class="skill-card"><div class="skill-label">Supply Chain</div><div class="skill-percent">84%</div></div>
+          <div class="skill-card"><div class="skill-label">Team Collaboration</div><div class="skill-percent">89%</div></div>
         </div>
       </div>
     </section>
 
-    <!-- EXPERIENCE -->
     <section id="experience">
       <div class="section-content">
-        <div class="section-top-line scale-up"></div>
-        <h2 class="fade-left">Professional Experience</h2>
-
-        <div class="ticker-shell rotate-in">
+        <div class="section-top-line"></div>
+        <h2>Professional Experience</h2>
+        <div class="ticker-shell">
           <div class="ticker-track">
-            <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas Group"><span>Atlas Group</span></div>
-            <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics"><span>Nedlloyd Logistics</span></div>
-            <div class="logo-pill"><img src="SYB.jpg" alt="SYB International"><span>SYB International</span></div>
-            <div class="logo-pill"><img src="ORCHID.jpg" alt="Orchid Shipping"><span>Orchid Shipping</span></div>
-            <div class="logo-pill"><img src="HMM.jpg" alt="HMM"><span>HMM</span></div>
-            <div class="logo-pill"><img src="HSUD.jpg" alt="Hamburg Süd"><span>Hamburg Süd</span></div>
-            <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay Shipping"><span>Ceekay Shipping</span></div>
-            <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
-            <div class="logo-pill"><img src="TSLINES.jpg" alt="T.S. Lines"><span>T.S. Lines</span></div>
-            <div class="logo-pill"><img src="ESL.jpg" alt="Ethiopian S&L"><span>Ethiopian S&L</span></div>
-            <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
-            <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
-            <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT</span></div>
-            <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas SAS"><span>Delmas SAS</span></div>
-            <div class="logo-pill"><img src="STX.jpg" alt="STX Ocean"><span>STX Ocean</span></div>
-            <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
-            <div class="logo-pill"><img src="QNL.jpg" alt="QNL-MILAHA"><span>QNL-MILAHA</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/792f81a9-7a75-4348-9079-8c9837cd6815" alt="Atlas"><span>Atlas Group</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5573f0b9-1d58-4264-906c-0e33f3ae1abc" alt="Nedlloyd"><span>Nedlloyd</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dc0ee8e2-2428-4a29-a280-8cb1cd11a2c3" alt="SYB"><span>SYB</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/0e958750-a0a9-449f-894c-587435fc8926" alt="Orchid"><span>Orchid</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/18247" alt="HMM"><span>HMM</span></div>
 
-            <!-- duplicate loop -->
-            <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas Group"><span>Atlas Group</span></div>
-            <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd Logistics"><span>Nedlloyd Logistics</span></div>
-            <div class="logo-pill"><img src="SYB.jpg" alt="SYB International"><span>SYB International</span></div>
-            <div class="logo-pill"><img src="ORCHID.jpg" alt="Orchid Shipping"><span>Orchid Shipping</span></div>
-            <div class="logo-pill"><img src="HMM.jpg" alt="HMM"><span>HMM</span></div>
-            <div class="logo-pill"><img src="HSUD.jpg" alt="Hamburg Süd"><span>Hamburg Süd</span></div>
-            <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay Shipping"><span>Ceekay Shipping</span></div>
-            <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
-            <div class="logo-pill"><img src="TSLINES.jpg" alt="T.S. Lines"><span>T.S. Lines</span></div>
-            <div class="logo-pill"><img src="ESL.jpg" alt="Ethiopian S&L"><span>Ethiopian S&L</span></div>
-            <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
-            <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
-            <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT</span></div>
-            <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas SAS"><span>Delmas SAS</span></div>
-            <div class="logo-pill"><img src="STX.jpg" alt="STX Ocean"><span>STX Ocean</span></div>
-            <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
-            <div class="logo-pill"><img src="QNL.jpg" alt="QNL-MILAHA"><span>QNL-MILAHA</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/792f81a9-7a75-4348-9079-8c9837cd6815" alt="Atlas"><span>Atlas Group</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5573f0b9-1d58-4264-906c-0e33f3ae1abc" alt="Nedlloyd"><span>Nedlloyd</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dc0ee8e2-2428-4a29-a280-8cb1cd11a2c3" alt="SYB"><span>SYB</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/0e958750-a0a9-449f-894c-587435fc8926" alt="Orchid"><span>Orchid</span></div>
+            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/18247" alt="HMM"><span>HMM</span></div>
           </div>
         </div>
-
         <div class="exp-timeline">
           <div class="exp-line"></div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Assistant Manager – Pricing</div>
-              <div class="exp-meta">Atlas Group, Noida · Jan 2025 – Present</div>
-              <div class="exp-desc">Handling USA trade lane pricing, contract management and reverse auctions; customer services and driving competitive bids and margin optimisation.</div>
-            </div>
-          </div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Assistant Manager – Pricing</div>
-              <div class="exp-meta">Nedlloyd Logistics, Ludhiana / Delhi · Mar 2024 – Jan 2025</div>
-              <div class="exp-desc">Managed rate negotiation and pricing support for multiple lanes, aligning customer needs with carrier offerings.</div>
-            </div>
-          </div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Manager – Documentation & Customer Service</div>
-              <div class="exp-meta">SYB International, Ludhiana · Nov 2021 – Mar 2024</div>
-              <div class="exp-desc">Led export/import and third country (X-Trade) documentation and customer service with rates procurement and administration ensuring error-free documentation and smooth shipment execution.</div>
-            </div>
-          </div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Sales Coordinator Team Lead</div>
-              <div class="exp-meta">Orchid Shipping, Ludhiana · Sep 2020 – Nov 2021</div>
-              <div class="exp-desc">Managed team and pricing for USA, SAWC and third-country routes, coordinating quotes and follow-ups with clients.</div>
-            </div>
-          </div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Sr. Executive – Customer Service</div>
-              <div class="exp-meta">Samsara Group, Moradabad · Apr 2019 – Nov 2019</div>
-              <div class="exp-desc">Handled MSC customer service for USA liner operations and export vessel planning ex-Moradabad.</div>
-            </div>
-          </div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Sr. Executive – Sales & Customer Service</div>
-              <div class="exp-meta">Parekh Group, Ludhiana · Nov 2016 – Mar 2019</div>
-              <div class="exp-desc">Performing Export Sales and Customer service for carriers including Hamburg Süd, STX Pan Ocean, HMM, CEEKAY Gulf Lines and LMT Gulf Lines.</div>
-            </div>
-          </div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Sr. Executive – Documentation & Customer Service</div>
-              <div class="exp-meta">Samsara Group, Ludhiana · Oct 2014 – Nov 2016</div>
-              <div class="exp-desc">Documentation, Customer Service & Sales support for Shipping line/NVOCC: T.S. LINES, Ethiopian Shipping Lines, DAL, Times Chartering Pvt. Ltd., China Shipping, Qatar Navigation Line.</div>
-            </div>
-          </div>
-          <div class="exp-item animate-item">
-            <div class="exp-dot"></div>
-            <div class="exp-card">
-              <div class="exp-role-line">Executive – Documentation & Customer Service</div>
-              <div class="exp-meta">Parekh Group, Ludhiana · Jul 2011 – Oct 2014</div>
-              <div class="exp-desc">Exports/Imports and Customer Service for Shipping line/NVOCC: Hamburg Süd, STX Pan Ocean, HMM, CEEKAY Gulf Lines and LMT Gulf Lines. Previously served Delmas SAS.</div>
-            </div>
-          </div>
+          <div class="exp-item"><div class="exp-dot"></div><div class="exp-card"><div class="exp-role-line">Assistant Manager – Pricing</div><div class="exp-meta">Atlas Group · Jan 2025 – Present</div><div class="exp-desc">Handling USA trade lane pricing, contract management and reverse auctions; driving competitive bids and margin optimisation.</div></div></div>
+          <div class="exp-item"><div class="exp-dot"></div><div class="exp-card"><div class="exp-role-line">Pricing</div><div class="exp-meta">Nedlloyd Logistics · Mar 2024 – Jan 2025</div><div class="exp-desc">Managed rate negotiation and pricing support for multiple lanes, aligning customer needs with carrier offerings.</div></div></div>
         </div>
       </div>
     </section>
 
-    <!-- EDUCATION -->
     <section id="education">
       <div class="section-content">
-        <div class="section-top-line scale-up"></div>
-        <h2 class="fade-right">Education</h2>
+        <div class="section-top-line"></div>
+        <h2>Education</h2>
         <div class="edu-grid">
-          <div class="edu-card animate-item">
-            <div class="edu-headline">MBA – Marketing & IT</div>
-            <div class="edu-meta">Lovely Professional University · 2012 – 2014</div>
-            <div class="edu-percent">63%</div>
-          </div>
-          <div class="edu-card animate-item">
-            <div class="edu-headline">BBA – Business Administration</div>
-            <div class="edu-meta">Arya College, Punjab University · 2008 – 2011</div>
-            <div class="edu-percent">67%</div>
-          </div>
-          <div class="edu-card animate-item">
-            <div class="edu-headline">XII – Commerce</div>
-            <div class="edu-meta">U.S.P.C. Jain Public School (C.B.S.E.) · 2007 – 2008</div>
-            <div class="edu-percent">73%</div>
-          </div>
-        </div>
-        <div style="font-size:clamp(0.85rem,2.2vw,0.95rem);margin-bottom:12px;font-weight:700;color:var(--accent);margin-top:24px;" class="fade-left">Graduation Projects</div>
-        <div class="grad-projects">
-          <div class="grad-box animate-item">Appraisal of ULIP Plans offered by insurance companies – analysed customer views and secured 92%.</div>
-          <div class="grad-box animate-item">Comparative study of customer preferences: BSNL vs AIRTEL – assessed service perception and loyalty drivers.</div>
+          <div class="edu-card"><div class="edu-headline">MBA – Marketing & IT</div><div class="edu-meta">Lovely Professional University · 2012 – 2014</div><div class="edu-percent">63%</div></div>
+          <div class="edu-card"><div class="edu-headline">BBA – Business Administration</div><div class="edu-meta">Arya College · 2008 – 2011</div><div class="edu-percent">67%</div></div>
+          <div class="edu-card"><div class="edu-headline">XII – Commerce</div><div class="edu-meta">U.S.P.C. Jain School (C.B.S.E.) · 2007 – 2008</div><div class="edu-percent">73%</div></div>
         </div>
       </div>
     </section>
 
-    <!-- CERTIFICATIONS -->
     <section id="certifications">
       <div class="section-content">
-        <div class="section-top-line scale-up"></div>
-        <h2 class="fade-left">Certifications</h2>
+        <div class="section-top-line"></div>
+        <h2>Certifications</h2>
         <div class="cert-grid">
-          <div class="cert-card animate-item" onclick="openCertModal('Six-Sigma-Black-Belt.jpg')">
-            <div class="cert-title">Six Sigma Black Belt</div>
-            <div class="cert-provider">LinkedIn Learning – Process improvement & quality tools</div>
-          </div>
-          <div class="cert-card animate-item" onclick="openCertModal('Strategic-Negotiation.jpg')">
-            <div class="cert-title">Strategic Negotiation</div>
-            <div class="cert-provider">LinkedIn Learning – Advanced deal and pricing negotiation</div>
-          </div>
-          <div class="cert-card animate-item" onclick="openCertModal('Negotiation-Foundations.jpg')">
-            <div class="cert-title">Negotiation Foundations</div>
-            <div class="cert-provider">LinkedIn Learning – Core negotiation techniques</div>
-          </div>
-          <div class="cert-card animate-item" onclick="openCertModal('Executive-Leadership.jpg')">
-            <div class="cert-title">Executive Leadership</div>
-            <div class="cert-provider">LinkedIn Learning – Leading teams and decision making</div>
-          </div>
-          <div class="cert-card animate-item" onclick="openCertModal('Business-Communications-Write-Speak-and-Lead-Effectively.jpg')">
-            <div class="cert-title">Business Communications</div>
-            <div class="cert-provider">EDUTA – Professional communication skills</div>
-          </div>
-          <div class="cert-card animate-item" onclick="openCertModal('Business-Acumen-Build-Strategic-and-Financial-Skills.jpg')">
-            <div class="cert-title">Business Acumen</div>
-            <div class="cert-provider">EDUTA – Strategic & financial skills</div>
-          </div>
-          <div class="cert-card animate-item" onclick="openCertModal('Key-Account-Management.jpg')">
-            <div class="cert-title">Key Account Management</div>
-            <div class="cert-provider">LinkedIn Learning – Managing strategic accounts</div>
-          </div>
-          <div class="cert-card animate-item" onclick="openCertModal('Google-Gemini.jpg')">
-            <div class="cert-title">Google Gemini AI</div>
-            <div class="cert-provider">LinkedIn Learning – AI assistant fundamentals</div>
-          </div>
+          <div class="cert-card" onclick="openCertModal('Six-Sigma-Black-Belt.jpg')"><div class="cert-title">Six Sigma Black Belt</div><div class="cert-provider">LinkedIn Learning</div></div>
+          <div class="cert-card" onclick="openCertModal('Strategic-Negotiation.jpg')"><div class="cert-title">Strategic Negotiation</div><div class="cert-provider">LinkedIn Learning</div></div>
+          <div class="cert-card" onclick="openCertModal('Executive-Leadership.jpg')"><div class="cert-title">Executive Leadership</div><div class="cert-provider">LinkedIn Learning</div></div>
+          <div class="cert-card" onclick="openCertModal('Key-Account-Management.jpg')"><div class="cert-title">Key Account Management</div><div class="cert-provider">LinkedIn Learning</div></div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
     <section id="contact">
       <div class="section-content">
-        <div class="section-top-line scale-up"></div>
-        <h2 class="fade-right">Contact Me</h2>
-        <div class="contact-inner scale-up" id="contactSection" style="display:none;">
-          <div class="contact-row">
-            <input id="cname" type="text" placeholder="Your Name" required>
-            <input id="cemail" type="email" placeholder="Your Email" required>
-            <textarea id="cmsg" rows="4" placeholder="Your Message" required></textarea>
-            <button type="button" onclick="fakeSubmit()">Send Message 🚀</button>
-            <div id="contactMsg" class="contact-msg">✅ Thank you! Your message has been sent successfully.</div>
-          </div>
-        </div>
-        <div style="text-align:center;padding:50px 20px;" id="contactLocked" class="fade-left">
-          <p style="font-size:clamp(0.9rem,2.5vw,1.1rem);color:var(--text-secondary);margin-bottom:28px;font-weight:500;">🔒 Contact information is protected</p>
-          <button class="chip-btn primary" onclick="requestPassword('contact')">Unlock Contact Section</button>
+        <div class="section-top-line"></div>
+        <h2>Contact Me</h2>
+        <div style="text-align:center;padding:50px 20px;" id="contactLocked">
+          <p style="font-size:clamp(0.9rem,2.5vw,1.1rem);color:var(--text-secondary);margin-bottom:28px;">🔒 Contact information is protected</p>
+          <button class="chip-btn primary" onclick="requestPassword('contact')">Unlock Contact</button>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
-    &copy; 2025 Rajat Kumar Rai. Professional Portfolio. All Rights Reserved.
-  </footer>
+  <footer>&copy; 2025 Rajat Kumar Rai. Professional Portfolio.</footer>
 
-  <!-- PASSWORD MODAL -->
   <div class="password-modal" id="passwordModal">
     <div class="password-box">
       <h3>🔒 Enter Password</h3>
@@ -1495,122 +950,125 @@
     </div>
   </div>
 
-  <!-- CERTIFICATE MODAL -->
   <div class="cert-modal" id="certModal" onclick="closeCertModal()">
     <div class="cert-modal-content" onclick="event.stopPropagation()">
-      <button class="cert-modal-close" onclick="closeCertModal()" aria-label="Close">&times;</button>
+      <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
       <img id="certModalImg" src="" alt="Certificate">
     </div>
   </div>
 
   <script>
     // ========================================
-    //  AIRPLANE CURSOR JAVASCRIPT - COMPLETE FIX
+    //  AIRPLANE CURSOR WITH PURE SMOKE TRAIL
     // ========================================
     
     const airplaneCursor = document.getElementById('airplane-cursor');
+    
     let mouseX = window.innerWidth / 2;
     let mouseY = window.innerHeight / 2;
     let cursorX = mouseX;
     let cursorY = mouseY;
+    
     let lastX = mouseX;
     let lastY = mouseY;
+    let velocityX = 0;
+    let velocityY = 0;
+    let speed = 0;
+    
     let targetAngle = 0;
     let currentAngle = 0;
-    let smokeCounter = 0;
+    
+    const FOLLOW_SPEED = 0.15;
+    const ROTATION_SPEED = 0.1;
+    const VELOCITY_SMOOTHING = 0.15;
+    const SMOKE_INTERVAL = 4;
+    const MIN_SPEED_FOR_SMOKE = 1;
+    
+    let frameCounter = 0;
 
-    const FOLLOW_SPEED = 0.15;      // How fast cursor follows mouse
-    const ROTATION_SPEED = 0.18;    // How fast cursor rotates
-    const SMOKE_INTERVAL = 4;       // Create smoke every N frames
-
-    // Track mouse movement
     document.addEventListener('mousemove', (e) => {
       mouseX = e.clientX;
       mouseY = e.clientY;
-      
-      const deltaX = mouseX - lastX;
-      const deltaY = mouseY - lastY;
-      const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
-
-      if (distance > 1) {
-        targetAngle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
-        
-        smokeCounter++;
-        if (smokeCounter % SMOKE_INTERVAL === 0) {
-          createSmoke(cursorX, cursorY);
-        }
-      }
-
-      lastX = mouseX;
-      lastY = mouseY;
     });
 
-    // Smoke trail effect
-    function createSmoke(x, y) {
-      const smoke = document.createElement('div');
-      smoke.className = 'smoke-particle';
-      smoke.style.left = (x - 4) + 'px';
-      smoke.style.top = (y - 4) + 'px';
-      document.body.appendChild(smoke);
-      setTimeout(() => smoke.remove(), 1200);
+    function getTailPosition(x, y, angle) {
+      const tailDistance = 25;
+      const angleRad = (angle + 90) * (Math.PI / 180);
+      const tailX = x - Math.cos(angleRad) * tailDistance;
+      const tailY = y - Math.sin(angleRad) * tailDistance;
+      return { x: tailX, y: tailY };
     }
 
-    // Smooth cursor animation
-    function animateCursor() {
-      // Smooth position following
-      cursorX += (mouseX - cursorX) * FOLLOW_SPEED;
-      cursorY += (mouseY - cursorY) * FOLLOW_SPEED;
+    function createSmokeTrail(tailX, tailY) {
+      const smoke = document.createElement('div');
+      smoke.className = 'smoke-trail';
+      
+      const size = 8 + Math.random() * 5;
+      smoke.style.width = size + 'px';
+      smoke.style.height = size + 'px';
+      
+      smoke.style.left = (tailX - size / 2) + 'px';
+      smoke.style.top = (tailY - size / 2) + 'px';
+      
+      const gradient = `radial-gradient(circle at 35% 35%, rgba(100, 150, 255, 0.8) 0%, rgba(76, 129, 255, 0.5) 30%, rgba(76, 129, 255, 0.2) 70%, transparent 100%)`;
+      smoke.style.background = gradient;
+      
+      document.body.appendChild(smoke);
+      
+      setTimeout(() => smoke.remove(), 1500);
+    }
 
-      // Smooth rotation
+    function animateCursor() {
+      const rawVelocityX = mouseX - lastX;
+      const rawVelocityY = mouseY - lastY;
+      
+      velocityX += (rawVelocityX - velocityX) * VELOCITY_SMOOTHING;
+      velocityY += (rawVelocityY - velocityY) * VELOCITY_SMOOTHING;
+      
+      speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
+      
+      const deltaX = mouseX - cursorX;
+      const deltaY = mouseY - cursorY;
+      
+      cursorX += deltaX * FOLLOW_SPEED;
+      cursorY += deltaY * FOLLOW_SPEED;
+      
+      if (speed > 0.5) {
+        targetAngle = Math.atan2(velocityY, velocityX) * (180 / Math.PI);
+      }
+      
       let angleDiff = targetAngle - currentAngle;
       while (angleDiff > 180) angleDiff -= 360;
       while (angleDiff < -180) angleDiff += 360;
+      
       currentAngle += angleDiff * ROTATION_SPEED;
-
-      // Apply transform
+      
       airplaneCursor.style.transform = `translate(${cursorX}px, ${cursorY}px) rotate(${currentAngle + 90}deg) translate(-50%, -50%)`;
-
+      
+      frameCounter++;
+      if (speed > MIN_SPEED_FOR_SMOKE && frameCounter % SMOKE_INTERVAL === 0) {
+        const tail = getTailPosition(cursorX, cursorY, currentAngle);
+        createSmokeTrail(tail.x, tail.y);
+      }
+      
+      lastX = cursorX;
+      lastY = cursorY;
+      
       requestAnimationFrame(animateCursor);
     }
 
-    // Start animation loop
     animateCursor();
 
-    // Click effect - scale down
-    document.addEventListener('mousedown', () => {
-      airplaneCursor.style.transform = airplaneCursor.style.transform + ' scale(0.85)';
-    });
-
-    document.addEventListener('mouseup', () => {
-      airplaneCursor.style.transform = airplaneCursor.style.transform.replace(' scale(0.85)', '');
-    });
-
-    // Show/hide on mouse enter/leave
-    document.addEventListener('mouseenter', () => {
-      airplaneCursor.style.opacity = '1';
-    });
-
-    document.addEventListener('mouseleave', () => {
-      airplaneCursor.style.opacity = '0';
-    });
+    document.addEventListener('mouseenter', () => { airplaneCursor.style.opacity = '1'; });
+    document.addEventListener('mouseleave', () => { airplaneCursor.style.opacity = '0'; });
 
     // ========================================
+    //  PASSWORD & TYPEWRITER
+    // ========================================
 
-    // PROFILE IMAGE ZOOM ON SCROLL
-    window.addEventListener('scroll', function() {
-      const heroImage = document.getElementById('heroImage');
-      const hero = document.getElementById('hero');
-      if (!heroImage || !hero) return;
-      const rect = hero.getBoundingClientRect();
-      const viewportHeight = window.innerHeight;
-      let scrollRatio = Math.min(1, Math.max(0, -rect.top / viewportHeight));
-      let scaleValue = 1 - scrollRatio * 0.3;
-      heroImage.style.transform = `scale(${scaleValue})`;
-    });
-
-    // PASSWORD SYSTEM
-    let passwordAction = '', isUnlocked = false;
+    let passwordAction = '';
     const correctPassword = 'open';
+    let isUnlocked = false;
 
     function requestPassword(action) {
       if (isUnlocked) { executeAction(action); return; }
@@ -1626,39 +1084,29 @@
       if (input === correctPassword) {
         isUnlocked = true;
         document.getElementById('passwordModal').classList.remove('show');
-        unlockAll();
+        document.querySelectorAll('.locked').forEach(el => el.classList.remove('locked'));
         executeAction(passwordAction);
       } else {
         document.getElementById('passwordError').style.display = 'block';
-        document.getElementById('passwordInput').value = '';
       }
-    }
-
-    function unlockAll() {
-      document.querySelectorAll('.locked').forEach(el => { el.classList.remove('locked'); el.style.opacity = '1'; });
-      document.getElementById('contactLocked').style.display = 'none';
-      document.getElementById('contactSection').style.display = 'block';
     }
 
     function executeAction(action) {
-      const phoneEncoded = atob('OTg3Nzk4MjYyMg==');
-      const emailEncoded = atob('cmFqYXRrdW1hcnJhaS5yYWlAZ21haWwuY29t');
-      switch(action) {
-        case 'cv': window.location.href = 'Rajat-Kumar-Rai-Resume.docx'; break;
-        case 'email': window.location.href = `mailto:${emailEncoded}`; break;
-        case 'call': window.location.href = `tel:+91${phoneEncoded}`; break;
-        case 'whatsapp': window.open(`https://wa.me/91${phoneEncoded}`, '_blank'); break;
-      }
+      const phone = atob('OTg3Nzk4MjYyMg==');
+      const email = atob('cmFqYXRrdW1hcnJhaS5yYWlAZ21haWwuY29t');
+      if (action === 'cv') window.location.href = 'Rajat-Kumar-Rai-Resume.docx';
+      if (action === 'email') window.location.href = `mailto:${email}`;
+      if (action === 'call') window.location.href = `tel:+91${phone}`;
+      if (action === 'whatsapp') window.open(`https://wa.me/91${phone}`, '_blank');
     }
 
-    // TYPEWRITER
     class TypeWriter {
       constructor(el, words, wait = 3000) {
         this.el = el;
         this.words = words;
         this.txt = '';
         this.wordIndex = 0;
-        this.wait = parseInt(wait, 10);
+        this.wait = wait;
         this.isDeleting = false;
         this.type();
       }
@@ -1667,92 +1115,36 @@
         const fullTxt = this.words[current];
         this.txt = this.isDeleting ? fullTxt.substring(0, this.txt.length - 1) : fullTxt.substring(0, this.txt.length + 1);
         this.el.innerHTML = this.txt;
-        let typeSpeed = 80;
-        if (this.isDeleting) typeSpeed /= 2;
+        let speed = 80;
+        if (this.isDeleting) speed /= 2;
         if (!this.isDeleting && this.txt === fullTxt) {
-          typeSpeed = this.wait;
+          speed = this.wait;
           this.isDeleting = true;
         } else if (this.isDeleting && this.txt === '') {
           this.isDeleting = false;
           this.wordIndex++;
-          typeSpeed = 300;
+          speed = 300;
         }
-        setTimeout(() => this.type(), typeSpeed);
+        setTimeout(() => this.type(), speed);
       }
     }
 
-    // SCROLL ANIMATIONS
-    const observerOptions = {
-      threshold: 0.15,
-      rootMargin: '0px 0px -100px 0px'
-    };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
-    }, observerOptions);
+    }, { threshold: 0.15 });
 
-    document.querySelectorAll('section').forEach(section => {
-      observer.observe(section);
-    });
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-    // INITIALIZATION
     document.addEventListener('DOMContentLoaded', () => {
       new TypeWriter(document.getElementById('typewriter1'), ["Logistics", "Freight Forwarding", "Shipping"], 2000);
-      new TypeWriter(document.getElementById('typewriter2'), ["Customer Service", "Pricing", "Documentation", "Liner Sales", "Agent Networking", "Sales Coordinator"], 1500);
-
+      new TypeWriter(document.getElementById('typewriter2'), ["Pricing", "Documentation", "Sales", "Customer Service"], 1500);
       document.getElementById('passwordInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyPassword(); });
-
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        a.addEventListener('click', e => {
-          e.preventDefault();
-          const target = document.querySelector(a.getAttribute('href'));
-          if (!target) return;
-          window.scrollTo({ top: target.offsetTop - 80, behavior: 'smooth' });
-          document.querySelectorAll('.nav-links a').forEach(n => n.classList.remove('active'));
-          a.classList.add('active');
-        });
-      });
-
-      document.getElementById('hero').classList.add('visible');
     });
 
-    window.addEventListener('scroll', () => {
-      let current = '';
-      document.querySelectorAll('section').forEach(section => {
-        if (pageYOffset >= section.offsetTop - 120) current = section.getAttribute('id');
-      });
-      document.querySelectorAll('.nav-links a').forEach(a => {
-        a.classList.remove('active');
-        if (a.getAttribute('href') === `#${current}`) a.classList.add('active');
-      });
-    });
-
-    function openCertModal(imgSrc) {
-      document.getElementById('certModalImg').src = imgSrc;
-      document.getElementById('certModal').classList.add('show');
-    }
-
-    function closeCertModal() {
-      document.getElementById('certModal').classList.remove('show');
-    }
-
-    function fakeSubmit() {
-      const msg = document.getElementById('contactMsg');
-      msg.style.display = 'block';
-      setTimeout(() => msg.style.display = 'none', 5000);
-      document.getElementById('cname').value = '';
-      document.getElementById('cemail').value = '';
-      document.getElementById('cmsg').value = '';
-    }
-
-    document.getElementById('passwordModal').addEventListener('click', (e) => {
-      if (e.target.id === 'passwordModal') document.getElementById('passwordModal').classList.remove('show');
-    });
+    function openCertModal(img) { document.getElementById('certModalImg').src = img; document.getElementById('certModal').classList.add('show'); }
+    function closeCertModal() { document.getElementById('certModal').classList.remove('show'); }
   </script>
 </body>
 </html>
-
