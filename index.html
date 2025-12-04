@@ -1,1150 +1,1416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Rajat Kumar Rai | Professional Portfolio</title>
-  <meta name="robots" content="index, follow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rajat Kumar Rai - Portfolio</title>
   <style>
-    :root {
-      --accent: #4c81ff;
-      --text-primary: #1f2940;
-      --text-secondary: #6b7593;
-      --border: rgba(76, 129, 255, 0.1);
-    }
-
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
+    :root {
+      --primary-color: #6c63ff;
+      --secondary-color: #4c46b6;
+      --text-dark: #2d3436;
+      --text-light: #636e72;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
     body {
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      background: #ffffff;
-      color: var(--text-primary);
-      overflow-x: hidden;
-      cursor: none;
+      font-family: Calibri, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
+        sans-serif;
+      font-size: 11px; /* Calibri 11 */
+      color: var(--text-dark);
       line-height: 1.6;
-      font-size: 15px;
-      -webkit-font-smoothing: antialiased;
-      padding-top: 80px;
+      overflow-x: hidden;
+      background: #ffffff; /* ensure pure white */
     }
 
-    /* ========================================
-       AIRPLANE CURSOR - CLEAN, NO EFFECTS
-       ======================================== */
-    
-    #airplane-cursor {
-      pointer-events: none;
+    /* Header */
+    header {
+      background: var(--white);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       position: fixed;
-      left: 0;
-      top: 0;
-      width: 40px;
-      height: 40px;
-      z-index: 10000;
-      opacity: 1;
-      will-change: transform;
-      transform-origin: center center;
-    }
-
-    #airplane-cursor img {
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      pointer-events: none;
-      display: block;
-      background: transparent !important;
+      top: 0;
+      z-index: 1000;
+      transition: all 0.3s;
     }
-
-    /* PURE SMOKE TRAIL - NO SHADOW/BORDER */
-    .smoke-trail {
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      border-radius: 50%;
-      opacity: 0.7;
-      animation: smokeRise 1.5s ease-out forwards;
-    }
-
-    @keyframes smokeRise {
-      0% {
-        opacity: 0.8;
-        transform: translateY(0) scale(1);
-      }
-      50% {
-        opacity: 0.5;
-      }
-      100% {
-        opacity: 0;
-        transform: translateY(-40px) scale(1.4);
-      }
-    }
-
-    /* Hide default cursor */
-    a, button, input, textarea, select { cursor: none !important; }
-    a { text-decoration: none; }
-
-    /* ======================================== */
 
     nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 30;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(10px);
-      padding: 16px 0;
-      border-bottom: 1px solid var(--border);
-      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    }
-
-    .nav-inner {
-      width: min(1400px, 96vw);
+      max-width: 1200px;
       margin: 0 auto;
-      padding: 10px 20px;
-      border-radius: 999px;
-      background: white;
-      border: 2px solid var(--border);
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      box-shadow: 0 2px 15px rgba(76,129,255,0.08);
+      padding: 0.7rem 2rem;
+      background: #ffffff;
     }
 
-    .nav-brand {
+    .logo {
+      font-size: 1.4rem;
       font-weight: 700;
       letter-spacing: 0.08em;
-      font-size: clamp(0.75rem, 2vw, 0.9rem);
-      color: var(--accent);
+      color: var(--primary-color);
       text-transform: uppercase;
     }
 
     .nav-links {
       display: flex;
-      gap: 4px;
-      flex-wrap: wrap;
-      justify-content: center;
+      list-style: none;
+      gap: 1.6rem;
     }
 
     .nav-links a {
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: clamp(0.7rem, 1.8vw, 0.8rem);
+      text-decoration: none;
+      color: var(--text-dark);
       font-weight: 600;
-      color: var(--text-secondary);
-      transition: all .2s;
-      letter-spacing: 0.02em;
-    }
-
-    .nav-links a:hover,
-    .nav-links a.active {
-      color: var(--accent);
-      background: rgba(76, 129, 255, 0.1);
-      transform: translateY(-2px);
-    }
-
-    section {
-      width: 100%;
-      min-height: auto;
-      padding: 100px 5vw;
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      position: relative;
-      background: #ffffff;
-    }
-
-    section:nth-child(even) { background: #f8f9fa; }
-    #hero { min-height: 100vh; justify-content: center; }
-
-    .section-content {
-      width: min(1400px, 100%);
-      opacity: 0;
-      transform: translateY(50px);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    section.visible .section-content {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    section h2 {
-      margin: 0 0 16px;
-      font-size: clamp(1.8rem, 4vw, 2.4rem);
-      letter-spacing: 0.03em;
+      font-size: 0.85rem;
       text-transform: uppercase;
-      font-weight: 700;
+      letter-spacing: 0.08em;
+      transition: color 0.3s;
     }
 
-    .section-top-line {
+    .nav-links a:hover {
+      color: var(--primary-color);
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+
+    .menu-toggle span {
+      width: 24px;
       height: 3px;
-      width: 80px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--accent) 0, rgba(76,129,255,0.5) 100%);
-      margin: 0 auto 32px;
+      background: var(--text-dark);
+      margin: 3px 0;
+      transition: 0.3s;
     }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 40px;
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
       align-items: center;
-      text-align: center;
+      background: #ffffff; /* pure white */
+      padding: 100px 2rem 50px;
     }
 
-    .hero-img-wrap {
-      width: clamp(200px, 40vw, 280px);
-      height: clamp(200px, 40vw, 280px);
+    .hero-content {
+      max-width: 1200px;
       margin: 0 auto;
-      border-radius: 50%;
-      overflow: hidden;
-      animation: float 3s ease-in-out infinite;
-      will-change: transform;
-      border: 3px solid var(--border);
-      position: relative;
-    }
-
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-15px); }
-    }
-
-    .hero-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
     }
 
     .hero-text h1 {
-      margin: 0 0 16px;
-      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-size: 2.4rem;
       font-weight: 700;
+      margin-bottom: 0.6rem;
+      line-height: 1.25;
     }
 
-    .hero-text h1 span { color: var(--accent); }
-
-    .hero-role-container {
-      font-size: clamp(1.1rem, 3vw, 1.4rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-      color: var(--accent);
+    .hero-text h1 span {
+      color: var(--primary-color);
     }
 
-    .hero-desc-container {
-      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
-      line-height: 1.7;
-      max-width: 700px;
-      margin: 0 auto 28px;
-      color: var(--text-secondary);
-      font-weight: 400;
+    .typewriter-container {
+      min-height: 42px;
+      margin: 0.6rem 0;
+      display: flex;
+      align-items: center;
     }
 
-    .type-cursor {
-      display: inline-block;
-      width: 2px;
-      background-color: var(--accent);
-      animation: blink 1s infinite;
-      margin-left: 3px;
-      height: 1em;
+    .typewriter {
+      font-size: 1.2rem;
+      color: var(--primary-color);
+      font-weight: 600;
+      padding-right: 4px;
+    }
+
+    .cursor {
+        display: inline-block;
+        width: 2px;
+        height: 1.2rem;
+        background-color: var(--primary-color);
+        animation: blink 0.7s infinite;
+        margin-left: 2px;
     }
 
     @keyframes blink {
       0%, 100% { opacity: 1; }
-      50% { opacity: 0.2; }
+      50% { opacity: 0; }
     }
 
-    .hero-contact {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin: 28px auto 0;
-      max-width: 700px;
+    .hero-text p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 1.3rem;
     }
 
-    .chip-btn {
-      border: 2px solid var(--border);
-      outline: none;
-      border-radius: 999px;
-      padding: 12px 16px;
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      font-weight: 600;
-      background: white;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      transition: all .25s ease;
-      letter-spacing: 0.01em;
-      color: var(--text-primary);
+    .cta-buttons {
+      display: flex;
+      gap: 0.9rem;
     }
 
-    .chip-btn:hover {
-      border-color: var(--accent);
-      color: var(--accent);
-      background: rgba(76, 129, 255, 0.05);
-      transform: translateY(-3px);
-    }
-
-    .chip-btn.primary {
-      color: white;
-      background: linear-gradient(135deg, var(--accent), #6f9dff);
-      border-color: var(--accent);
-    }
-
-    .chip-btn.primary:hover {
-      transform: translateY(-3px);
-    }
-
-    .chip-btn.locked { opacity: 0.6; }
-
-    /* PASSWORD MODAL */
-    .password-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.6);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 150;
-      padding: 20px;
-    }
-
-    .password-modal.show { display: flex; }
-
-    .password-box {
-      width: min(400px, 90vw);
-      padding: 36px;
-      border-radius: 20px;
-      background: white;
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
-      text-align: center;
-      border: 2px solid var(--border);
-    }
-
-    .password-box h3 {
-      margin-bottom: 24px;
-      color: var(--accent);
-      font-size: clamp(1.3rem, 4vw, 1.6rem);
-    }
-
-    .password-box input {
-      width: 100%;
-      padding: 12px 16px;
-      border-radius: 12px;
-      border: 2px solid var(--border);
-      background: #f8f9fa;
-      font-family: inherit;
-      font-size: 1rem;
-      margin-bottom: 20px;
-      text-align: center;
-      letter-spacing: 0.1em;
-      color: var(--text-primary);
-    }
-
-    .password-box input:focus {
-      outline: none;
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(76,129,255,0.1);
-    }
-
-    .password-box button {
-      width: 100%;
-      padding: 12px 20px;
+    .btn {
+      padding: 0.55rem 1.6rem;
       border: none;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--accent), #6f9dff);
-      color: white;
       font-weight: 600;
-      transition: all 0.2s;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn-primary {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary-color);
+      transform: translateY(-1px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--primary-color);
+      border: 2px solid var(--primary-color);
+    }
+
+    .btn-secondary:hover {
+      background: var(--primary-color);
+      color: var(--white);
+    }
+
+    .hero-image {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      max-height: 420px;
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      /* no animation, static profile picture */
+    }
+
+    /* Sections */
+    section {
+      padding: 60px 2rem;
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.6s, transform 0.6s;
+      background: #ffffff; /* every section on pure white */
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-top-line {
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+      margin: 0 auto 0.7rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.7rem;
+      margin-bottom: 2.2rem;
+      color: var(--text-dark);
+      letter-spacing: 0.04em;
+    }
+
+    /* About */
+    #about {
+      background: #ffffff;
+    }
+
+    .about-content {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--text-light);
+      margin-bottom: 1rem;
+      text-align: justify;
       font-size: 0.9rem;
     }
 
-    .password-box button:hover { transform: translateY(-2px); }
-
-    .password-error {
-      color: #ff4444;
-      font-size: 0.85rem;
-      margin-top: 12px;
-      display: none;
+    .about-stats {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+      margin-top: 1.2rem;
     }
 
-    .about-grid { display: grid; gap: 28px; }
-    .about-text p { margin: 0 0 18px; line-height: 1.8; text-align: justify; color: var(--text-secondary); }
-
-    .about-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-top: 24px;
-      justify-content: center;
+    .stat-box {
+      text-align: center;
+      padding: 1.2rem;
+      background: #ffffff;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
     }
 
-    .mini-tag {
-      font-size: clamp(0.7rem, 1.8vw, 0.8rem);
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: white;
-      border: 2px solid var(--border);
-      color: var(--accent);
-      font-weight: 600;
-      transition: all 0.3s ease;
+    .stat-box:hover {
+      transform: translateY(-3px);
     }
 
-    .mini-tag:hover {
-      transform: translateY(-4px) scale(1.05);
-      border-color: var(--accent);
-      background: rgba(76, 129, 255, 0.1);
+    .stat-number {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .stat-label {
+      color: var(--text-light);
+      margin-top: 0.25rem;
+      font-size: 0.8rem;
+    }
+
+    /* Skills */
+    #skills {
+      background: #ffffff;
     }
 
     .skills-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 20px;
-      margin-top: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 1.4rem;
     }
 
     .skill-card {
+      background: #ffffff;
+      padding: 1.3rem;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
       position: relative;
-      padding: 20px 14px;
-      text-align: center;
-      border-radius: 16px;
-      background: white;
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      font-weight: 600;
-      color: var(--text-primary);
-      border: 2px solid var(--border);
-      transition: all .4s ease;
+      overflow: hidden;
+      transition: transform 0.3s;
     }
 
     .skill-card:hover {
-      background: rgba(76, 129, 255, 0.05);
-      transform: translateY(-8px);
-      border-color: var(--accent);
+      transform: translateY(-3px);
     }
 
-    .skill-label { margin-bottom: 10px; }
-    .skill-percent { margin-top: 10px; font-size: 0.8rem; color: var(--accent); font-weight: 700; }
+    .skill-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: var(--progress, 0);
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+      transition: width 1s ease-out;
+    }
+
+    .skill-label {
+      font-weight: 600;
+      color: var(--text-dark);
+      margin-bottom: 0.25rem;
+      font-size: 0.95rem;
+    }
+
+    .skill-percent {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    /* Experience ticker */
+    #experience-ticker {
+      background: #ffffff;
+      padding-bottom: 20px;
+    }
 
     .ticker-shell {
-      margin-bottom: 32px;
-      padding: 20px 16px;
-      border-radius: 16px;
-      background: white;
-      border: 2px solid var(--border);
       overflow: hidden;
+      position: relative;
       width: 100%;
+      margin-top: 1.3rem;
+      padding: 20px 0;
     }
 
     .ticker-track {
-      display: inline-flex;
-      white-space: nowrap;
-      animation: tickerMove 60s linear infinite;
-      gap: 40px;
+      display: flex;
+      gap: 2.5rem; /* increased gap for bigger items */
+      animation: scroll 30s linear infinite;
+    }
+
+    @keyframes scroll {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-50%);
+      }
     }
 
     .logo-pill {
       display: flex;
-      flex-direction: column;
+      flex-direction: column; /* logo above text */
       align-items: center;
-      min-width: 110px;
-      padding: 10px;
+      gap: 0.5rem;
+      background: #ffffff;
+      padding: 1rem 1.5rem; /* slightly bigger padding */
+      /* border-radius removed or kept minimal if preferred, removing pill shape for simpler look or keep but no shadow */
+      border-radius: 10px;
+      white-space: nowrap;
+      /* No shadow as requested */
+      box-shadow: none;
+      border: 1px solid #eee; /* optional light border to define area without shadow */
+      min-width: 120px;
+      transition: transform 0.3s;
+    }
+
+    .logo-pill:hover {
+      transform: scale(1.04);
     }
 
     .logo-pill img {
-      height: clamp(40px, 8vw, 50px);
-      width: auto;
+      width: 40px; /* Bigger logo */
+      height: 40px;
       object-fit: contain;
-      margin: 0 auto 8px;
-      filter: grayscale(60%);
-      opacity: 0.85;
-      transition: all 0.3s;
-    }
-
-    .logo-pill:hover img {
-      filter: grayscale(0%);
-      opacity: 1;
-      transform: scale(1.1);
     }
 
     .logo-pill span {
-      font-size: clamp(0.65rem, 1.6vw, 0.75rem);
       font-weight: 600;
-      color: var(--text-secondary);
+      color: var(--text-dark);
+      font-size: 0.9rem; /* Slightly bigger text */
     }
 
-    @keyframes tickerMove {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
+    /* Knowledge Exposure */
+    #services {
+      background: #ffffff;
     }
 
-    .exp-timeline {
-      margin-top: 32px;
-      position: relative;
-      padding-left: clamp(35px, 7vw, 50px);
-    }
-
-    .exp-line {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: clamp(14px, 3vw, 24px);
-      width: 3px;
-      background: linear-gradient(to bottom, var(--accent) 0%, rgba(76,129,255,0.5) 100%);
-      border-radius: 999px;
-    }
-
-    .exp-item { position: relative; margin-bottom: 32px; }
-
-    .exp-dot {
-      position: absolute;
-      left: clamp(-26px, -6vw, -34px);
-      top: 12px;
-      width: clamp(16px, 3.5vw, 20px);
-      height: clamp(16px, 3.5vw, 20px);
-      border-radius: 50%;
-      background: var(--accent);
-      border: 4px solid white;
-      z-index: 2;
-      animation: pulse 2.5s infinite;
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.15); }
-    }
-
-    .exp-card {
-      margin-left: clamp(8px, 2.5vw, 14px);
-      padding: 18px;
-      border-radius: 16px;
-      background: white;
-      border: 2px solid var(--border);
-      border-left: 4px solid var(--accent);
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
-      transition: all .4s ease;
-    }
-
-    .exp-card:hover {
-      border-color: var(--accent);
-      background: rgba(76, 129, 255, 0.02);
-      transform: translateX(8px);
-    }
-
-    .exp-role-line { font-weight: 700; color: var(--accent); margin-bottom: 6px; }
-    .exp-meta { font-size: clamp(0.7rem, 1.8vw, 0.8rem); color: var(--text-secondary); margin-bottom: 10px; }
-    .exp-desc { font-size: clamp(0.75rem, 2vw, 0.85rem); color: var(--text-secondary); line-height: 1.7; }
-
-    .edu-grid {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.4rem;
     }
 
-    .edu-card {
-      padding: 20px 18px 50px;
-      text-align: left;
-      border-radius: 16px;
-      background: white;
-      border: 2px solid var(--border);
-      position: relative;
-      transition: all .4s ease;
-      min-height: 180px;
-    }
-
-    .edu-card:hover {
-      border-color: var(--accent);
-      background: rgba(76, 129, 255, 0.02);
-      transform: translateY(-8px);
-    }
-
-    .edu-headline { font-size: clamp(0.85rem, 2.2vw, 1rem); font-weight: 700; color: var(--accent); margin-bottom: 8px; }
-    .edu-meta { font-size: clamp(0.75rem, 2vw, 0.85rem); color: var(--text-secondary); margin-bottom: 12px; }
-    .edu-desc { font-size: clamp(0.75rem, 2vw, 0.85rem); color: var(--text-secondary); line-height: 1.6; }
-
-    .edu-percent {
-      position: absolute;
-      right: 16px;
-      bottom: 14px;
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
-      color: var(--accent);
-      font-weight: 700;
-      background: white;
-      padding: 8px 14px;
-      border-radius: 999px;
-      border: 2px solid var(--border);
-    }
-
-    .grad-projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 18px;
-      margin-top: 12px;
-    }
-
-    .grad-box {
-      padding: 16px 18px;
-      border-radius: 16px;
-      background: white;
-      border: 2px solid var(--border);
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      color: var(--text-secondary);
-      transition: all .3s ease;
-      line-height: 1.7;
-    }
-
-    .grad-box:hover {
-      border-color: var(--accent);
-      background: rgba(76, 129, 255, 0.02);
-      transform: translateY(-4px);
-    }
-
-    .cert-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 20px;
-    }
-
-    .cert-card {
-      padding: 18px 16px;
-      border-radius: 16px;
-      background: white;
-      border: 2px solid var(--border);
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      position: relative;
-      transition: all .4s ease;
-    }
-
-    .cert-card:hover {
-      border-color: var(--accent);
-      background: rgba(76, 129, 255, 0.02);
-      transform: translateY(-8px) rotate(2deg);
-    }
-
-    .cert-title { font-weight: 700; color: var(--accent); margin-bottom: 8px; }
-    .cert-provider { font-size: clamp(0.7rem, 1.8vw, 0.8rem); color: var(--text-secondary); line-height: 1.5; }
-
-    .cert-modal {
-      position: fixed;
-      inset: 0;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(10px);
-      display: none;
-      align-items: center;
-      justify-content: center;
-      z-index: 200;
-      padding: 20px;
-    }
-
-    .cert-modal.show { display: flex; }
-
-    .cert-modal-content {
-      position: relative;
-      width: 90vw;
-      height: 90vh;
-      max-width: 1200px;
-      max-height: 800px;
-      border-radius: 16px;
-      overflow: hidden;
-      background: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border: 2px solid var(--border);
-    }
-
-    .cert-modal-content img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-    }
-
-    .cert-modal-close {
-      position: absolute;
-      top: 16px;
-      right: 16px;
-      width: 46px;
-      height: 46px;
-      border-radius: 50%;
-      background: white;
-      border: 2px solid var(--border);
-      font-size: 1.8rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      transition: all 0.2s;
-      color: var(--accent);
-    }
-
-    .cert-modal-close:hover {
-      transform: rotate(90deg) scale(1.1);
-      border-color: var(--accent);
-      background: rgba(76, 129, 255, 0.1);
-    }
-
-    .contact-inner {
-      max-width: 600px;
-      margin: 16px auto 0;
-      padding: 28px;
-      border-radius: 20px;
-      background: white;
-      border: 2px solid var(--border);
-      transition: all .3s ease;
-      width: 100%;
-    }
-
-    .contact-inner:hover {
-      border-color: var(--accent);
-      background: rgba(76, 129, 255, 0.02);
-    }
-
-    .contact-row {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    .contact-row input,
-    .contact-row textarea {
-      border: 2px solid var(--border);
-      outline: none;
-      padding: 12px 16px;
-      border-radius: 12px;
-      background: #f8f9fa;
-      font-family: inherit;
-      font-size: clamp(0.85rem, 2vw, 0.95rem);
-      color: var(--text-primary);
-      resize: vertical;
+    .service-card {
+      background: #ffffff;
+      padding: 1.7rem;
+      border-radius: 14px;
+      text-align: center;
       transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
     }
 
-    .contact-row input:focus,
-    .contact-row textarea:focus {
-      border-color: var(--accent);
-      box-shadow: 0 0 0 3px rgba(76,129,255,0.1);
-      background: white;
+    .service-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
     }
 
-    .contact-row button {
-      border: none;
-      outline: none;
-      margin-top: 8px;
-      padding: 14px 20px;
-      border-radius: 999px;
-      font-size: clamp(0.9rem, 2.5vw, 1rem);
+    .service-icon {
+      width: 54px;
+      height: 54px;
+      margin: 0 auto 1rem;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--white);
+    }
+
+    .service-card h3 {
+      margin-bottom: 0.6rem;
+      color: var(--text-dark);
+      font-size: 1rem;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      font-size: 0.8rem;
+    }
+
+    /* Certifications */
+    #portfolio {
+      background: #ffffff;
+    }
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.4rem;
+    }
+
+    .portfolio-item {
+      position: relative;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s;
+      background: #ffffff;
+      cursor: pointer;
+    }
+
+    .portfolio-item:hover {
+      transform: scale(1.03);
+    }
+
+    .portfolio-item img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .portfolio-info {
+      padding: 1rem;
+      background: #ffffff;
+    }
+
+    .portfolio-info h3 {
+      margin-bottom: 0.35rem;
+      color: var(--text-dark);
+      font-size: 0.95rem;
+    }
+
+    .portfolio-info p {
+      color: var(--text-light);
+      font-size: 0.78rem;
+    }
+
+    /* Modal for Certificate Pop-out */
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 2000;
+        padding-top: 50px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0,0,0,0.8);
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 700px; /* Fixed size for readability */
+        max-height: 80vh;
+        object-fit: contain;
+        background: white;
+        padding: 10px;
+        border-radius: 8px;
+    }
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #f1f1f1;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    /* Timeline */
+    #testimonials {
+      background: #ffffff;
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 3px;
+      height: 100%;
+      background: var(--primary-color);
+    }
+
+    .timeline-item {
+      margin-bottom: 2.3rem;
+      position: relative;
+    }
+
+    .timeline-content {
+      background: #ffffff;
+      padding: 1.4rem;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      width: 45%;
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+    }
+
+    .timeline-content h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.3rem;
+      font-size: 1rem;
+    }
+
+    .timeline-content h4 {
+      color: var(--text-dark);
+      margin-bottom: 0.3rem;
       font-weight: 600;
-      background: linear-gradient(135deg, var(--accent), #6f9dff);
-      color: white;
-      transition: all .2s;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
+      font-size: 0.95rem;
     }
 
-    .contact-row button:hover { transform: translateY(-3px); }
-
-    .contact-msg {
-      margin-top: 14px;
-      font-size: clamp(0.8rem, 2vw, 0.9rem);
-      color: #22c55e;
-      display: none;
-      text-align: center;
-      font-weight: 600;
+    .timeline-date {
+      color: var(--text-light);
+      font-size: 0.78rem;
+      margin-bottom: 0.7rem;
+      font-style: italic;
     }
 
+    .timeline-content p {
+      color: var(--text-light);
+      font-size: 0.82rem;
+      line-height: 1.5;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 14px;
+      height: 14px;
+      background: var(--primary-color);
+      border: 3px solid var(--white);
+      border-radius: 50%;
+      top: 0;
+      box-shadow: 0 0 0 3px #ffffff;
+    }
+
+    /* Footer */
     footer {
+      background: var(--text-dark);
+      color: var(--white);
+      padding: 2.3rem 2rem;
       text-align: center;
-      font-size: clamp(0.75rem, 2vw, 0.85rem);
-      padding: 36px 20px;
-      color: var(--text-secondary);
-      background: #f8f9fa;
-      border-top: 2px solid var(--border);
     }
 
-    @media (max-width: 768px) {
-      #airplane-cursor { display: none !important; }
-      .smoke-trail { display: none !important; }
-      body { cursor: auto !important; }
-      a, button, input, textarea, select { cursor: pointer !important; }
-
-      .nav-inner { padding: 8px 14px; gap: 8px; flex-direction: column; }
-      .nav-links { gap: 4px; width: 100%; }
-      section { padding: 80px 4vw 70px; }
-      .hero-contact { grid-template-columns: 1fr; }
-      .chip-btn { width: 100%; justify-content: center; }
-      .skills-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 16px; }
-      .edu-grid { grid-template-columns: 1fr; }
-      .cert-grid { grid-template-columns: 1fr; }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
     }
 
-    @media (min-width: 1025px) {
-      .hero-grid { grid-template-columns: 300px 1fr; text-align: left; gap: 60px; }
-      .hero-img-wrap { margin: 0; }
+    .footer-info {
+      margin-bottom: 1.3rem;
+    }
+
+    .footer-info h3 {
+      color: var(--primary-color);
+      margin-bottom: 0.7rem;
+      font-size: 1.3rem;
+      letter-spacing: 0.08em;
+    }
+
+    .contact-info {
+      display: flex;
+      justify-content: center;
+      gap: 1.3rem;
+      flex-wrap: wrap;
+      margin: 0.9rem 0;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.8rem;
+    }
+
+    /* Removed social links as requested */
+
+    footer p {
+      font-size: 0.78rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .nav-links {
+        position: fixed;
+        left: -100%;
+        top: 60px;
+        flex-direction: column;
+        background: #ffffff;
+        width: 100%;
+        text-align: center;
+        transition: 0.3s;
+        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+        padding: 1.6rem 2rem;
+      }
+
+      .nav-links.active {
+        left: 0;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero-content,
+      .about-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2rem;
+      }
+
+      .hero {
+        padding-top: 90px;
+      }
+
+      .timeline::before {
+        left: 0;
+        transform: none;
+      }
+
+      .timeline-content {
+        width: 100%;
+        margin-left: 1.6rem !important;
+      }
+
+      .timeline-dot {
+        left: 0;
+        transform: translateX(-50%);
+      }
+    }
+
+    @media (max-width: 600px) {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .hero-text h1 {
+        font-size: 1.8rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+      }
+
+      .modal-content {
+          width: 95%;
+      }
     }
   </style>
 </head>
 <body>
-  <!-- AIRPLANE CURSOR -->
-  <div id="airplane-cursor">
-    <img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/cf1ae6b9-a241-4ff8-93ca-8c654adb6c46" alt="airplane" draggable="false">
-  </div>
+  <!-- Header -->
+  <header>
+    <nav>
+      <div class="logo">RAJAT RAI</div>
+      <ul class="nav-links" id="navLinks">
+        <!-- removed Home link -->
+        <li><a href="#about">ABOUT</a></li>
+        <li><a href="#services">EXPOSURE</a></li>
+        <li><a href="#portfolio">CERTIFICATES</a></li>
+        <li><a href="#testimonials">EXPERIENCE</a></li>
+        <li><a href="#contact">CONTACT</a></li>
+      </ul>
+      <div class="menu-toggle" id="menuToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </nav>
+  </header>
 
-  <!-- NAVBAR -->
-  <nav>
-    <div class="nav-inner">
-      <div class="nav-brand">Rajat Kumar Rai</div>
-      <div class="nav-links">
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <div class="hero-text">
+        <h1>HELLO<br />I AM <span>RAJAT KUMAR RAI</span></h1>
+        <div class="typewriter-container">
+          <span class="typewriter" id="typewriter1"></span><span class="cursor"></span>
+        </div>
+        <div class="typewriter-container">
+          <span class="typewriter" id="typewriter2"></span><span class="cursor"></span>
+        </div>
+        <p>
+          12+ Years of expertise in logistics, freight forwarding, pricing, and
+          supply chain management.
+        </p>
+        <div class="cta-buttons">
+          <a href="#about" class="btn btn-primary">ABOUT ME</a>
+          <a href="#contact" class="btn btn-secondary">HIRE ME</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img
+          src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/profile.jpg"
+          alt="Rajat Kumar Rai Profile"
+        />
       </div>
     </div>
-  </nav>
+  </section>
 
-  <main>
-    <section id="hero">
-      <div class="section-content">
-        <div class="hero-grid">
-          <div class="hero-img-wrap" id="heroImage">
-            <img src="image.jpg" alt="Rajat Kumar Rai">
+  <!-- About Section -->
+  <section id="about">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>LET'S INTRODUCE ABOUT MYSELF</h2>
+      <div class="about-content">
+        <div class="about-text">
+          <p>
+            Experienced logistics and freight forwarding professional with 12+
+            years of hands-on expertise in pricing, sales support, customer care
+            and documentation across shipping lines and freight-forwarding.
+          </p>
+          <p>
+            Adept at building and maintaining relationships with clients,
+            carriers, and vendors, ensuring clear communication and timely
+            updates throughout the process. Skilled at negotiating carrier rates
+            &amp; managing costs.
+          </p>
+          <p>
+            Focused on delivering efficient, cost-effective solutions that
+            contribute to business growth. Committed to process improvement,
+            regularly reviewing and optimizing existing workflows to enhance
+            efficiency.
+          </p>
+        </div>
+        <div class="about-stats">
+          <div class="stat-box">
+            <div class="stat-number">12+</div>
+            <div class="stat-label">Years Experience</div>
           </div>
-          <div class="hero-text">
-            <div class="section-top-line"></div>
-            <h1>Rajat Kumar <span>Rai</span></h1>
-            <div class="hero-role-container"><span id="typewriter1"></span><span class="type-cursor"></span></div>
-            <div class="hero-desc-container">Logistics & Freight Forwarding Professional<br><span id="typewriter2"></span><span class="type-cursor"></span></div>
-            <div class="hero-contact">
-              <button class="chip-btn locked" onclick="requestPassword('cv')"><span>⬇️</span> Download CV</button>
-              <a class="chip-btn" href="https://www.linkedin.com/in/rajat-r-438ba9306/" target="_blank"><span>in</span> LinkedIn</a>
-              <button class="chip-btn locked" onclick="requestPassword('email')"><span>✉️</span> Gmail</button>
-              <button class="chip-btn locked" onclick="requestPassword('call')"><span>📞</span> Call</button>
-              <button class="chip-btn locked" onclick="requestPassword('whatsapp')"><span>💬</span> WhatsApp</button>
-            </div>
+          <div class="stat-box">
+            <div class="stat-number">10+</div>
+            <div class="stat-label">Certifications</div>
           </div>
+          <!-- Removed 8 Core Competencies and 17+ Shipping Lines as requested -->
         </div>
       </div>
-    </section>
-
-    <section id="about">
-      <div class="section-content">
-        <div class="section-top-line"></div>
-        <h2>About Me</h2>
-        <div class="about-grid">
-          <div class="about-text">
-            <p>Experienced logistics and freight forwarding professional with 12+ years across pricing, sales, documentation and customer service for leading shipping lines, NVOCC and freight forwarders.</p>
-            <p>Proven ability to design competitive pricing models, manage end-to-end trade lane operations and execute complex tenders and reverse auctions, particularly on USA trade lanes.</p>
-            <p>Strong at building long-term customer relationships, coordinating multi-stakeholder teams and maintaining regulatory and trade compliance while optimising margins and service performance.</p>
-            <div class="about-tag-row">
-              <div class="mini-tag">Pricing Strategy</div>
-              <div class="mini-tag">Trade Lane Management</div>
-              <div class="mini-tag">Documentation</div>
-              <div class="mini-tag">Customer Service</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills">
-      <div class="section-content">
-        <div class="section-top-line"></div>
-        <h2>Skills & Strengths</h2>
-        <div class="skills-grid">
-          <div class="skill-card"><div class="skill-label">Pricing</div><div class="skill-percent">95%</div></div>
-          <div class="skill-card"><div class="skill-label">Trade Compliance</div><div class="skill-percent">88%</div></div>
-          <div class="skill-card"><div class="skill-label">Sales Development</div><div class="skill-percent">90%</div></div>
-          <div class="skill-card"><div class="skill-label">Client Relations</div><div class="skill-percent">93%</div></div>
-          <div class="skill-card"><div class="skill-label">Documentation</div><div class="skill-percent">89%</div></div>
-          <div class="skill-card"><div class="skill-label">Supply Chain</div><div class="skill-percent">84%</div></div>
-          <div class="skill-card"><div class="skill-label">Team Collaboration</div><div class="skill-percent">89%</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="experience">
-      <div class="section-content">
-        <div class="section-top-line"></div>
-        <h2>Professional Experience</h2>
-        <div class="ticker-shell">
-          <div class="ticker-track">
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/792f81a9-7a75-4348-9079-8c9837cd6815" alt="Atlas"><span>Atlas Group</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5573f0b9-1d58-4264-906c-0e33f3ae1abc" alt="Nedlloyd"><span>Nedlloyd</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dc0ee8e2-2428-4a29-a280-8cb1cd11a2c3" alt="SYB"><span>SYB</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/0e958750-a0a9-449f-894c-587435fc8926" alt="Orchid"><span>Orchid</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/18247" alt="HMM"><span>HMM</span></div>
-
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/792f81a9-7a75-4348-9079-8c9837cd6815" alt="Atlas"><span>Atlas Group</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/5573f0b9-1d58-4264-906c-0e33f3ae1abc" alt="Nedlloyd"><span>Nedlloyd</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/dc0ee8e2-2428-4a29-a280-8cb1cd11a2c3" alt="SYB"><span>SYB</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/0e958750-a0a9-449f-894c-587435fc8926" alt="Orchid"><span>Orchid</span></div>
-            <div class="logo-pill"><img src="https://agi-prod-file-upload-public-main-use1.s3.amazonaws.com/18247" alt="HMM"><span>HMM</span></div>
-          </div>
-        </div>
-        <div class="exp-timeline">
-          <div class="exp-line"></div>
-          <div class="exp-item"><div class="exp-dot"></div><div class="exp-card"><div class="exp-role-line">Assistant Manager – Pricing</div><div class="exp-meta">Atlas Group · Jan 2025 – Present</div><div class="exp-desc">Handling USA trade lane pricing, contract management and reverse auctions; driving competitive bids and margin optimisation.</div></div></div>
-          <div class="exp-item"><div class="exp-dot"></div><div class="exp-card"><div class="exp-role-line">Pricing</div><div class="exp-meta">Nedlloyd Logistics · Mar 2024 – Jan 2025</div><div class="exp-desc">Managed rate negotiation and pricing support for multiple lanes, aligning customer needs with carrier offerings.</div></div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="education">
-      <div class="section-content">
-        <div class="section-top-line"></div>
-        <h2>Education</h2>
-        <div class="edu-grid">
-          <div class="edu-card"><div class="edu-headline">MBA – Marketing & IT</div><div class="edu-meta">Lovely Professional University · 2012 – 2014</div><div class="edu-percent">63%</div></div>
-          <div class="edu-card"><div class="edu-headline">BBA – Business Administration</div><div class="edu-meta">Arya College · 2008 – 2011</div><div class="edu-percent">67%</div></div>
-          <div class="edu-card"><div class="edu-headline">XII – Commerce</div><div class="edu-meta">U.S.P.C. Jain School (C.B.S.E.) · 2007 – 2008</div><div class="edu-percent">73%</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="certifications">
-      <div class="section-content">
-        <div class="section-top-line"></div>
-        <h2>Certifications</h2>
-        <div class="cert-grid">
-          <div class="cert-card" onclick="openCertModal('Six-Sigma-Black-Belt.jpg')"><div class="cert-title">Six Sigma Black Belt</div><div class="cert-provider">LinkedIn Learning</div></div>
-          <div class="cert-card" onclick="openCertModal('Strategic-Negotiation.jpg')"><div class="cert-title">Strategic Negotiation</div><div class="cert-provider">LinkedIn Learning</div></div>
-          <div class="cert-card" onclick="openCertModal('Executive-Leadership.jpg')"><div class="cert-title">Executive Leadership</div><div class="cert-provider">LinkedIn Learning</div></div>
-          <div class="cert-card" onclick="openCertModal('Key-Account-Management.jpg')"><div class="cert-title">Key Account Management</div><div class="cert-provider">LinkedIn Learning</div></div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="section-content">
-        <div class="section-top-line"></div>
-        <h2>Contact Me</h2>
-        <div style="text-align:center;padding:50px 20px;" id="contactLocked">
-          <p style="font-size:clamp(0.9rem,2.5vw,1.1rem);color:var(--text-secondary);margin-bottom:28px;">🔒 Contact information is protected</p>
-          <button class="chip-btn primary" onclick="requestPassword('contact')">Unlock Contact</button>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>&copy; 2025 Rajat Kumar Rai. Professional Portfolio.</footer>
-
-  <div class="password-modal" id="passwordModal">
-    <div class="password-box">
-      <h3>🔒 Enter Password</h3>
-      <input type="password" id="passwordInput" placeholder="Enter password" autocomplete="off">
-      <div class="password-error" id="passwordError">Incorrect password. Try again.</div>
-      <button onclick="verifyPassword()">Unlock</button>
     </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section id="skills">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>Skills &amp; Strengths</h2>
+      <div class="skills-grid">
+        <div class="skill-card" style="--progress: 95%">
+          <div class="skill-label">Pricing &amp; Negotiation</div>
+          <div class="skill-percent">95%</div>
+        </div>
+        <div class="skill-card" style="--progress: 88%">
+          <div class="skill-label">Trade Compliance</div>
+          <div class="skill-percent">88%</div>
+        </div>
+        <div class="skill-card" style="--progress: 90%">
+          <div class="skill-label">Sales Development</div>
+          <div class="skill-percent">90%</div>
+        </div>
+        <div class="skill-card" style="--progress: 93%">
+          <div class="skill-label">Client Relations</div>
+          <div class="skill-percent">93%</div>
+        </div>
+        <div class="skill-card" style="--progress: 83%">
+          <div class="skill-label">Market Research</div>
+          <div class="skill-percent">83%</div>
+        </div>
+        <div class="skill-card" style="--progress: 89%">
+          <div class="skill-label">Team Collaboration</div>
+          <div class="skill-percent">89%</div>
+        </div>
+        <div class="skill-card" style="--progress: 89%">
+          <div class="skill-label">Documentation Mgmt</div>
+          <div class="skill-percent">89%</div>
+        </div>
+        <div class="skill-card" style="--progress: 84%">
+          <div class="skill-label">Supply Chain Ops</div>
+          <div class="skill-percent">84%</div>
+        </div>
+        <div class="skill-card" style="--progress: 90%">
+          <div class="skill-label">Customer Service</div>
+          <div class="skill-percent">90%</div>
+        </div>
+        <div class="skill-card" style="--progress: 86%">
+          <div class="skill-label">Tender Management</div>
+          <div class="skill-percent">86%</div>
+        </div>
+        <div class="skill-card" style="--progress: 87%">
+          <div class="skill-label">Trade Lane Planning</div>
+          <div class="skill-percent">87%</div>
+        </div>
+        <div class="skill-card" style="--progress: 88%">
+          <div class="skill-label">Stakeholder Coordination</div>
+          <div class="skill-percent">88%</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Experience Ticker Section -->
+  <section id="experience-ticker">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>Organization Experience</h2>
+      <div class="ticker-shell">
+        <div class="ticker-track">
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ATLAS.jpg" alt="Atlas" />
+            <span>Atlas Group</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/NEDLLOYD.jpg" alt="Nedlloyd" />
+            <span>Nedlloyd</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/SYB.jpg" alt="SYB" />
+            <span>SYB</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ORCHID.jpg" alt="Orchid" />
+            <span>Orchid</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HMM.jpg" alt="HMM" />
+            <span>HMM</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HSUD.jpg" alt="Hamburg Sud" />
+            <span>Hamburg Süd</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CEEKAY.jpg" alt="Ceekay" />
+            <span>Ceekay</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DAL.jpg" alt="DAL" />
+            <span>DAL</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/TSLINES.jpg" alt="TS Lines" />
+            <span>T.S. Lines</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ESL.jpg" alt="ESL" />
+            <span>Ethiopian S&amp;L</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CHINASHIPPING.jpg" alt="China" />
+            <span>China Shipping</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HEUNG-A.jpg" alt="Heung-A" />
+            <span>Heung-A</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/LMT.jpg" alt="LMT" />
+            <span>LMT</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DELMAS.jpg" alt="Delmas" />
+            <span>Delmas SAS</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/STX.jpg" alt="STX" />
+            <span>STX Ocean</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/MSC.jpg" alt="MSC" />
+            <span>MSC</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/qnl-milaha.png" alt="QNL" />
+            <span>QNL Milaha</span>
+          </div>
+
+          <!-- Duplicate for seamless loop -->
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ATLAS.jpg" alt="Atlas" />
+            <span>Atlas Group</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/NEDLLOYD.jpg" alt="Nedlloyd" />
+            <span>Nedlloyd</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/SYB.jpg" alt="SYB" />
+            <span>SYB</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ORCHID.jpg" alt="Orchid" />
+            <span>Orchid</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HMM.jpg" alt="HMM" />
+            <span>HMM</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HSUD.jpg" alt="Hamburg Sud" />
+            <span>Hamburg Süd</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CEEKAY.jpg" alt="Ceekay" />
+            <span>Ceekay</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DAL.jpg" alt="DAL" />
+            <span>DAL</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/TSLINES.jpg" alt="TS Lines" />
+            <span>T.S. Lines</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ESL.jpg" alt="ESL" />
+            <span>Ethiopian S&amp;L</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CHINASHIPPING.jpg" alt="China" />
+            <span>China Shipping</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HEUNG-A.jpg" alt="Heung-A" />
+            <span>Heung-A</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/LMT.jpg" alt="LMT" />
+            <span>LMT</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DELMAS.jpg" alt="Delmas" />
+            <span>Delmas SAS</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/STX.jpg" alt="STX" />
+            <span>STX Ocean</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/MSC.jpg" alt="MSC" />
+            <span>MSC</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/qnl-milaha.png" alt="QNL" />
+            <span>QNL Milaha</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Professional Experience Timeline -->
+  <section id="testimonials">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>Professional Experience Timeline</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>ATLAS GROUP, NOIDA</h3>
+            <h4>Assistant Manager Pricing</h4>
+            <div class="timeline-date">Jan 2025 - Present</div>
+            <p>
+              Handling USA Trade Lane Pricing and Contract Managements and
+              Reverse Auctions.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>NEDLLOYD LOGISTICS, LUDHIANA/DELHI</h3>
+            <h4>Pricing</h4>
+            <div class="timeline-date">Mar 2024 - Jan 2025</div>
+            <p>Rate management and negotiation for freight forwarding operations.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>SYB INTERNATIONAL, LUDHIANA</h3>
+            <h4>Manager - Documentation &amp; Customer Service</h4>
+            <div class="timeline-date">Nov 2021 - Mar 2024</div>
+            <p>
+              Export Documentation and Customer Service plus Administration,
+              managing end-to-end export processes and customer satisfaction.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>ORCHID SHIPPING, LUDHIANA</h3>
+            <h4>Sales Coordinator &amp; Team Lead</h4>
+            <div class="timeline-date">Sep 2020 - Nov 2021</div>
+            <p>
+              Managed team performance and rate management for USA/SAWC and
+              third-country shipments.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>SAMSARA GROUP, MORADABAD</h3>
+            <h4>Senior Executive - Customer Service</h4>
+            <div class="timeline-date">Apr 2019 - Nov 2019</div>
+            <p>
+              Managed MSC customer service for USA, liner operations, and vessel
+              planning for export sectors ex-Moradabad.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>PAREKH GROUP, LUDHIANA</h3>
+            <h4>Senior Executive - Sales &amp; Customer Service</h4>
+            <div class="timeline-date">Nov 2016 - Mar 2019</div>
+            <p>
+              Performed export sales and customer service for Hamburg Sud, STX
+              Pan Ocean, HMM, Ceekay (Gulf) and LMT (Gulf) lines.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>SAMSARA GROUP, LUDHIANA</h3>
+            <h4>Senior Executive - Documentation &amp; Customer Service</h4>
+            <div class="timeline-date">Oct 2014 - Nov 2016</div>
+            <p>
+              Handled documentation, customer service and sales support for T.S.
+              Lines, Ethiopian Shipping Lines, DAL, Times Chartering, China
+              Shipping and QNL.
+            </p>
+          </div>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <h3>PAREKH GROUP, LUDHIANA</h3>
+            <h4>Executive - Documentation &amp; Customer Service</h4>
+            <div class="timeline-date">Jul 2011 - Oct 2014</div>
+            <p>
+              Managed exports, imports and customer service for Hamburg Sud, STX
+              Pan Ocean, HMM, Ceekay (Gulf) and LMT (Gulf) lines, previously
+              serving Delmas SAS.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Exposure Section -->
+  <section id="services">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>Knowledge Exposure</h2>
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">📊</div>
+          <h3>Pricing &amp; Negotiation</h3>
+          <p>
+            Expert in rate management, contract negotiations, and reverse
+            auctions across multiple trade lanes including USA, SAWC, and third
+            countries.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">📋</div>
+          <h3>Documentation Management</h3>
+          <p>
+            Comprehensive export/import documentation handling, customs
+            compliance, and shipping coordination for major shipping lines.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>Sales &amp; Customer Relations</h3>
+          <p>
+            Proven track record in sales development, customer service
+            excellence, and building long-term relationships with clients and
+            carriers.
+          </p>
+        </div>
+        <div class="service-card">
+          <div class="service-icon">⚡</div>
+          <h3>Supply Chain Operations</h3>
+          <p>
+            End-to-end supply chain management, liner operations, vessel
+            planning, and logistics coordination for global trade.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications Section -->
+  <section id="portfolio">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>Certifications &amp; Courses</h2>
+      <div class="portfolio-grid">
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Six-Sigma-Black-Belt.jpg" alt="Six Sigma" />
+          <div class="portfolio-info">
+            <h3>Six Sigma: Black Belt</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Strategic-Negotiation.jpg" alt="Strategic Negotiation" />
+          <div class="portfolio-info">
+            <h3>Strategic Negotiation</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Negotiation-Foundations.jpg" alt="Negotiation Foundations" />
+          <div class="portfolio-info">
+            <h3>Negotiation Foundations</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Executive-Leadership.jpg" alt="Executive Leadership" />
+          <div class="portfolio-info">
+            <h3>Executive Leadership</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Business-Communications-Write-Speak-and-Lead-Effectively.jpg" alt="Business Communications" />
+          <div class="portfolio-info">
+            <h3>Business Communications</h3>
+            <p>EDUTA</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Business-Acumen-Build-Strategic-and-Financial-Skills.jpg" alt="Business Acumen" />
+          <div class="portfolio-info">
+            <h3>Business Acumen</h3>
+            <p>EDUTA</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Mind-Controlling-Program-1.jpg" alt="Stock Trading Level 1" />
+          <div class="portfolio-info">
+            <h3>Stock Market Trading Level-1</h3>
+            <p>NIFM</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Mind-Controlling-Program-2.jpg" alt="Stock Trading Level 2" />
+          <div class="portfolio-info">
+            <h3>Share Market Trading Level-2</h3>
+            <p>NIFM</p>
+          </div>
+        </div>
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Public-Speaking-Foundations.jpg" alt="Public Speaking" />
+          <div class="portfolio-info">
+            <h3>Public Speaking Foundations</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Image Modal -->
+  <div id="myModal" class="modal">
+      <span class="close" onclick="closeModal()">&times;</span>
+      <img class="modal-content" id="img01">
   </div>
 
-  <div class="cert-modal" id="certModal" onclick="closeCertModal()">
-    <div class="cert-modal-content" onclick="event.stopPropagation()">
-      <button class="cert-modal-close" onclick="closeCertModal()">&times;</button>
-      <img id="certModalImg" src="" alt="Certificate">
+  <!-- Footer / Contact -->
+  <footer id="contact">
+    <div class="footer-content">
+      <div class="footer-info">
+        <h3 class="logo">RAJAT RAI</h3>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📧</span>
+            <span>rajatkumarrai.rai@gmail.com</span>
+          </div>
+          <div class="contact-item">
+            <span>📞</span>
+            <span>+91 9877982622</span>
+          </div>
+        </div>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span>📍</span>
+            <span>Govindpuri, Kalkaji, New Delhi, 110019</span>
+          </div>
+        </div>
+      </div>
+      <p>&copy; 2025 Rajat Kumar Rai. All Rights Reserved.</p>
     </div>
-  </div>
+  </footer>
 
   <script>
-    // ========================================
-    //  AIRPLANE CURSOR WITH PURE SMOKE TRAIL
-    // ========================================
-    
-    const airplaneCursor = document.getElementById('airplane-cursor');
-    
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    let cursorX = mouseX;
-    let cursorY = mouseY;
-    
-    let lastX = mouseX;
-    let lastY = mouseY;
-    let velocityX = 0;
-    let velocityY = 0;
-    let speed = 0;
-    
-    let targetAngle = 0;
-    let currentAngle = 0;
-    
-    const FOLLOW_SPEED = 0.15;
-    const ROTATION_SPEED = 0.1;
-    const VELOCITY_SMOOTHING = 0.15;
-    const SMOKE_INTERVAL = 4;
-    const MIN_SPEED_FOR_SMOKE = 1;
-    
-    let frameCounter = 0;
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
 
-    document.addEventListener('mousemove', (e) => {
-      mouseX = e.clientX;
-      mouseY = e.clientY;
+    // Close menu when clicking a link
+    document.querySelectorAll(".nav-links a").forEach((link) => {
+      link.addEventListener("click", () => navLinks.classList.remove("active"));
     });
 
-    function getTailPosition(x, y, angle) {
-      const tailDistance = 25;
-      const angleRad = (angle + 90) * (Math.PI / 180);
-      const tailX = x - Math.cos(angleRad) * tailDistance;
-      const tailY = y - Math.sin(angleRad) * tailDistance;
-      return { x: tailX, y: tailY };
-    }
+    // Smooth scrolling
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+      anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute("href"));
+        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+    });
 
-    function createSmokeTrail(tailX, tailY) {
-      const smoke = document.createElement('div');
-      smoke.className = 'smoke-trail';
-      
-      const size = 8 + Math.random() * 5;
-      smoke.style.width = size + 'px';
-      smoke.style.height = size + 'px';
-      
-      smoke.style.left = (tailX - size / 2) + 'px';
-      smoke.style.top = (tailY - size / 2) + 'px';
-      
-      const gradient = `radial-gradient(circle at 35% 35%, rgba(100, 150, 255, 0.8) 0%, rgba(76, 129, 255, 0.5) 30%, rgba(76, 129, 255, 0.2) 70%, transparent 100%)`;
-      smoke.style.background = gradient;
-      
-      document.body.appendChild(smoke);
-      
-      setTimeout(() => smoke.remove(), 1500);
-    }
+    // Section scroll animation
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll("section").forEach((section) => observer.observe(section));
 
-    function animateCursor() {
-      const rawVelocityX = mouseX - lastX;
-      const rawVelocityY = mouseY - lastY;
-      
-      velocityX += (rawVelocityX - velocityX) * VELOCITY_SMOOTHING;
-      velocityY += (rawVelocityY - velocityY) * VELOCITY_SMOOTHING;
-      
-      speed = Math.sqrt(velocityX * velocityX + velocityY * velocityY);
-      
-      const deltaX = mouseX - cursorX;
-      const deltaY = mouseY - cursorY;
-      
-      cursorX += deltaX * FOLLOW_SPEED;
-      cursorY += deltaY * FOLLOW_SPEED;
-      
-      if (speed > 0.5) {
-        targetAngle = Math.atan2(velocityY, velocityX) * (180 / Math.PI);
-      }
-      
-      let angleDiff = targetAngle - currentAngle;
-      while (angleDiff > 180) angleDiff -= 360;
-      while (angleDiff < -180) angleDiff += 360;
-      
-      currentAngle += angleDiff * ROTATION_SPEED;
-      
-      airplaneCursor.style.transform = `translate(${cursorX}px, ${cursorY}px) rotate(${currentAngle + 90}deg) translate(-50%, -50%)`;
-      
-      frameCounter++;
-      if (speed > MIN_SPEED_FOR_SMOKE && frameCounter % SMOKE_INTERVAL === 0) {
-        const tail = getTailPosition(cursorX, cursorY, currentAngle);
-        createSmokeTrail(tail.x, tail.y);
-      }
-      
-      lastX = cursorX;
-      lastY = cursorY;
-      
-      requestAnimationFrame(animateCursor);
-    }
-
-    animateCursor();
-
-    document.addEventListener('mouseenter', () => { airplaneCursor.style.opacity = '1'; });
-    document.addEventListener('mouseleave', () => { airplaneCursor.style.opacity = '0'; });
-
-    // ========================================
-    //  PASSWORD & TYPEWRITER
-    // ========================================
-
-    let passwordAction = '';
-    const correctPassword = 'open';
-    let isUnlocked = false;
-
-    function requestPassword(action) {
-      if (isUnlocked) { executeAction(action); return; }
-      passwordAction = action;
-      document.getElementById('passwordModal').classList.add('show');
-      document.getElementById('passwordInput').value = '';
-      document.getElementById('passwordError').style.display = 'none';
-      document.getElementById('passwordInput').focus();
-    }
-
-    function verifyPassword() {
-      const input = document.getElementById('passwordInput').value;
-      if (input === correctPassword) {
-        isUnlocked = true;
-        document.getElementById('passwordModal').classList.remove('show');
-        document.querySelectorAll('.locked').forEach(el => el.classList.remove('locked'));
-        executeAction(passwordAction);
-      } else {
-        document.getElementById('passwordError').style.display = 'block';
-      }
-    }
-
-    function executeAction(action) {
-      const phone = atob('OTg3Nzk4MjYyMg==');
-      const email = atob('cmFqYXRrdW1hcnJhaS5yYWlAZ21haWwuY29t');
-      if (action === 'cv') window.location.href = 'Rajat-Kumar-Rai-Resume.docx';
-      if (action === 'email') window.location.href = `mailto:${email}`;
-      if (action === 'call') window.location.href = `tel:+91${phone}`;
-      if (action === 'whatsapp') window.open(`https://wa.me/91${phone}`, '_blank');
-    }
-
+    // Typewriter
     class TypeWriter {
-      constructor(el, words, wait = 3000) {
-        this.el = el;
+      constructor(element, words, delay = 2000) {
+        this.element = element;
         this.words = words;
-        this.txt = '';
+        this.delay = delay;
         this.wordIndex = 0;
-        this.wait = wait;
+        this.charIndex = 0;
         this.isDeleting = false;
         this.type();
       }
       type() {
-        const current = this.wordIndex % this.words.length;
-        const fullTxt = this.words[current];
-        this.txt = this.isDeleting ? fullTxt.substring(0, this.txt.length - 1) : fullTxt.substring(0, this.txt.length + 1);
-        this.el.innerHTML = this.txt;
-        let speed = 80;
-        if (this.isDeleting) speed /= 2;
-        if (!this.isDeleting && this.txt === fullTxt) {
-          speed = this.wait;
-          this.isDeleting = true;
-        } else if (this.isDeleting && this.txt === '') {
-          this.isDeleting = false;
-          this.wordIndex++;
-          speed = 300;
+        const currentWord = this.words[this.wordIndex];
+        if (this.isDeleting) {
+          this.element.textContent = currentWord.substring(0, this.charIndex - 1);
+          this.charIndex--;
+        } else {
+          this.element.textContent = currentWord.substring(0, this.charIndex + 1);
+          this.charIndex++;
         }
-        setTimeout(() => this.type(), speed);
+
+        let typeSpeed = this.isDeleting ? 50 : 100;
+
+        if (!this.isDeleting && this.charIndex === currentWord.length) {
+          typeSpeed = this.delay;
+          this.isDeleting = true;
+        } else if (this.isDeleting && this.charIndex === 0) {
+          this.isDeleting = false;
+          this.wordIndex = (this.wordIndex + 1) % this.words.length;
+          typeSpeed = 500;
+        }
+
+        setTimeout(() => this.type(), typeSpeed);
       }
     }
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) entry.target.classList.add('visible');
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-    document.addEventListener('DOMContentLoaded', () => {
-      new TypeWriter(document.getElementById('typewriter1'), ["Logistics", "Freight Forwarding", "Shipping"], 2000);
-      new TypeWriter(document.getElementById('typewriter2'), ["Pricing", "Documentation", "Sales", "Customer Service"], 1500);
-      document.getElementById('passwordInput').addEventListener('keypress', (e) => { if (e.key === 'Enter') verifyPassword(); });
+    document.addEventListener("DOMContentLoaded", () => {
+      new TypeWriter(
+        document.getElementById("typewriter1"),
+        ["Logistics", "Freight Forwarding", "Shipping"],
+        2000
+      );
+      new TypeWriter(
+        document.getElementById("typewriter2"),
+        ["Pricing", "Documentation", "Sales", "Customer Service"],
+        1500
+      );
     });
 
-    function openCertModal(img) { document.getElementById('certModalImg').src = img; document.getElementById('certModal').classList.add('show'); }
-    function closeCertModal() { document.getElementById('certModal').classList.remove('show'); }
+    // Header shadow on scroll
+    window.addEventListener("scroll", () => {
+      const header = document.querySelector("header");
+      header.style.boxShadow =
+        window.scrollY > 100
+          ? "0 5px 20px rgba(0,0,0,0.1)"
+          : "0 2px 10px rgba(0,0,0,0.05)";
+    });
+
+    // Modal Functionality
+    function openModal(element) {
+        const modal = document.getElementById("myModal");
+        const modalImg = document.getElementById("img01");
+        const img = element.querySelector('img');
+
+        modal.style.display = "block";
+        modalImg.src = img.src;
+    }
+
+    function closeModal() {
+        document.getElementById("myModal").style.display = "none";
+    }
+
+    // Close modal when clicking outside the image
+    window.onclick = function(event) {
+        const modal = document.getElementById("myModal");
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
   </script>
 </body>
 </html>
