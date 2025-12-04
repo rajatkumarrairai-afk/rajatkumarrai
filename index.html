@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Rajat Kumar Rai - Portfolio</title>
+
   <style>
     * {
       margin: 0;
@@ -21,13 +22,12 @@
     }
 
     body {
-      font-family: Calibri, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont,
-        sans-serif;
-      font-size: 11px; /* Calibri 11 */
-      color: var(--text-dark);
+      font-family: Calibri, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      font-size: 11px;
       line-height: 1.6;
+      color: var(--text-dark);
+      background: #ffffff;
       overflow-x: hidden;
-      background: #ffffff; /* ensure pure white */
     }
 
     /* Header */
@@ -93,13 +93,47 @@
       transition: 0.3s;
     }
 
-    /* Hero Section */
+    /* Sections – reduced spacing */
+    section {
+      padding: 40px 2rem;
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity 0.6s, transform 0.6s;
+      background: #ffffff;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-top-line {
+      width: 50px;
+      height: 3px;
+      background: var(--primary-color);
+      margin: 0 auto 0.7rem;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 1.7rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-dark);
+      letter-spacing: 0.04em;
+    }
+
+    /* Hero */
     .hero {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      background: #ffffff; /* pure white */
-      padding: 100px 2rem 50px;
+      background: #ffffff;
+      padding: 90px 2rem 40px;
     }
 
     .hero-content {
@@ -137,12 +171,12 @@
     }
 
     .cursor {
-        display: inline-block;
-        width: 2px;
-        height: 1.2rem;
-        background-color: var(--primary-color);
-        animation: blink 0.7s infinite;
-        margin-left: 2px;
+      display: inline-block;
+      width: 2px;
+      height: 1.2rem;
+      background-color: var(--primary-color);
+      animation: blink 0.7s infinite;
+      margin-left: 2px;
     }
 
     @keyframes blink {
@@ -159,6 +193,7 @@
     .cta-buttons {
       display: flex;
       gap: 0.9rem;
+      flex-wrap: wrap;
     }
 
     .btn {
@@ -184,17 +219,6 @@
       box-shadow: var(--shadow);
     }
 
-    .btn-secondary {
-      background: transparent;
-      color: var(--primary-color);
-      border: 2px solid var(--primary-color);
-    }
-
-    .btn-secondary:hover {
-      background: var(--primary-color);
-      color: var(--white);
-    }
-
     .hero-image {
       display: flex;
       justify-content: center;
@@ -207,41 +231,6 @@
       max-height: 420px;
       border-radius: 18px;
       box-shadow: var(--shadow);
-      /* no animation, static profile picture */
-    }
-
-    /* Sections */
-    section {
-      padding: 60px 2rem;
-      opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.6s, transform 0.6s;
-      background: #ffffff; /* every section on pure white */
-    }
-
-    section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-content {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .section-top-line {
-      width: 50px;
-      height: 3px;
-      background: var(--primary-color);
-      margin: 0 auto 0.7rem;
-    }
-
-    h2 {
-      text-align: center;
-      font-size: 1.7rem;
-      margin-bottom: 2.2rem;
-      color: var(--text-dark);
-      letter-spacing: 0.04em;
     }
 
     /* About */
@@ -344,48 +333,44 @@
       color: var(--primary-color);
     }
 
-    /* Experience ticker */
+    /* Ticker – organization experience */
     #experience-ticker {
       background: #ffffff;
-      padding-bottom: 20px;
+      padding-bottom: 30px;
     }
 
     .ticker-shell {
-      overflow: hidden;
+      overflow-x: auto;
+      overflow-y: hidden;
       position: relative;
       width: 100%;
-      margin-top: 1.3rem;
-      padding: 20px 0;
+      margin-top: 1.0rem;
+      padding: 10px 0;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+    }
+
+    .ticker-shell::-webkit-scrollbar {
+      display: none;
     }
 
     .ticker-track {
       display: flex;
-      gap: 2.5rem; /* increased gap for bigger items */
-      animation: scroll 30s linear infinite;
-    }
-
-    @keyframes scroll {
-      0% {
-        transform: translateX(0);
-      }
-      100% {
-        transform: translateX(-50%);
-      }
+      gap: 2.5rem;
+      padding: 10px 0;
+      min-width: max-content;
     }
 
     .logo-pill {
       display: flex;
-      flex-direction: column; /* logo above text */
+      flex-direction: column;
       align-items: center;
       gap: 0.5rem;
       background: #ffffff;
-      padding: 1rem 1.5rem; /* slightly bigger padding */
-      /* border-radius removed or kept minimal if preferred, removing pill shape for simpler look or keep but no shadow */
+      padding: 1rem 1.5rem;
       border-radius: 10px;
+      border: 1px solid #eee;
       white-space: nowrap;
-      /* No shadow as requested */
-      box-shadow: none;
-      border: 1px solid #eee; /* optional light border to define area without shadow */
       min-width: 120px;
       transition: transform 0.3s;
     }
@@ -395,7 +380,7 @@
     }
 
     .logo-pill img {
-      width: 40px; /* Bigger logo */
+      width: 40px;
       height: 40px;
       object-fit: contain;
     }
@@ -403,10 +388,34 @@
     .logo-pill span {
       font-weight: 600;
       color: var(--text-dark);
-      font-size: 0.9rem; /* Slightly bigger text */
+      font-size: 0.9rem;
     }
 
-    /* Knowledge Exposure */
+    .ticker-controls {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.8rem;
+      margin-top: 0.5rem;
+    }
+
+    .ticker-btn {
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      border: 1px solid var(--primary-color);
+      background: #ffffff;
+      color: var(--primary-color);
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .ticker-btn:hover {
+      background: var(--primary-color);
+      color: #ffffff;
+    }
+
+    /* Knowledge Exposure (services) */
     #services {
       background: #ffffff;
     }
@@ -419,7 +428,7 @@
 
     .service-card {
       background: #ffffff;
-      padding: 1.7rem;
+      padding: 1.4rem;
       border-radius: 14px;
       text-align: center;
       transition: all 0.3s;
@@ -441,7 +450,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.3rem;
-      color: var(--white);
+      color: #ffffff;
     }
 
     .service-card h3 {
@@ -455,7 +464,7 @@
       font-size: 0.8rem;
     }
 
-    /* Certifications */
+    /* Certifications / Portfolio */
     #portfolio {
       background: #ffffff;
     }
@@ -503,51 +512,51 @@
       font-size: 0.78rem;
     }
 
-    /* Modal for Certificate Pop-out */
+    /* Modal for certificates */
     .modal {
-        display: none;
-        position: fixed;
-        z-index: 2000;
-        padding-top: 50px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0,0,0,0.8);
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      padding-top: 50px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
     }
 
     .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 700px; /* Fixed size for readability */
-        max-height: 80vh;
-        object-fit: contain;
-        background: white;
-        padding: 10px;
-        border-radius: 8px;
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+      max-height: 80vh;
+      object-fit: contain;
+      background: #ffffff;
+      padding: 10px;
+      border-radius: 8px;
     }
 
     .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #f1f1f1;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        cursor: pointer;
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
     }
 
     .close:hover,
     .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
     }
 
-    /* Timeline */
+    /* Timeline (experience) */
     #testimonials {
       background: #ffffff;
     }
@@ -625,49 +634,56 @@
       box-shadow: 0 0 0 3px #ffffff;
     }
 
-    /* Footer */
+    /* Footer – compact one-line with Top button */
     footer {
       background: var(--text-dark);
-      color: var(--white);
-      padding: 2.3rem 2rem;
-      text-align: center;
+      color: #ffffff;
+      padding: 0.8rem 2rem;
     }
 
     .footer-content {
       max-width: 1200px;
       margin: 0 auto;
-    }
-
-    .footer-info {
-      margin-bottom: 1.3rem;
-    }
-
-    .footer-info h3 {
-      color: var(--primary-color);
-      margin-bottom: 0.7rem;
-      font-size: 1.3rem;
-      letter-spacing: 0.08em;
-    }
-
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 1.3rem;
-      flex-wrap: wrap;
-      margin: 0.9rem 0;
-    }
-
-    .contact-item {
       display: flex;
       align-items: center;
-      gap: 0.4rem;
+      justify-content: space-between;
+      gap: 0.8rem;
+      flex-wrap: wrap;
       font-size: 0.8rem;
     }
 
-    /* Removed social links as requested */
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+    }
 
-    footer p {
-      font-size: 0.78rem;
+    .footer-name {
+      color: var(--primary-color);
+      font-weight: 700;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-separator {
+      opacity: 0.6;
+    }
+
+    .btn-to-top {
+      padding: 0.3rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid #ffffff;
+      background: transparent;
+      color: #ffffff;
+      font-size: 0.75rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+    }
+
+    .btn-to-top:hover {
+      background: #ffffff;
+      color: var(--text-dark);
     }
 
     /* Responsive */
@@ -735,10 +751,6 @@
       .cta-buttons {
         flex-direction: column;
       }
-
-      .modal-content {
-          width: 95%;
-      }
     }
   </style>
 </head>
@@ -748,17 +760,15 @@
     <nav>
       <div class="logo">RAJAT RAI</div>
       <ul class="nav-links" id="navLinks">
-        <!-- removed Home link -->
         <li><a href="#about">ABOUT</a></li>
         <li><a href="#services">EXPOSURE</a></li>
         <li><a href="#portfolio">CERTIFICATES</a></li>
         <li><a href="#testimonials">EXPERIENCE</a></li>
+        <li><a href="#experience-ticker">ORGANIZATIONS</a></li>
         <li><a href="#contact">CONTACT</a></li>
       </ul>
       <div class="menu-toggle" id="menuToggle">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </div>
     </nav>
   </header>
@@ -767,25 +777,30 @@
   <section class="hero" id="home">
     <div class="hero-content">
       <div class="hero-text">
-        <h1>HELLO<br />I AM <span>RAJAT KUMAR RAI</span></h1>
+        <h1>
+          HELLO<br />
+          I AM <span>RAJAT KUMAR RAI</span>
+        </h1>
+
         <div class="typewriter-container">
           <span class="typewriter" id="typewriter1"></span><span class="cursor"></span>
         </div>
         <div class="typewriter-container">
           <span class="typewriter" id="typewriter2"></span><span class="cursor"></span>
         </div>
+
         <p>
-          12+ Years of expertise in logistics, freight forwarding, pricing, and
-          supply chain management.
+          12 years of expertise in logistics, freight forwarding, pricing, and supply chain management.
         </p>
+
         <div class="cta-buttons">
           <a href="#about" class="btn btn-primary">ABOUT ME</a>
-          <a href="#contact" class="btn btn-secondary">HIRE ME</a>
         </div>
       </div>
+
       <div class="hero-image">
         <img
-          src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/profile.jpg"
+          src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/profile.jpg"
           alt="Rajat Kumar Rai Profile"
         />
       </div>
@@ -797,36 +812,33 @@
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>LET'S INTRODUCE ABOUT MYSELF</h2>
+
       <div class="about-content">
         <div class="about-text">
           <p>
-            Experienced logistics and freight forwarding professional with 12+
-            years of hands-on expertise in pricing, sales support, customer care
-            and documentation across shipping lines and freight-forwarding.
+            Experienced logistics and freight forwarding professional with 12+ years of hands-on expertise in pricing,
+            sales support, customer care and documentation across shipping lines and freight-forwarding.
           </p>
           <p>
-            Adept at building and maintaining relationships with clients,
-            carriers, and vendors, ensuring clear communication and timely
-            updates throughout the process. Skilled at negotiating carrier rates
-            &amp; managing costs.
+            Adept at building and maintaining relationships with clients, carriers, and vendors, ensuring clear
+            communication and timely updates throughout the process. Skilled at negotiating carrier rates and managing
+            costs.
           </p>
           <p>
-            Focused on delivering efficient, cost-effective solutions that
-            contribute to business growth. Committed to process improvement,
-            regularly reviewing and optimizing existing workflows to enhance
-            efficiency.
+            Focused on delivering efficient, cost-effective solutions that contribute to business growth. Committed to
+            process improvement, regularly reviewing and optimizing existing workflows to enhance efficiency.
           </p>
         </div>
+
         <div class="about-stats">
           <div class="stat-box">
-            <div class="stat-number">12+</div>
+            <div class="stat-number">12</div>
             <div class="stat-label">Years Experience</div>
           </div>
           <div class="stat-box">
-            <div class="stat-number">10+</div>
+            <div class="stat-number">10</div>
             <div class="stat-label">Certifications</div>
           </div>
-          <!-- Removed 8 Core Competencies and 17+ Shipping Lines as requested -->
         </div>
       </div>
     </div>
@@ -837,214 +849,400 @@
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>Skills &amp; Strengths</h2>
+
       <div class="skills-grid">
         <div class="skill-card" style="--progress: 95%">
           <div class="skill-label">Pricing &amp; Negotiation</div>
           <div class="skill-percent">95%</div>
         </div>
-        <div class="skill-card" style="--progress: 88%">
-          <div class="skill-label">Trade Compliance</div>
-          <div class="skill-percent">88%</div>
-        </div>
+
         <div class="skill-card" style="--progress: 90%">
           <div class="skill-label">Sales Development</div>
           <div class="skill-percent">90%</div>
         </div>
+
         <div class="skill-card" style="--progress: 93%">
           <div class="skill-label">Client Relations</div>
           <div class="skill-percent">93%</div>
         </div>
-        <div class="skill-card" style="--progress: 83%">
-          <div class="skill-label">Market Research</div>
-          <div class="skill-percent">83%</div>
-        </div>
-        <div class="skill-card" style="--progress: 89%">
-          <div class="skill-label">Team Collaboration</div>
-          <div class="skill-percent">89%</div>
-        </div>
-        <div class="skill-card" style="--progress: 89%">
-          <div class="skill-label">Documentation Mgmt</div>
-          <div class="skill-percent">89%</div>
-        </div>
-        <div class="skill-card" style="--progress: 84%">
-          <div class="skill-label">Supply Chain Ops</div>
-          <div class="skill-percent">84%</div>
-        </div>
+
         <div class="skill-card" style="--progress: 90%">
           <div class="skill-label">Customer Service</div>
           <div class="skill-percent">90%</div>
         </div>
+
+        <div class="skill-card" style="--progress: 89%">
+          <div class="skill-label">Team Collaboration</div>
+          <div class="skill-percent">89%</div>
+        </div>
+
+        <div class="skill-card" style="--progress: 89%">
+          <div class="skill-label">Documentation Management</div>
+          <div class="skill-percent">89%</div>
+        </div>
+
         <div class="skill-card" style="--progress: 86%">
           <div class="skill-label">Tender Management</div>
           <div class="skill-percent">86%</div>
         </div>
+
         <div class="skill-card" style="--progress: 87%">
           <div class="skill-label">Trade Lane Planning</div>
           <div class="skill-percent">87%</div>
         </div>
-        <div class="skill-card" style="--progress: 88%">
-          <div class="skill-label">Stakeholder Coordination</div>
-          <div class="skill-percent">88%</div>
-        </div>
+
+        <!-- Removed: Trade Compliance, Market Research, Supply Chain Operations, Stakeholder Coordination -->
       </div>
     </div>
   </section>
 
-  <!-- Experience Ticker Section -->
+  <!-- Organization Experience Ticker -->
   <section id="experience-ticker">
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>Organization Experience</h2>
-      <div class="ticker-shell">
+
+      <div class="ticker-shell" id="tickerShell">
         <div class="ticker-track">
+          <!-- Main sequence -->
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ATLAS.jpg" alt="Atlas" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/ATLAS.jpg" alt="Atlas" />
             <span>Atlas Group</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/NEDLLOYD.jpg" alt="Nedlloyd" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/NEDLLOYD.jpg" alt="Nedlloyd" />
             <span>Nedlloyd</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/SYB.jpg" alt="SYB" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/SYB.jpg" alt="SYB" />
             <span>SYB</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ORCHID.jpg" alt="Orchid" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/ORCHID.jpg" alt="Orchid" />
             <span>Orchid</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HMM.jpg" alt="HMM" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HMM.jpg" alt="HMM" />
             <span>HMM</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HSUD.jpg" alt="Hamburg Sud" />
-            <span>Hamburg Süd</span>
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HSUD.jpg" alt="Hamburg Sud" />
+            <span>Hamburg Sud</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CEEKAY.jpg" alt="Ceekay" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/CEEKAY.jpg" alt="Ceekay" />
             <span>Ceekay</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DAL.jpg" alt="DAL" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/DAL.jpg" alt="DAL" />
             <span>DAL</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/TSLINES.jpg" alt="TS Lines" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/TSLINES.jpg" alt="TS Lines" />
             <span>T.S. Lines</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ESL.jpg" alt="ESL" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/ESL.jpg" alt="ESL" />
             <span>Ethiopian S&amp;L</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CHINASHIPPING.jpg" alt="China" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/CHINASHIPPING.jpg" alt="China Shipping" />
             <span>China Shipping</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HEUNG-A.jpg" alt="Heung-A" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HEUNG-A.jpg" alt="Heung-A" />
             <span>Heung-A</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/LMT.jpg" alt="LMT" />
-            <span>LMT</span>
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/LMT.jpg" alt="LMT" />
+            <span>LMT Gulf</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DELMAS.jpg" alt="Delmas" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/DELMAS.jpg" alt="Delmas" />
             <span>Delmas SAS</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/STX.jpg" alt="STX" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/STX.jpg" alt="STX" />
             <span>STX Ocean</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/MSC.jpg" alt="MSC" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/MSC.jpg" alt="MSC" />
+            <span>MSC</span>
+          </div>
+          <!-- Optional alternate MSC asset -->
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/msc.jpg" alt="MSC" />
             <span>MSC</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/qnl-milaha.png" alt="QNL" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/qnl-milaha.png" alt="QNL" />
             <span>QNL Milaha</span>
+          </div>
+          <!-- Newly added logos -->
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HINDFREIGHT.jpg" alt="Hind Freight" />
+            <span>Hind Freight</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/SINOKOR.jpg" alt="Sinokor" />
+            <span>Sinokor</span>
           </div>
 
-          <!-- Duplicate for seamless loop -->
+          <!-- Duplicate sequence for endless scroll illusion -->
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ATLAS.jpg" alt="Atlas" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/ATLAS.jpg" alt="Atlas" />
             <span>Atlas Group</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/NEDLLOYD.jpg" alt="Nedlloyd" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/NEDLLOYD.jpg" alt="Nedlloyd" />
             <span>Nedlloyd</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/SYB.jpg" alt="SYB" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/SYB.jpg" alt="SYB" />
             <span>SYB</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ORCHID.jpg" alt="Orchid" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/ORCHID.jpg" alt="Orchid" />
             <span>Orchid</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HMM.jpg" alt="HMM" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HMM.jpg" alt="HMM" />
             <span>HMM</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HSUD.jpg" alt="Hamburg Sud" />
-            <span>Hamburg Süd</span>
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HSUD.jpg" alt="Hamburg Sud" />
+            <span>Hamburg Sud</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CEEKAY.jpg" alt="Ceekay" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/CEEKAY.jpg" alt="Ceekay" />
             <span>Ceekay</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DAL.jpg" alt="DAL" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/DAL.jpg" alt="DAL" />
             <span>DAL</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/TSLINES.jpg" alt="TS Lines" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/TSLINES.jpg" alt="TS Lines" />
             <span>T.S. Lines</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/ESL.jpg" alt="ESL" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/ESL.jpg" alt="ESL" />
             <span>Ethiopian S&amp;L</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/CHINASHIPPING.jpg" alt="China" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/CHINASHIPPING.jpg" alt="China Shipping" />
             <span>China Shipping</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/HEUNG-A.jpg" alt="Heung-A" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HEUNG-A.jpg" alt="Heung-A" />
             <span>Heung-A</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/LMT.jpg" alt="LMT" />
-            <span>LMT</span>
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/LMT.jpg" alt="LMT" />
+            <span>LMT Gulf</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/DELMAS.jpg" alt="Delmas" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/DELMAS.jpg" alt="Delmas" />
             <span>Delmas SAS</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/STX.jpg" alt="STX" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/STX.jpg" alt="STX" />
             <span>STX Ocean</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/MSC.jpg" alt="MSC" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/MSC.jpg" alt="MSC" />
             <span>MSC</span>
           </div>
           <div class="logo-pill">
-            <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/qnl-milaha.png" alt="QNL" />
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/qnl-milaha.png" alt="QNL" />
             <span>QNL Milaha</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/HINDFREIGHT.jpg" alt="Hind Freight" />
+            <span>Hind Freight</span>
+          </div>
+          <div class="logo-pill">
+            <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/SINOKOR.jpg" alt="Sinokor" />
+            <span>Sinokor</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="ticker-controls">
+        <button class="ticker-btn" id="tickerPrev">&#8592; Left</button>
+        <span style="font-size:0.8rem;color:var(--text-light);">Scroll organizations</span>
+        <button class="ticker-btn" id="tickerNext">Right &#8594;</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Knowledge Exposure Section -->
+  <section id="services">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>Knowledge Exposure</h2>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon">₹</div>
+          <h3>Pricing &amp; Negotiation</h3>
+          <p>
+            Expert in rate management, contract negotiations, and reverse auctions across multiple trade lanes including
+            USA, SAWC, and third countries.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">📄</div>
+          <h3>Documentation Management</h3>
+          <p>
+            Comprehensive export/import documentation handling, customs compliance, and shipping coordination for major
+            shipping lines.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon">🤝</div>
+          <h3>Sales &amp; Customer Relations</h3>
+          <p>
+            Track record in sales development, customer service excellence, and building long-term relationships with
+            clients and carriers.
+          </p>
+        </div>
+
+        <!-- Supply Chain Operations card removed as requested -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications & Courses -->
+  <section id="portfolio">
+    <div class="section-content">
+      <div class="section-top-line"></div>
+      <h2>Certifications &amp; Courses</h2>
+
+      <div class="portfolio-grid">
+        <!-- Existing certificates -->
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Six-Sigma-Black-Belt.jpg" alt="Six Sigma" />
+          <div class="portfolio-info">
+            <h3>Six Sigma Black Belt</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Strategic-Negotiation.jpg" alt="Strategic Negotiation" />
+          <div class="portfolio-info">
+            <h3>Strategic Negotiation</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Negotiation-Foundations.jpg" alt="Negotiation Foundations" />
+          <div class="portfolio-info">
+            <h3>Negotiation Foundations</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Executive-Leadership.jpg" alt="Executive Leadership" />
+          <div class="portfolio-info">
+            <h3>Executive Leadership</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Business-Communications-Write-Speak-and-Lead-Effectively.jpg" alt="Business Communications" />
+          <div class="portfolio-info">
+            <h3>Business Communications</h3>
+            <p>EDUTAP</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Business-Acumen-Build-Strategic-and-Financial-Skills.jpg" alt="Business Acumen" />
+          <div class="portfolio-info">
+            <h3>Business Acumen</h3>
+            <p>EDUTAP</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Mind-Controlling-Program-1.jpg" alt="Stock Trading Level 1" />
+          <div class="portfolio-info">
+            <h3>Stock Market Trading Level-1</h3>
+            <p>NIFM</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Mind-Controlling-Program-2.jpg" alt="Stock Trading Level 2" />
+          <div class="portfolio-info">
+            <h3>Share Market Trading Level-2</h3>
+            <p>NIFM</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Public-Speaking-Foundations.jpg" alt="Public Speaking Foundations" />
+          <div class="portfolio-info">
+            <h3>Public Speaking Foundations</h3>
+            <p>LinkedIn Learning</p>
+          </div>
+        </div>
+
+        <!-- Additional certificates -->
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Google-Gemini.jpg" alt="Google Gemini" />
+          <div class="portfolio-info">
+            <h3>Google Gemini</h3>
+            <p>Professional certification</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Key-Account-Management.jpg" alt="Key Account Management" />
+          <div class="portfolio-info">
+            <h3>Key Account Management</h3>
+            <p>Professional certification</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Public Speaking.jpg" alt="Public Speaking" />
+          <div class="portfolio-info">
+            <h3>Public Speaking</h3>
+            <p>Professional certification</p>
+          </div>
+        </div>
+
+        <div class="portfolio-item" onclick="openModal(this)">
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Public-Speaking-Skills.jpg" alt="Public Speaking Skills" />
+          <div class="portfolio-info">
+            <h3>Public Speaking Skills</h3>
+            <p>Professional certification</p>
           </div>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Certificate Modal -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="img01" />
+  </div>
 
   <!-- Professional Experience Timeline -->
   <section id="testimonials">
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>Professional Experience Timeline</h2>
+
       <div class="timeline">
         <div class="timeline-item">
           <div class="timeline-dot"></div>
@@ -1052,10 +1250,7 @@
             <h3>ATLAS GROUP, NOIDA</h3>
             <h4>Assistant Manager Pricing</h4>
             <div class="timeline-date">Jan 2025 - Present</div>
-            <p>
-              Handling USA Trade Lane Pricing and Contract Managements and
-              Reverse Auctions.
-            </p>
+            <p>Handling USA trade lane pricing, contract management and reverse auctions.</p>
           </div>
         </div>
 
@@ -1075,10 +1270,7 @@
             <h3>SYB INTERNATIONAL, LUDHIANA</h3>
             <h4>Manager - Documentation &amp; Customer Service</h4>
             <div class="timeline-date">Nov 2021 - Mar 2024</div>
-            <p>
-              Export Documentation and Customer Service plus Administration,
-              managing end-to-end export processes and customer satisfaction.
-            </p>
+            <p>Export documentation, customer service and administration for end-to-end export processes.</p>
           </div>
         </div>
 
@@ -1088,10 +1280,7 @@
             <h3>ORCHID SHIPPING, LUDHIANA</h3>
             <h4>Sales Coordinator &amp; Team Lead</h4>
             <div class="timeline-date">Sep 2020 - Nov 2021</div>
-            <p>
-              Managed team performance and rate management for USA/SAWC and
-              third-country shipments.
-            </p>
+            <p>Team management and rate management for USA/SAWC and third-country shipments.</p>
           </div>
         </div>
 
@@ -1101,10 +1290,7 @@
             <h3>SAMSARA GROUP, MORADABAD</h3>
             <h4>Senior Executive - Customer Service</h4>
             <div class="timeline-date">Apr 2019 - Nov 2019</div>
-            <p>
-              Managed MSC customer service for USA, liner operations, and vessel
-              planning for export sectors ex-Moradabad.
-            </p>
+            <p>MSC customer service for USA, liner operations and vessel planning for export sectors.</p>
           </div>
         </div>
 
@@ -1114,10 +1300,7 @@
             <h3>PAREKH GROUP, LUDHIANA</h3>
             <h4>Senior Executive - Sales &amp; Customer Service</h4>
             <div class="timeline-date">Nov 2016 - Mar 2019</div>
-            <p>
-              Performed export sales and customer service for Hamburg Sud, STX
-              Pan Ocean, HMM, Ceekay (Gulf) and LMT (Gulf) lines.
-            </p>
+            <p>Export sales and customer service for Hamburg Sud, STX Pan Ocean, HMM, Ceekay Gulf and LMT Gulf lines.</p>
           </div>
         </div>
 
@@ -1127,11 +1310,7 @@
             <h3>SAMSARA GROUP, LUDHIANA</h3>
             <h4>Senior Executive - Documentation &amp; Customer Service</h4>
             <div class="timeline-date">Oct 2014 - Nov 2016</div>
-            <p>
-              Handled documentation, customer service and sales support for T.S.
-              Lines, Ethiopian Shipping Lines, DAL, Times Chartering, China
-              Shipping and QNL.
-            </p>
+            <p>Documentation, customer service and sales support for T.S. Lines, Ethiopian Shipping Lines, DAL, China Shipping and QNL.</p>
           </div>
         </div>
 
@@ -1141,198 +1320,73 @@
             <h3>PAREKH GROUP, LUDHIANA</h3>
             <h4>Executive - Documentation &amp; Customer Service</h4>
             <div class="timeline-date">Jul 2011 - Oct 2014</div>
-            <p>
-              Managed exports, imports and customer service for Hamburg Sud, STX
-              Pan Ocean, HMM, Ceekay (Gulf) and LMT (Gulf) lines, previously
-              serving Delmas SAS.
-            </p>
+            <p>Exports, imports and customer service for Hamburg Sud, STX Pan Ocean, HMM, Ceekay Gulf and LMT Gulf lines, including Delmas SAS earlier.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
-
-  <!-- Knowledge Exposure Section -->
-  <section id="services">
-    <div class="section-content">
-      <div class="section-top-line"></div>
-      <h2>Knowledge Exposure</h2>
-      <div class="services-grid">
-        <div class="service-card">
-          <div class="service-icon">📊</div>
-          <h3>Pricing &amp; Negotiation</h3>
-          <p>
-            Expert in rate management, contract negotiations, and reverse
-            auctions across multiple trade lanes including USA, SAWC, and third
-            countries.
-          </p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">📋</div>
-          <h3>Documentation Management</h3>
-          <p>
-            Comprehensive export/import documentation handling, customs
-            compliance, and shipping coordination for major shipping lines.
-          </p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">🤝</div>
-          <h3>Sales &amp; Customer Relations</h3>
-          <p>
-            Proven track record in sales development, customer service
-            excellence, and building long-term relationships with clients and
-            carriers.
-          </p>
-        </div>
-        <div class="service-card">
-          <div class="service-icon">⚡</div>
-          <h3>Supply Chain Operations</h3>
-          <p>
-            End-to-end supply chain management, liner operations, vessel
-            planning, and logistics coordination for global trade.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certifications Section -->
-  <section id="portfolio">
-    <div class="section-content">
-      <div class="section-top-line"></div>
-      <h2>Certifications &amp; Courses</h2>
-      <div class="portfolio-grid">
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Six-Sigma-Black-Belt.jpg" alt="Six Sigma" />
-          <div class="portfolio-info">
-            <h3>Six Sigma: Black Belt</h3>
-            <p>LinkedIn Learning</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Strategic-Negotiation.jpg" alt="Strategic Negotiation" />
-          <div class="portfolio-info">
-            <h3>Strategic Negotiation</h3>
-            <p>LinkedIn Learning</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Negotiation-Foundations.jpg" alt="Negotiation Foundations" />
-          <div class="portfolio-info">
-            <h3>Negotiation Foundations</h3>
-            <p>LinkedIn Learning</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Executive-Leadership.jpg" alt="Executive Leadership" />
-          <div class="portfolio-info">
-            <h3>Executive Leadership</h3>
-            <p>LinkedIn Learning</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Business-Communications-Write-Speak-and-Lead-Effectively.jpg" alt="Business Communications" />
-          <div class="portfolio-info">
-            <h3>Business Communications</h3>
-            <p>EDUTA</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Business-Acumen-Build-Strategic-and-Financial-Skills.jpg" alt="Business Acumen" />
-          <div class="portfolio-info">
-            <h3>Business Acumen</h3>
-            <p>EDUTA</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Mind-Controlling-Program-1.jpg" alt="Stock Trading Level 1" />
-          <div class="portfolio-info">
-            <h3>Stock Market Trading Level-1</h3>
-            <p>NIFM</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Mind-Controlling-Program-2.jpg" alt="Stock Trading Level 2" />
-          <div class="portfolio-info">
-            <h3>Share Market Trading Level-2</h3>
-            <p>NIFM</p>
-          </div>
-        </div>
-        <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrairai-afk/rajatkumarrai/main/Public-Speaking-Foundations.jpg" alt="Public Speaking" />
-          <div class="portfolio-info">
-            <h3>Public Speaking Foundations</h3>
-            <p>LinkedIn Learning</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Image Modal -->
-  <div id="myModal" class="modal">
-      <span class="close" onclick="closeModal()">&times;</span>
-      <img class="modal-content" id="img01">
-  </div>
 
   <!-- Footer / Contact -->
   <footer id="contact">
     <div class="footer-content">
-      <div class="footer-info">
-        <h3 class="logo">RAJAT RAI</h3>
-        <div class="contact-info">
-          <div class="contact-item">
-            <span>📧</span>
-            <span>rajatkumarrai.rai@gmail.com</span>
-          </div>
-          <div class="contact-item">
-            <span>📞</span>
-            <span>+91 9877982622</span>
-          </div>
-        </div>
-        <div class="contact-info">
-          <div class="contact-item">
-            <span>📍</span>
-            <span>Govindpuri, Kalkaji, New Delhi, 110019</span>
-          </div>
-        </div>
+      <div class="footer-left">
+        <span class="footer-name">RAJAT RAI</span>
+        <span class="footer-separator">|</span>
+        <span>rajatkumarrai.rai@gmail.com</span>
+        <span class="footer-separator">|</span>
+        <span>+91 9877982622</span>
       </div>
-      <p>&copy; 2025 Rajat Kumar Rai. All Rights Reserved.</p>
+      <button class="btn-to-top" id="btnToTop">Top ↑</button>
     </div>
   </footer>
 
   <script>
     // Mobile Menu Toggle
-    const menuToggle = document.getElementById("menuToggle");
-    const navLinks = document.getElementById("navLinks");
-    menuToggle.addEventListener("click", () => navLinks.classList.toggle("active"));
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
 
-    // Close menu when clicking a link
-    document.querySelectorAll(".nav-links a").forEach((link) => {
-      link.addEventListener("click", () => navLinks.classList.remove("active"));
-    });
+    if (menuToggle && navLinks) {
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
 
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
-      anchor.addEventListener("click", function (e) {
-        e.preventDefault();
-        const target = document.querySelector(this.getAttribute("href"));
-        if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+
+    // Smooth scrolling for anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        const targetId = this.getAttribute('href');
+        if (targetId.length > 1) {
+          e.preventDefault();
+          const target = document.querySelector(targetId);
+          if (target) {
+            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }
+        }
       });
     });
 
     // Section scroll animation
     const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
+      entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+          }
         });
       },
       { threshold: 0.1 }
     );
-    document.querySelectorAll("section").forEach((section) => observer.observe(section));
 
-    // Typewriter
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
+
+    // Typewriter effect
     class TypeWriter {
       constructor(element, words, delay = 2000) {
         this.element = element;
@@ -1343,6 +1397,7 @@
         this.isDeleting = false;
         this.type();
       }
+
       type() {
         const currentWord = this.words[this.wordIndex];
         if (this.isDeleting) {
@@ -1368,48 +1423,109 @@
       }
     }
 
-    document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener('DOMContentLoaded', () => {
       new TypeWriter(
-        document.getElementById("typewriter1"),
-        ["Logistics", "Freight Forwarding", "Shipping"],
+        document.getElementById('typewriter1'),
+        ['Logistics', 'Freight Forwarding', 'Shipping'],
         2000
       );
       new TypeWriter(
-        document.getElementById("typewriter2"),
-        ["Pricing", "Documentation", "Sales", "Customer Service"],
+        document.getElementById('typewriter2'),
+        ['Pricing', 'Documentation', 'Sales', 'Customer Service'],
         1500
       );
     });
 
     // Header shadow on scroll
-    window.addEventListener("scroll", () => {
-      const header = document.querySelector("header");
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
       header.style.boxShadow =
         window.scrollY > 100
-          ? "0 5px 20px rgba(0,0,0,0.1)"
-          : "0 2px 10px rgba(0,0,0,0.05)";
+          ? '0 5px 20px rgba(0,0,0,0.1)'
+          : '0 2px 10px rgba(0,0,0,0.05)';
     });
 
-    // Modal Functionality
+    // Modal functionality for certificates
     function openModal(element) {
-        const modal = document.getElementById("myModal");
-        const modalImg = document.getElementById("img01");
-        const img = element.querySelector('img');
-
-        modal.style.display = "block";
-        modalImg.src = img.src;
+      const modal = document.getElementById('myModal');
+      const modalImg = document.getElementById('img01');
+      const img = element.querySelector('img');
+      modal.style.display = 'block';
+      modalImg.src = img.src;
     }
 
     function closeModal() {
-        document.getElementById("myModal").style.display = "none";
+      document.getElementById('myModal').style.display = 'none';
     }
 
-    // Close modal when clicking outside the image
-    window.onclick = function(event) {
-        const modal = document.getElementById("myModal");
-        if (event.target == modal) {
-            modal.style.display = "none";
+    window.onclick = function (event) {
+      const modal = document.getElementById('myModal');
+      if (event.target === modal) {
+        modal.style.display = 'none';
+      }
+    };
+
+    window.closeModal = closeModal;
+    window.openModal = openModal;
+
+    // Ticker navigation buttons (left/right)
+    const tickerShell = document.getElementById('tickerShell');
+    const tickerPrev = document.getElementById('tickerPrev');
+    const tickerNext = document.getElementById('tickerNext');
+
+    if (tickerShell && tickerPrev && tickerNext) {
+      const scrollAmount = 250;
+
+      tickerPrev.addEventListener('click', () => {
+        tickerShell.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      });
+
+      tickerNext.addEventListener('click', () => {
+        tickerShell.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      });
+
+      // Automatic endless scrolling
+      let autoScrollSpeed = 0.7; // pixels per frame
+      let lastTimestamp = null;
+
+      function autoScroll(timestamp) {
+        if (!lastTimestamp) lastTimestamp = timestamp;
+        const delta = timestamp - lastTimestamp;
+
+        // Move based on time passed for smoother motion
+        tickerShell.scrollLeft += autoScrollSpeed * (delta / 16);
+
+        // Reset to start when half-way to keep endless illusion (because track is duplicated)
+        const maxScroll = tickerShell.scrollWidth / 2;
+        if (tickerShell.scrollLeft >= maxScroll) {
+          tickerShell.scrollLeft = 0;
         }
+
+        lastTimestamp = timestamp;
+        requestAnimationFrame(autoScroll);
+      }
+
+      requestAnimationFrame(autoScroll);
+
+      // Optional: pause on hover for better control
+      let savedSpeed = autoScrollSpeed;
+
+      tickerShell.addEventListener('mouseenter', () => {
+        savedSpeed = autoScrollSpeed;
+        autoScrollSpeed = 0;
+      });
+
+      tickerShell.addEventListener('mouseleave', () => {
+        autoScrollSpeed = savedSpeed || 0.7;
+      });
+    }
+
+    // Scroll-to-top button in footer
+    const btnToTop = document.getElementById('btnToTop');
+    if (btnToTop) {
+      btnToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
     }
   </script>
 </body>
