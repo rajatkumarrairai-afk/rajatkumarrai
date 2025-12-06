@@ -93,7 +93,7 @@
       transition: 0.3s;
     }
 
-    /* Sections – reduced spacing */
+    /* Sections */
     section {
       padding: 40px 2rem;
       opacity: 0;
@@ -333,7 +333,7 @@
       color: var(--primary-color);
     }
 
-    /* Ticker – organization experience */
+    /* Ticker */
     #experience-ticker {
       background: #ffffff;
       padding-bottom: 30px;
@@ -348,6 +348,11 @@
       padding: 10px 0;
       scroll-behavior: smooth;
       scrollbar-width: none;
+      cursor: grab;
+    }
+
+    .ticker-shell:active {
+      cursor: grabbing;
     }
 
     .ticker-shell::-webkit-scrollbar {
@@ -415,7 +420,7 @@
       color: #ffffff;
     }
 
-    /* Knowledge Exposure (services) */
+    /* Services */
     #services {
       background: #ffffff;
     }
@@ -464,7 +469,7 @@
       font-size: 0.8rem;
     }
 
-    /* Certifications / Portfolio */
+    /* Portfolio */
     #portfolio {
       background: #ffffff;
     }
@@ -512,7 +517,7 @@
       font-size: 0.78rem;
     }
 
-    /* Modal for certificates */
+    /* Modal */
     .modal {
       display: none;
       position: fixed;
@@ -556,7 +561,7 @@
       cursor: pointer;
     }
 
-    /* Timeline (experience) */
+    /* Timeline */
     #testimonials {
       background: #ffffff;
     }
@@ -634,7 +639,7 @@
       box-shadow: 0 0 0 3px #ffffff;
     }
 
-    /* Footer – compact one-line with Top button */
+    /* Footer */
     footer {
       background: var(--text-dark);
       color: #ffffff;
@@ -705,7 +710,6 @@
         left: 0;
       }
 
-      .menu-toggle isplay: flex;
       .menu-toggle {
         display: flex;
       }
@@ -939,9 +943,8 @@
       <h2>Certifications &amp; Courses</h2>
 
       <div class="portfolio-grid">
-        <!-- Certificates, filenames as per your library -->
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Six-Sigma-Black-Belt.jpg" alt="Six Sigma" />
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Six-Sigma-Black-Belt.jpg" alt="Six Sigma Black Belt" />
           <div class="portfolio-info">
             <h3>Six Sigma Black Belt</h3>
             <p>LinkedIn Learning</p>
@@ -989,7 +992,7 @@
         </div>
 
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Mind-Controlling-Program-1.jpg" alt="Stock Trading Level 1" />
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Mind-Controlling-Program-1.jpg" alt="Stock Market Trading Level-1" />
           <div class="portfolio-info">
             <h3>Stock Market Trading Level-1</h3>
             <p>NIFM</p>
@@ -997,7 +1000,7 @@
         </div>
 
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Mind-Controlling-Program-2.jpg" alt="Stock Trading Level 2" />
+          <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Mind-Controlling-Program-2.jpg" alt="Share Market Trading Level-2" />
           <div class="portfolio-info">
             <h3>Share Market Trading Level-2</h3>
             <p>NIFM</p>
@@ -1012,7 +1015,6 @@
           </div>
         </div>
 
-        <!-- Additional certificates -->
         <div class="portfolio-item" onclick="openModal(this)">
           <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/Google-Gemini.jpg" alt="Google Gemini" />
           <div class="portfolio-info">
@@ -1048,7 +1050,13 @@
     </div>
   </section>
 
-  <!-- Organization Experience Ticker (now just above timeline) -->
+  <!-- Certificate Modal -->
+  <div id="myModal" class="modal">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <img class="modal-content" id="img01" />
+  </div>
+
+  <!-- Organization Experience Ticker -->
   <section id="experience-ticker">
     <div class="section-content">
       <div class="section-top-line"></div>
@@ -1138,7 +1146,7 @@
             <span>Sinokor</span>
           </div>
 
-          <!-- Duplicate sequence for endless scroll illusion -->
+          <!-- Duplicate for seamless loop -->
           <div class="logo-pill">
             <img src="https://raw.githubusercontent.com/rajatkumarrai/rai-afk/rajatkumarrai/main/ATLAS.jpg" alt="Atlas" />
             <span>Atlas Group</span>
@@ -1219,8 +1227,8 @@
       </div>
 
       <div class="ticker-controls">
-        <button class="ticker-btn" id="tickerPrev">◀</button>
-        <button class="ticker-btn" id="tickerNext">▶</button>
+        <button class="ticker-btn" id="tickerPrev">&#8592;</button>
+        <button class="ticker-btn" id="tickerNext">&#8594;</button>
       </div>
     </div>
   </section>
@@ -1346,7 +1354,7 @@
       });
     }
 
-    // Smooth scrolling for anchor links
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
@@ -1433,7 +1441,7 @@
           : '0 2px 10px rgba(0,0,0,0.05)';
     });
 
-    // Modal functionality for certificates
+    // Modal functionality
     function openModal(element) {
       const modal = document.getElementById('myModal');
       const modalImg = document.getElementById('img01');
@@ -1456,14 +1464,18 @@
     window.closeModal = closeModal;
     window.openModal = openModal;
 
-    // Ticker navigation buttons (left/right) + endless auto-scroll
+    // Ticker navigation + auto scroll with mouse wheel support
     const tickerShell = document.getElementById('tickerShell');
     const tickerPrev = document.getElementById('tickerPrev');
     const tickerNext = document.getElementById('tickerNext');
 
     if (tickerShell && tickerPrev && tickerNext) {
       const scrollAmount = 250;
+      let autoScrollSpeed = 0.7; // pixels per frame
+      let lastTimestamp = null;
+      let isAutoScrolling = true;
 
+      // Manual button controls
       tickerPrev.addEventListener('click', () => {
         tickerShell.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });
@@ -1472,18 +1484,18 @@
         tickerShell.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       });
 
-      let autoScrollSpeed = 0.7; // pixels per frame
-      let lastTimestamp = null;
-
+      // Auto scroll function
       function autoScroll(timestamp) {
         if (!lastTimestamp) lastTimestamp = timestamp;
         const delta = timestamp - lastTimestamp;
 
-        tickerShell.scrollLeft += autoScrollSpeed * (delta / 16);
+        if (isAutoScrolling) {
+          tickerShell.scrollLeft += autoScrollSpeed * (delta / 16);
 
-        const maxScroll = tickerShell.scrollWidth / 2;
-        if (tickerShell.scrollLeft >= maxScroll) {
-          tickerShell.scrollLeft = 0;
+          const maxScroll = tickerShell.scrollWidth / 2;
+          if (tickerShell.scrollLeft >= maxScroll) {
+            tickerShell.scrollLeft = 0;
+          }
         }
 
         lastTimestamp = timestamp;
@@ -1492,19 +1504,69 @@
 
       requestAnimationFrame(autoScroll);
 
-      let savedSpeed = autoScrollSpeed;
-
+      // Pause auto-scroll on mouse enter
       tickerShell.addEventListener('mouseenter', () => {
-        savedSpeed = autoScrollSpeed;
-        autoScrollSpeed = 0;
+        isAutoScrolling = false;
       });
 
+      // Resume auto-scroll on mouse leave
       tickerShell.addEventListener('mouseleave', () => {
-        autoScrollSpeed = savedSpeed || 0.7;
+        isAutoScrolling = true;
+        lastTimestamp = null;
       });
+
+      // Mouse wheel scroll support with smooth scrolling
+      tickerShell.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        
+        // Pause auto-scroll when user scrolls manually
+        isAutoScrolling = false;
+        
+        const scrollDistance = e.deltaY > 0 ? 100 : -100;
+        tickerShell.scrollBy({
+          left: scrollDistance,
+          behavior: 'smooth'
+        });
+
+        // Resume auto-scroll after 3 seconds of no manual scrolling
+        clearTimeout(tickerShell.scrollTimeout);
+        tickerShell.scrollTimeout = setTimeout(() => {
+          isAutoScrolling = true;
+          lastTimestamp = null;
+        }, 3000);
+      });
+
+      // Touch swipe support for mobile
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      tickerShell.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+        isAutoScrolling = false;
+      }, false);
+
+      tickerShell.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+      }, false);
+
+      function handleSwipe() {
+        if (touchStartX - touchEndX > 50) {
+          tickerShell.scrollBy({ left: 100, behavior: 'smooth' });
+        }
+        if (touchEndX - touchStartX > 50) {
+          tickerShell.scrollBy({ left: -100, behavior: 'smooth' });
+        }
+
+        clearTimeout(tickerShell.scrollTimeout);
+        tickerShell.scrollTimeout = setTimeout(() => {
+          isAutoScrolling = true;
+          lastTimestamp = null;
+        }, 3000);
+      }
     }
 
-    // Scroll-to-top button in footer
+    // Scroll-to-top
     const btnToTop = document.getElementById('btnToTop');
     if (btnToTop) {
       btnToTop.addEventListener('click', () => {
