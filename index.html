@@ -6,6 +6,7 @@
   <title>Rajat Kumar Rai - Portfolio</title>
 
   <style>
+    /* RESET & VARIABLES */
     * {
       margin: 0;
       padding: 0;
@@ -13,32 +14,45 @@
     }
 
     :root {
-      --primary-color: #6c63ff;
-      --secondary-color: #4c46b6;
-      --text-dark: #2d3436;
-      --text-light: #636e72;
-      --white: #ffffff;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      /* Paper Cut Theme Palette */
+      --bg-color: #eef2f5;           /* Light Grey Background */
+      --paper-color: #ffffff;        /* White Paper */
+      --text-main: #0a2540;          /* Dark Blue Text */
+      --text-secondary: #3e5c76;     /* Lighter Blue-Grey Text */
+      --accent-color: #0a2540;       /* Dark Blue Accent */
+      
+      /* Paper Cut Shadows (Layered depth) */
+      --shadow-paper: 
+        1px 1px 0px rgba(0,0,0,0.05),
+        2px 2px 0px rgba(0,0,0,0.05),
+        3px 3px 6px rgba(0,0,0,0.1);
+      
+      --shadow-hover: 
+        1px 1px 0px rgba(0,0,0,0.05),
+        2px 2px 0px rgba(0,0,0,0.05),
+        4px 4px 12px rgba(0,0,0,0.15);
+        
+      --border-radius: 12px;
     }
 
     body {
-      font-family: Calibri, "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      font-size: 11px;
+      font-family: "Segoe UI", Calibri, system-ui, -apple-system, sans-serif;
+      font-size: 15px; /* Slightly larger for readability */
       line-height: 1.6;
-      color: var(--text-dark);
-      background: #ffffff;
+      color: var(--text-main);
+      background-color: var(--bg-color);
       overflow-x: hidden;
     }
 
-    /* Header */
+    /* HEADER */
     header {
-      background: var(--white);
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+      background: var(--paper-color);
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
       position: fixed;
       width: 100%;
       top: 0;
       z-index: 1000;
-      transition: all 0.3s;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
     }
 
     nav {
@@ -47,59 +61,68 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.7rem 2rem;
-      background: #ffffff;
+      padding: 1rem 2rem;
     }
 
     .logo {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      color: var(--primary-color);
+      font-size: 1.5rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      color: var(--text-main);
       text-transform: uppercase;
+      /* Cutout text effect */
+      text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(0,0,0,0.1);
     }
 
     .nav-links {
       display: flex;
       list-style: none;
-      gap: 1.6rem;
+      gap: 1.8rem;
     }
 
     .nav-links a {
       text-decoration: none;
-      color: var(--text-dark);
-      font-weight: 600;
-      font-size: 0.85rem;
+      color: var(--text-main);
+      font-weight: 700;
+      font-size: 0.9rem;
       text-transform: uppercase;
-      letter-spacing: 0.08em;
-      transition: color 0.3s;
+      letter-spacing: 0.05em;
+      transition: color 0.3s, transform 0.2s;
+      position: relative;
     }
 
     .nav-links a:hover {
-      color: var(--primary-color);
+      color: var(--text-secondary);
+      transform: translateY(-1px);
     }
 
+    /* Mobile Menu */
     .menu-toggle {
       display: none;
       flex-direction: column;
       cursor: pointer;
+      gap: 5px;
     }
-
     .menu-toggle span {
-      width: 24px;
+      width: 25px;
       height: 3px;
-      background: var(--text-dark);
-      margin: 3px 0;
-      transition: 0.3s;
+      background: var(--text-main);
+      border-radius: 2px;
     }
 
-    /* Sections */
+    /* SECTIONS (Paper Sheets) */
     section {
-      padding: 40px 2rem;
+      padding: 60px 2rem;
+      margin: 20px auto;
+      max-width: 1100px; /* Centered paper sheet look */
       opacity: 0;
-      transform: translateY(26px);
-      transition: opacity 0.6s, transform 0.6s;
-      background: #ffffff;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      
+      /* Paper Cut styling for sections */
+      background: var(--paper-color);
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow-paper);
     }
 
     section.visible {
@@ -107,671 +130,430 @@
       transform: translateY(0);
     }
 
-    .section-content {
-      max-width: 1200px;
+    /* Remove card styling from Hero to let it span naturally */
+    section.hero {
+      background: transparent;
+      box-shadow: none;
       margin: 0 auto;
+      padding-top: 120px; /* Clear header */
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
     }
 
+    .section-content {
+      width: 100%;
+    }
+
+    /* Headings */
     .section-top-line {
-      width: 50px;
-      height: 3px;
-      background: var(--primary-color);
-      margin: 0 auto 0.7rem;
+      width: 60px;
+      height: 4px;
+      background: var(--text-main);
+      margin: 0 auto 1rem;
+      border-radius: 2px;
     }
 
     h2 {
       text-align: center;
-      font-size: 1.7rem;
-      margin-bottom: 1.5rem;
-      color: var(--text-dark);
-      letter-spacing: 0.04em;
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--text-main);
+      font-weight: 800;
+      letter-spacing: -0.5px;
     }
 
-    /* Hero */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      background: #ffffff;
-      padding: 90px 2rem 40px;
+    h3, h4 {
+      color: var(--text-main);
     }
 
+    p {
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* HERO SECTION */
     .hero-content {
-      max-width: 1200px;
-      margin: 0 auto;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 3rem;
       align-items: center;
+      width: 100%;
     }
 
     .hero-text h1 {
-      font-size: 2.4rem;
-      font-weight: 700;
-      margin-bottom: 0.6rem;
-      line-height: 1.25;
+      font-size: 3rem;
+      font-weight: 900;
+      line-height: 1.1;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 0px rgba(255,255,255,0.5), 3px 3px 0px rgba(0,0,0,0.05);
     }
 
     .hero-text h1 span {
-      color: var(--primary-color);
-    }
-
-    .typewriter-container {
-      min-height: 42px;
-      margin: 0.6rem 0;
-      display: flex;
-      align-items: center;
+      color: var(--text-secondary);
+      display: block;
     }
 
     .typewriter {
-      font-size: 1.2rem;
-      color: var(--primary-color);
-      font-weight: 600;
-      padding-right: 4px;
+      font-size: 1.3rem;
+      color: var(--text-secondary);
+      font-weight: 700;
+      font-family: monospace; /* Typewriter feel */
     }
 
     .cursor {
       display: inline-block;
       width: 2px;
       height: 1.2rem;
-      background-color: var(--primary-color);
-      animation: blink 0.7s infinite;
-      margin-left: 2px;
+      background-color: var(--text-main);
+      animation: blink 1s infinite;
+      margin-left: 4px;
     }
-
-    @keyframes blink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-
-    .hero-text p {
-      font-size: 0.95rem;
-      color: var(--text-light);
-      margin-bottom: 1.3rem;
-    }
-
-    .cta-buttons {
-      display: flex;
-      gap: 0.9rem;
-      flex-wrap: wrap;
-    }
+    @keyframes blink { 50% { opacity: 0; } }
 
     .btn {
-      padding: 0.55rem 1.6rem;
-      border: none;
-      border-radius: 999px;
-      font-weight: 600;
-      font-size: 0.85rem;
-      cursor: pointer;
-      transition: all 0.3s;
+      padding: 0.8rem 2rem;
+      border: 2px solid var(--text-main);
+      background: var(--text-main);
+      color: var(--paper-color);
+      font-weight: 700;
+      border-radius: 8px;
       text-decoration: none;
       display: inline-block;
+      margin-top: 1.5rem;
+      transition: all 0.2s;
+      box-shadow: 2px 2px 0px rgba(0,0,0,0.1);
     }
 
-    .btn-primary {
-      background: var(--primary-color);
-      color: var(--white);
-    }
-
-    .btn-primary:hover {
-      background: var(--secondary-color);
-      transform: translateY(-1px);
-      box-shadow: var(--shadow);
-    }
-
-    .hero-image {
-      display: flex;
-      justify-content: center;
-      align-items: center;
+    .btn:hover {
+      background: var(--paper-color);
+      color: var(--text-main);
+      transform: translateY(-2px);
+      box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
     }
 
     .hero-image img {
       max-width: 100%;
       height: auto;
-      max-height: 420px;
-      border-radius: 18px;
-      box-shadow: var(--shadow);
+      border-radius: var(--border-radius);
+      border: 8px solid var(--paper-color);
+      box-shadow: var(--shadow-paper);
+      transform: rotate(2deg); /* Slightly tilted photo look */
     }
 
-    /* About */
-    #about {
-      background: #ffffff;
-    }
-
-    .about-content {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 3rem;
-      align-items: center;
-    }
-
-    .about-text p {
-      color: var(--text-light);
-      margin-bottom: 1rem;
-      text-align: justify;
-      font-size: 0.9rem;
-    }
-
-    .about-stats {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.2rem;
-      margin-top: 1.2rem;
-    }
-
+    /* ABOUT STATS */
     .stat-box {
+      background: var(--bg-color); /* Grey box on white paper */
+      padding: 1.5rem;
+      border-radius: 8px;
       text-align: center;
-      padding: 1.2rem;
-      background: #ffffff;
-      border-radius: 10px;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s;
+      box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05); /* Inset shadow for cutout look */
     }
-
-    .stat-box:hover {
-      transform: translateY(-3px);
-    }
-
     .stat-number {
-      font-size: 1.7rem;
-      font-weight: 700;
-      color: var(--primary-color);
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--text-main);
     }
-
     .stat-label {
-      color: var(--text-light);
-      margin-top: 0.25rem;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
+      font-weight: 600;
+      text-transform: uppercase;
     }
 
-    /* Skills */
-    #skills {
-      background: #ffffff;
-    }
-
-    .skills-grid {
+    /* GRID LAYOUTS (Skills, Exposure, Portfolio) */
+    .skills-grid, .services-grid, .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 1.4rem;
+      gap: 1.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
-    .skill-card {
-      background: #ffffff;
-      padding: 1.3rem;
-      border-radius: 12px;
-      box-shadow: var(--shadow);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.3s;
+    /* CARDS (Paper Cut Style) */
+    .skill-card, .service-card, .portfolio-item {
+      background: var(--bg-color); /* Grey background card */
+      padding: 1.5rem;
+      border-radius: 8px;
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 
+        -1px -1px 0px rgba(255,255,255,0.8),
+        2px 2px 4px rgba(0,0,0,0.05); /* Neumorphic/Paper feel */
+      transition: transform 0.2s;
     }
 
-    .skill-card:hover {
-      transform: translateY(-3px);
+    .skill-card:hover, .service-card:hover, .portfolio-item:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-hover);
+      background: var(--paper-color); /* Turns white on hover */
     }
 
+    /* Progress Bar */
     .skill-card::before {
       content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: var(--progress, 0);
-      height: 3px;
-      background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-      transition: width 1s ease-out;
-    }
-
-    .skill-label {
-      font-weight: 600;
-      color: var(--text-dark);
-      margin-bottom: 0.25rem;
-      font-size: 0.95rem;
+      display: block;
+      width: var(--progress);
+      height: 6px;
+      background: var(--text-main);
+      margin-bottom: 1rem;
+      border-radius: 3px;
     }
 
     .skill-percent {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: var(--primary-color);
+      font-weight: 800;
+      color: var(--text-main);
     }
 
-    /* Ticker */
-    #experience-ticker {
-      background: #ffffff;
-      padding-bottom: 30px;
-    }
-
-    .ticker-shell {
-      overflow-x: auto;
-      overflow-y: hidden;
-      position: relative;
+    /* Portfolio Images */
+    .portfolio-item img {
       width: 100%;
-      margin-top: 1.0rem;
-      padding: 10px 0;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-      cursor: grab;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 6px;
+      margin-bottom: 1rem;
+      border: 1px solid #ddd;
+    }
+    
+    .portfolio-item {
+      cursor: pointer;
     }
 
-    .ticker-shell:active {
-      cursor: grabbing;
-    }
-
-    .ticker-shell::-webkit-scrollbar {
-      display: none;
+    /* TICKER TAPE */
+    .ticker-shell {
+      background: var(--bg-color);
+      border-radius: 8px;
+      padding: 1rem;
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      box-shadow: inset 1px 1px 4px rgba(0,0,0,0.05);
     }
 
     .ticker-track {
-      display: flex;
-      gap: 2.5rem;
-      padding: 10px 0;
-      min-width: max-content;
+      display: inline-flex;
+      gap: 2rem;
     }
 
     .logo-pill {
+      background: var(--paper-color);
+      padding: 0.8rem 1.5rem;
+      border-radius: 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
-      background: #ffffff;
-      padding: 1rem 1.5rem;
-      border-radius: 10px;
-      border: 1px solid #eee;
-      white-space: nowrap;
       min-width: 120px;
-      transition: transform 0.3s;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
-
-    .logo-pill:hover {
-      transform: scale(1.04);
-    }
-
+    
     .logo-pill img {
-      width: 40px;
       height: 40px;
       object-fit: contain;
+      margin-bottom: 5px;
     }
-
+    
     .logo-pill span {
-      font-weight: 600;
-      color: var(--text-dark);
-      font-size: 0.9rem;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-main);
     }
 
     .ticker-controls {
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 0.8rem;
-      margin-top: 0.5rem;
+      gap: 1rem;
+      margin-top: 1rem;
     }
-
+    
     .ticker-btn {
-      padding: 0.3rem 0.8rem;
-      border-radius: 999px;
-      border: 1px solid var(--primary-color);
-      background: #ffffff;
-      color: var(--primary-color);
-      font-size: 0.8rem;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .ticker-btn:hover {
-      background: var(--primary-color);
-      color: #ffffff;
-    }
-
-    /* Services */
-    #services {
-      background: #ffffff;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1.4rem;
-    }
-
-    .service-card {
-      background: #ffffff;
-      padding: 1.4rem;
-      border-radius: 14px;
-      text-align: center;
-      transition: all 0.3s;
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-    }
-
-    .service-card:hover {
-      transform: translateY(-4px);
-      box-shadow: var(--shadow);
-    }
-
-    .service-icon {
-      width: 54px;
-      height: 54px;
-      margin: 0 auto 1rem;
-      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      background: var(--paper-color);
+      border: 1px solid var(--text-main);
+      color: var(--text-main);
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
+      font-size: 1.2rem;
+      cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
-      color: #ffffff;
+      transition: 0.2s;
+    }
+    
+    .ticker-btn:hover {
+      background: var(--text-main);
+      color: var(--paper-color);
     }
 
-    .service-card h3 {
-      margin-bottom: 0.6rem;
-      color: var(--text-dark);
-      font-size: 1rem;
-    }
-
-    .service-card p {
-      color: var(--text-light);
-      font-size: 0.8rem;
-    }
-
-    /* Portfolio */
-    #portfolio {
-      background: #ffffff;
-    }
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.4rem;
-    }
-
-    .portfolio-item {
+    /* TIMELINE */
+    .timeline {
       position: relative;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: var(--shadow);
-      transition: transform 0.3s;
-      background: #ffffff;
-      cursor: pointer;
+      padding: 1rem 0;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: #ccc; /* Dotted line effect */
+      background-image: linear-gradient(to bottom, var(--text-main) 50%, transparent 50%);
+      background-size: 2px 10px;
+      transform: translateX(-50%);
     }
 
-    .portfolio-item:hover {
-      transform: scale(1.03);
+    .timeline-item {
+      margin-bottom: 2rem;
+      position: relative;
+    }
+    
+    .timeline-content {
+      width: 45%;
+      background: var(--bg-color);
+      padding: 1.5rem;
+      border-radius: 8px;
+      position: relative;
+      box-shadow: var(--shadow-paper);
+    }
+    
+    .timeline-item:nth-child(odd) .timeline-content {
+      margin-left: auto;
+    }
+    
+    .timeline-dot {
+      width: 16px;
+      height: 16px;
+      background: var(--text-main);
+      border: 4px solid var(--paper-color);
+      border-radius: 50%;
+      position: absolute;
+      left: 50%;
+      top: 20px;
+      transform: translateX(-50%);
+      box-shadow: 0 0 0 2px var(--text-main);
     }
 
-    .portfolio-item img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
-      background: #f0f0f0;
-    }
-
-    .portfolio-info {
-      padding: 1rem;
-      background: #ffffff;
-    }
-
-    .portfolio-info h3 {
-      margin-bottom: 0.35rem;
-      color: var(--text-dark);
-      font-size: 0.95rem;
-    }
-
-    .portfolio-info p {
-      color: var(--text-light);
-      font-size: 0.78rem;
-    }
-
-    /* Modal */
+    /* MODAL */
     .modal {
       display: none;
       position: fixed;
       z-index: 2000;
-      padding-top: 50px;
       left: 0;
       top: 0;
       width: 100%;
       height: 100%;
-      overflow: auto;
-      background-color: rgba(0, 0, 0, 0.8);
+      background-color: rgba(10, 37, 64, 0.9); /* Dark blue overlay */
+      padding-top: 60px;
     }
-
     .modal-content {
       margin: auto;
       display: block;
       width: 80%;
-      max-width: 700px;
-      max-height: 80vh;
-      object-fit: contain;
-      background: #ffffff;
+      max-width: 800px;
+      background: var(--paper-color);
       padding: 10px;
-      border-radius: 8px;
+      border-radius: 4px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
-
     .close {
       position: absolute;
-      top: 15px;
-      right: 35px;
-      color: #f1f1f1;
+      top: 20px;
+      right: 30px;
+      color: #fff;
       font-size: 40px;
       font-weight: bold;
-      transition: 0.3s;
       cursor: pointer;
     }
 
-    .close:hover,
-    .close:focus {
-      color: #bbb;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    /* Timeline */
-    #testimonials {
-      background: #ffffff;
-    }
-
-    .timeline {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 3px;
-      height: 100%;
-      background: var(--primary-color);
-    }
-
-    .timeline-item {
-      margin-bottom: 2.3rem;
-      position: relative;
-    }
-
-    .timeline-content {
-      background: #ffffff;
-      padding: 1.4rem;
-      border-radius: 14px;
-      box-shadow: var(--shadow);
-      width: 45%;
-      position: relative;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      margin-left: auto;
-    }
-
-    .timeline-content h3 {
-      color: var(--primary-color);
-      margin-bottom: 0.3rem;
-      font-size: 1rem;
-    }
-
-    .timeline-content h4 {
-      color: var(--text-dark);
-      margin-bottom: 0.3rem;
-      font-weight: 600;
-      font-size: 0.95rem;
-    }
-
-    .timeline-date {
-      color: var(--text-light);
-      font-size: 0.78rem;
-      margin-bottom: 0.7rem;
-      font-style: italic;
-    }
-
-    .timeline-content p {
-      color: var(--text-light);
-      font-size: 0.82rem;
-      line-height: 1.5;
-    }
-
-    .timeline-dot {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 14px;
-      height: 14px;
-      background: var(--primary-color);
-      border: 3px solid var(--white);
-      border-radius: 50%;
-      top: 0;
-      box-shadow: 0 0 0 3px #ffffff;
-    }
-
-    /* Footer */
+    /* FOOTER */
     footer {
-      background: var(--text-dark);
-      color: #ffffff;
-      padding: 0.8rem 2rem;
+      background: var(--text-main);
+      color: #fff;
+      text-align: center;
+      padding: 2rem;
+      margin-top: 4rem;
     }
-
+    
     .footer-content {
-      max-width: 1200px;
-      margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      gap: 0.8rem;
-      flex-wrap: wrap;
-      font-size: 0.8rem;
-    }
-
-    .footer-left {
-      display: flex;
       align-items: center;
-      gap: 0.4rem;
+      max-width: 1100px;
+      margin: 0 auto;
       flex-wrap: wrap;
     }
-
-    .footer-name {
-      color: var(--primary-color);
-      font-weight: 700;
-      letter-spacing: 0.08em;
-    }
-
-    .footer-separator {
-      opacity: 0.6;
+    
+    .footer-left span {
+      margin-right: 15px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      opacity: 0.9;
     }
 
     .btn-to-top {
-      padding: 0.3rem 0.9rem;
-      border-radius: 999px;
-      border: 1px solid #ffffff;
       background: transparent;
-      color: #ffffff;
-      font-size: 0.75rem;
+      border: 1px solid #fff;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
       cursor: pointer;
-      transition: all 0.2s;
-      white-space: nowrap;
+      transition: 0.2s;
     }
-
+    
     .btn-to-top:hover {
-      background: #ffffff;
-      color: var(--text-dark);
+      background: #fff;
+      color: var(--text-main);
     }
 
-    /* Responsive */
-    @media (max-width: 968px) {
-      .nav-links {
-        position: fixed;
-        left: -100%;
-        top: 60px;
-        flex-direction: column;
-        background: #ffffff;
-        width: 100%;
-        text-align: center;
-        transition: 0.3s;
-        box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-        padding: 1.6rem 2rem;
-      }
-
-      .nav-links.active {
-        left: 0;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
-
-      .hero-content,
-      .about-content {
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .hero-content, .about-content {
         grid-template-columns: 1fr;
         text-align: center;
       }
-
-      .hero-text h1 {
-        font-size: 2rem;
-      }
-
-      .hero {
-        padding-top: 90px;
-      }
-
-      .timeline::before {
+      
+      .hero-text h1 { font-size: 2.2rem; }
+      
+      .timeline::before { left: 0; }
+      .timeline-content { width: 90%; margin-left: 2rem !important; }
+      .timeline-dot { left: 0; }
+      
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 60px;
         left: 0;
-        transform: none;
-      }
-
-      .timeline-content {
         width: 100%;
-        margin-left: 1.6rem !important;
-      }
-
-      .timeline-dot {
-        left: 0;
-        transform: translateX(-50%);
-      }
-    }
-
-    @media (max-width: 600px) {
-      h2 {
-        font-size: 1.5rem;
-      }
-
-      .hero-text h1 {
-        font-size: 1.8rem;
-      }
-
-      .cta-buttons {
+        background: var(--paper-color);
         flex-direction: column;
+        padding: 2rem;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        text-align: center;
+      }
+      
+      .nav-links.active { display: flex; }
+      .menu-toggle { display: flex; }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 1rem;
       }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
+  <!-- HEADER -->
   <header>
     <nav>
       <div class="logo">RAJAT RAI</div>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">ABOUT</a></li>
-        <li><a href="#services">EXPOSURE</a></li>
-        <li><a href="#portfolio">CERTIFICATES</a></li>
-        <li><a href="#experience-ticker">ORGANIZATIONS</a></li>
-        <li><a href="#testimonials">EXPERIENCE</a></li>
-        <li><a href="#contact">CONTACT</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Exposure</a></li>
+        <li><a href="#portfolio">Certificates</a></li>
+        <li><a href="#experience-ticker">Organizations</a></li>
+        <li><a href="#testimonials">Experience</a></li>
+        <li><a href="#contact">Contact</a></li>
       </ul>
       <div class="menu-toggle" id="menuToggle">
         <span></span><span></span><span></span>
@@ -779,15 +561,12 @@
     </nav>
   </header>
 
-  <!-- Hero Section -->
+  <!-- HERO SECTION -->
   <section class="hero" id="home">
     <div class="hero-content">
       <div class="hero-text">
-        <h1>
-          HELLO<br />
-          I AM <span>RAJAT KUMAR RAI</span>
-        </h1>
-
+        <h1>HELLO<br>I AM <span>RAJAT KUMAR RAI</span></h1>
+        
         <div class="typewriter-container">
           <span class="typewriter" id="typewriter1"></span><span class="cursor"></span>
         </div>
@@ -795,45 +574,34 @@
           <span class="typewriter" id="typewriter2"></span><span class="cursor"></span>
         </div>
 
-        <p>
-          13+ years of expertise in logistics, freight forwarding, pricing, and supply chain management.
-        </p>
-
-        <div class="cta-buttons">
-          <a href="#about" class="btn btn-primary">ABOUT ME</a>
-        </div>
+        <p>13+ years of expertise in logistics, freight forwarding, pricing, and supply chain management.</p>
+        
+        <a href="#about" class="btn">ABOUT ME</a>
       </div>
 
       <div class="hero-image">
+        <!-- FILENAME ONLY -->
         <img src="profile.jpg" alt="Rajat Kumar Rai Profile" />
       </div>
     </div>
   </section>
 
-  <!-- About Section -->
+  <!-- ABOUT SECTION -->
   <section id="about">
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>LET'S INTRODUCE ABOUT MYSELF</h2>
 
-      <div class="about-content">
+      <div class="about-content" style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; align-items:center;">
         <div class="about-text">
-          <p>
-            Experienced logistics and freight forwarding professional with 13+ years of hands-on expertise in pricing,
-            sales support, customer care and documentation across shipping lines and freight-forwarding.
-          </p>
-          <p>
-            Adept at building and maintaining relationships with clients, carriers, and vendors, ensuring clear
-            communication and timely updates throughout the process. Skilled at negotiating carrier rates and managing
-            costs.
-          </p>
-          <p>
-            Focused on delivering efficient, cost-effective solutions that contribute to business growth. Committed to
-            process improvement, regularly reviewing and optimizing existing workflows to enhance efficiency.
-          </p>
+          <p>Experienced logistics and freight forwarding professional with 13+ years of hands-on expertise in pricing, sales support, customer care and documentation across shipping lines and freight-forwarding.</p>
+          <br>
+          <p>Adept at building and maintaining relationships with clients, carriers, and vendors, ensuring clear communication and timely updates throughout the process. Skilled at negotiating carrier rates and managing costs.</p>
+          <br>
+          <p>Focused on delivering efficient, cost-effective solutions that contribute to business growth. Committed to process improvement, regularly reviewing and optimizing existing workflows to enhance efficiency.</p>
         </div>
 
-        <div class="about-stats">
+        <div class="about-stats" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
           <div class="stat-box">
             <div class="stat-number">13+</div>
             <div class="stat-label">Years Experience</div>
@@ -847,7 +615,7 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
+  <!-- SKILLS SECTION -->
   <section id="skills">
     <div class="section-content">
       <div class="section-top-line"></div>
@@ -858,37 +626,30 @@
           <div class="skill-label">Pricing &amp; Negotiation</div>
           <div class="skill-percent">95%</div>
         </div>
-
         <div class="skill-card" style="--progress: 90%">
           <div class="skill-label">Sales Development</div>
           <div class="skill-percent">90%</div>
         </div>
-
         <div class="skill-card" style="--progress: 93%">
           <div class="skill-label">Client Relations</div>
           <div class="skill-percent">93%</div>
         </div>
-
         <div class="skill-card" style="--progress: 90%">
           <div class="skill-label">Customer Service</div>
           <div class="skill-percent">90%</div>
         </div>
-
         <div class="skill-card" style="--progress: 89%">
           <div class="skill-label">Team Collaboration</div>
           <div class="skill-percent">89%</div>
         </div>
-
         <div class="skill-card" style="--progress: 89%">
-          <div class="skill-label">Documentation Management</div>
+          <div class="skill-label">Documentation Mgmt</div>
           <div class="skill-percent">89%</div>
         </div>
-
         <div class="skill-card" style="--progress: 86%">
           <div class="skill-label">Tender Management</div>
           <div class="skill-percent">86%</div>
         </div>
-
         <div class="skill-card" style="--progress: 87%">
           <div class="skill-label">Trade Lane Planning</div>
           <div class="skill-percent">87%</div>
@@ -897,7 +658,7 @@
     </div>
   </section>
 
-  <!-- Knowledge Exposure Section -->
+  <!-- KNOWLEDGE EXPOSURE -->
   <section id="services">
     <div class="section-content">
       <div class="section-top-line"></div>
@@ -905,156 +666,136 @@
 
       <div class="services-grid">
         <div class="service-card">
-          <div class="service-icon">₹</div>
+          <div class="service-icon" style="font-size:2rem; margin-bottom:1rem;">₹</div>
           <h3>Pricing &amp; Negotiation</h3>
-          <p>
-            Expert in rate management, contract negotiations, and reverse auctions across multiple trade lanes including
-            USA, SAWC, and third countries.
-          </p>
+          <p>Expert in rate management, contract negotiations, and reverse auctions across multiple trade lanes including USA, SAWC, and third countries.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">📄</div>
+          <div class="service-icon" style="font-size:2rem; margin-bottom:1rem;">📄</div>
           <h3>Documentation Management</h3>
-          <p>
-            Comprehensive export/import documentation handling, customs compliance, and shipping coordination for major
-            shipping lines.
-          </p>
+          <p>Comprehensive export/import documentation handling, customs compliance, and shipping coordination for major shipping lines.</p>
         </div>
 
         <div class="service-card">
-          <div class="service-icon">🤝</div>
+          <div class="service-icon" style="font-size:2rem; margin-bottom:1rem;">🤝</div>
           <h3>Sales &amp; Customer Relations</h3>
-          <p>
-            Track record in sales development, customer service excellence, and building long-term relationships with
-            clients and carriers.
-          </p>
+          <p>Track record in sales development, customer service excellence, and building long-term relationships with clients and carriers.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Certifications & Courses -->
+  <!-- CERTIFICATIONS (PORTFOLIO) -->
   <section id="portfolio">
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>Certifications &amp; Courses</h2>
 
       <div class="portfolio-grid">
+        <!-- EXACT FILENAMES PRESERVED -->
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Six-Sigma-Black-Belt.jpg" alt="Six Sigma Black Belt" />
+          <img src="Six-Sigma-Black-Belt.jpg" alt="Six Sigma">
           <div class="portfolio-info">
             <h3>Six Sigma Black Belt</h3>
             <p>LinkedIn Learning</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Strategic-Negotiation.jpg" alt="Strategic Negotiation" />
+          <img src="Strategic-Negotiation.jpg" alt="Strategic Negotiation">
           <div class="portfolio-info">
             <h3>Strategic Negotiation</h3>
             <p>LinkedIn Learning</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Negotiation-Foundations.jpg" alt="Negotiation Foundations" />
+          <img src="Negotiation-Foundations.jpg" alt="Negotiation Foundations">
           <div class="portfolio-info">
             <h3>Negotiation Foundations</h3>
             <p>LinkedIn Learning</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Executive-Leadership.jpg" alt="Executive Leadership" />
+          <img src="Executive-Leadership.jpg" alt="Executive Leadership">
           <div class="portfolio-info">
             <h3>Executive Leadership</h3>
             <p>LinkedIn Learning</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Business-Communications-Write-Speak-and-Lead-Effectively.jpg" alt="Business Communications" />
+          <img src="Business-Communications-Write-Speak-and-Lead-Effectively.jpg" alt="Business Comms">
           <div class="portfolio-info">
             <h3>Business Communications</h3>
             <p>EDUTAP</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Business-Acumen-Build-Strategic-and-Financial-Skills.jpg" alt="Business Acumen" />
+          <img src="Business-Acumen-Build-Strategic-and-Financial-Skills.jpg" alt="Business Acumen">
           <div class="portfolio-info">
             <h3>Business Acumen</h3>
             <p>EDUTAP</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Mind-Controlling-Program-1.jpg" alt="Stock Market Trading Level-1" />
+          <img src="Mind-Controlling-Program-1.jpg" alt="Trading L1">
           <div class="portfolio-info">
             <h3>Stock Market Trading Level-1</h3>
             <p>NIFM</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Mind-Controlling-Program-2.jpg" alt="Share Market Trading Level-2" />
+          <img src="Mind-Controlling-Program-2.jpg" alt="Trading L2">
           <div class="portfolio-info">
             <h3>Share Market Trading Level-2</h3>
             <p>NIFM</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Public Speaking Foundations.jpg" alt="Public Speaking Foundations" />
+          <img src="Public Speaking Foundations.jpg" alt="Public Speaking Foundations">
           <div class="portfolio-info">
             <h3>Public Speaking Foundations</h3>
             <p>LinkedIn Learning</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Google-Gemini.jpg" alt="Google Gemini" />
+          <img src="Google-Gemini.jpg" alt="Google Gemini">
           <div class="portfolio-info">
             <h3>Google Gemini</h3>
-            <p>Professional certification</p>
+            <p>Professional</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Key-Account-Management.jpg" alt="Key Account Management" />
+          <img src="Key-Account-Management.jpg" alt="KAM">
           <div class="portfolio-info">
             <h3>Key Account Management</h3>
-            <p>Professional certification</p>
+            <p>Professional</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Public Speaking.jpg" alt="Public Speaking" />
+          <img src="Public Speaking.jpg" alt="Public Speaking">
           <div class="portfolio-info">
             <h3>Public Speaking</h3>
-            <p>Professional certification</p>
+            <p>Professional</p>
           </div>
         </div>
-
         <div class="portfolio-item" onclick="openModal(this)">
-          <img src="Public-Speaking-Skills.jpg" alt="Public Speaking Skills" />
+          <img src="Public-Speaking-Skills.jpg" alt="Public Speaking Skills">
           <div class="portfolio-info">
             <h3>Public Speaking Skills</h3>
-            <p>Professional certification</p>
+            <p>Professional</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Certificate Modal -->
+  <!-- IMAGE MODAL -->
   <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
-    <img class="modal-content" id="img01" />
+    <img class="modal-content" id="img01">
   </div>
 
-  <!-- Organization Experience Ticker -->
+  <!-- ORGANIZATION EXPERIENCE (TICKER) -->
   <section id="experience-ticker">
     <div class="section-content">
       <div class="section-top-line"></div>
@@ -1062,168 +803,51 @@
 
       <div class="ticker-shell" id="tickerShell">
         <div class="ticker-track">
-          <!-- Main sequence -->
-          <div class="logo-pill">
-            <img src="ATLAS.jpg" alt="Atlas" />
-            <span>Atlas Group</span>
-          </div>
-          <div class="logo-pill">
-            <img src="NEDLLOYD.jpg" alt="Nedlloyd" />
-            <span>Nedlloyd</span>
-          </div>
-          <div class="logo-pill">
-            <img src="SYB.jpg" alt="SYB" />
-            <span>SYB</span>
-          </div>
-          <div class="logo-pill">
-            <img src="ORCHID.jpg" alt="Orchid" />
-            <span>Orchid</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HMM.jpg" alt="HMM" />
-            <span>HMM</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HSUD.jpg" alt="Hamburg Sud" />
-            <span>Hamburg Sud</span>
-          </div>
-          <div class="logo-pill">
-            <img src="CEEKAY.jpg" alt="Ceekay" />
-            <span>Ceekay</span>
-          </div>
-          <div class="logo-pill">
-            <img src="DAL.jpg" alt="DAL" />
-            <span>DAL</span>
-          </div>
-          <div class="logo-pill">
-            <img src="TSLINES.jpg" alt="TS Lines" />
-            <span>T.S. Lines</span>
-          </div>
-          <div class="logo-pill">
-            <img src="ESL.jpg" alt="ESL" />
-            <span>Ethiopian S&amp;L</span>
-          </div>
-          <div class="logo-pill">
-            <img src="CHINASHIPPING.jpg" alt="China Shipping" />
-            <span>China Shipping</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HEUNG-A.jpg" alt="Heung-A" />
-            <span>Heung-A</span>
-          </div>
-          <div class="logo-pill">
-            <img src="LMT.jpg" alt="LMT" />
-            <span>LMT Gulf</span>
-          </div>
-          <div class="logo-pill">
-            <img src="DELMAS.jpg" alt="Delmas" />
-            <span>Delmas SAS</span>
-          </div>
-          <div class="logo-pill">
-            <img src="STX.jpg" alt="STX" />
-            <span>STX Ocean</span>
-          </div>
-          <div class="logo-pill">
-            <img src="MSC.jpg" alt="MSC" />
-            <span>MSC</span>
-          </div>
-          <div class="logo-pill">
-            <img src="msc.jpg" alt="MSC Alt" />
-            <span>MSC Alt</span>
-          </div>
-          <div class="logo-pill">
-            <img src="qnl-milaha.png" alt="QNL" />
-            <span>QNL Milaha</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HINDFREIGHT.jpg" alt="Hind Freight" />
-            <span>Hind Freight</span>
-          </div>
-          <div class="logo-pill">
-            <img src="SINOKOR.jpg" alt="Sinokor" />
-            <span>Sinokor</span>
-          </div>
+          <!-- ORIGINAL LIST - FILENAMES ONLY -->
+          <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas"><span>Atlas Group</span></div>
+          <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd"><span>Nedlloyd</span></div>
+          <div class="logo-pill"><img src="SYB.jpg" alt="SYB"><span>SYB</span></div>
+          <div class="logo-pill"><img src="ORCHID.jpg" alt="Orchid"><span>Orchid</span></div>
+          <div class="logo-pill"><img src="HMM.jpg" alt="HMM"><span>HMM</span></div>
+          <div class="logo-pill"><img src="HSUD.jpg" alt="Hamburg Sud"><span>Hamburg Sud</span></div>
+          <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay"><span>Ceekay</span></div>
+          <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
+          <div class="logo-pill"><img src="TSLINES.jpg" alt="TS Lines"><span>T.S. Lines</span></div>
+          <div class="logo-pill"><img src="ESL.jpg" alt="ESL"><span>Ethiopian S&L</span></div>
+          <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
+          <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
+          <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT Gulf</span></div>
+          <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas"><span>Delmas SAS</span></div>
+          <div class="logo-pill"><img src="STX.jpg" alt="STX"><span>STX Ocean</span></div>
+          <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
+          <div class="logo-pill"><img src="msc.jpg" alt="MSC Alt"><span>MSC Alt</span></div>
+          <div class="logo-pill"><img src="qnl-milaha.png" alt="QNL"><span>QNL Milaha</span></div>
+          <div class="logo-pill"><img src="HINDFREIGHT.jpg" alt="Hind Freight"><span>Hind Freight</span></div>
+          <div class="logo-pill"><img src="SINOKOR.jpg" alt="Sinokor"><span>Sinokor</span></div>
 
-          <!-- Duplicate for seamless loop -->
-          <div class="logo-pill">
-            <img src="ATLAS.jpg" alt="Atlas" />
-            <span>Atlas Group</span>
-          </div>
-          <div class="logo-pill">
-            <img src="NEDLLOYD.jpg" alt="Nedlloyd" />
-            <span>Nedlloyd</span>
-          </div>
-          <div class="logo-pill">
-            <img src="SYB.jpg" alt="SYB" />
-            <span>SYB</span>
-          </div>
-          <div class="logo-pill">
-            <img src="ORCHID.jpg" alt="Orchid" />
-            <span>Orchid</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HMM.jpg" alt="HMM" />
-            <span>HMM</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HSUD.jpg" alt="Hamburg Sud" />
-            <span>Hamburg Sud</span>
-          </div>
-          <div class="logo-pill">
-            <img src="CEEKAY.jpg" alt="Ceekay" />
-            <span>Ceekay</span>
-          </div>
-          <div class="logo-pill">
-            <img src="DAL.jpg" alt="DAL" />
-            <span>DAL</span>
-          </div>
-          <div class="logo-pill">
-            <img src="TSLINES.jpg" alt="TS Lines" />
-            <span>T.S. Lines</span>
-          </div>
-          <div class="logo-pill">
-            <img src="ESL.jpg" alt="ESL" />
-            <span>Ethiopian S&amp;L</span>
-          </div>
-          <div class="logo-pill">
-            <img src="CHINASHIPPING.jpg" alt="China Shipping" />
-            <span>China Shipping</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HEUNG-A.jpg" alt="Heung-A" />
-            <span>Heung-A</span>
-          </div>
-          <div class="logo-pill">
-            <img src="LMT.jpg" alt="LMT" />
-            <span>LMT Gulf</span>
-          </div>
-          <div class="logo-pill">
-            <img src="DELMAS.jpg" alt="Delmas" />
-            <span>Delmas SAS</span>
-          </div>
-          <div class="logo-pill">
-            <img src="STX.jpg" alt="STX" />
-            <span>STX Ocean</span>
-          </div>
-          <div class="logo-pill">
-            <img src="MSC.jpg" alt="MSC" />
-            <span>MSC</span>
-          </div>
-          <div class="logo-pill">
-            <img src="qnl-milaha.png" alt="QNL" />
-            <span>QNL Milaha</span>
-          </div>
-          <div class="logo-pill">
-            <img src="HINDFREIGHT.jpg" alt="Hind Freight" />
-            <span>Hind Freight</span>
-          </div>
-          <div class="logo-pill">
-            <img src="SINOKOR.jpg" alt="Sinokor" />
-            <span>Sinokor</span>
-          </div>
+          <!-- DUPLICATE FOR LOOP -->
+          <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas"><span>Atlas Group</span></div>
+          <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd"><span>Nedlloyd</span></div>
+          <div class="logo-pill"><img src="SYB.jpg" alt="SYB"><span>SYB</span></div>
+          <div class="logo-pill"><img src="ORCHID.jpg" alt="Orchid"><span>Orchid</span></div>
+          <div class="logo-pill"><img src="HMM.jpg" alt="HMM"><span>HMM</span></div>
+          <div class="logo-pill"><img src="HSUD.jpg" alt="Hamburg Sud"><span>Hamburg Sud</span></div>
+          <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay"><span>Ceekay</span></div>
+          <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
+          <div class="logo-pill"><img src="TSLINES.jpg" alt="TS Lines"><span>T.S. Lines</span></div>
+          <div class="logo-pill"><img src="ESL.jpg" alt="ESL"><span>Ethiopian S&L</span></div>
+          <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
+          <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
+          <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT Gulf</span></div>
+          <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas"><span>Delmas SAS</span></div>
+          <div class="logo-pill"><img src="STX.jpg" alt="STX"><span>STX Ocean</span></div>
+          <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
+          <div class="logo-pill"><img src="qnl-milaha.png" alt="QNL"><span>QNL Milaha</span></div>
+          <div class="logo-pill"><img src="HINDFREIGHT.jpg" alt="Hind Freight"><span>Hind Freight</span></div>
+          <div class="logo-pill"><img src="SINOKOR.jpg" alt="Sinokor"><span>Sinokor</span></div>
         </div>
       </div>
-
+      
       <div class="ticker-controls">
         <button class="ticker-btn" id="tickerPrev">&#8592;</button>
         <button class="ticker-btn" id="tickerNext">&#8594;</button>
@@ -1231,7 +855,7 @@
     </div>
   </section>
 
-  <!-- Professional Experience Timeline -->
+  <!-- EXPERIENCE TIMELINE -->
   <section id="testimonials">
     <div class="section-content">
       <div class="section-top-line"></div>
@@ -1321,7 +945,7 @@
     </div>
   </section>
 
-  <!-- Footer / Contact -->
+  <!-- FOOTER -->
   <footer id="contact">
     <div class="footer-content">
       <div class="footer-left">
@@ -1331,20 +955,19 @@
         <span class="footer-separator">|</span>
         <span>+91 9877982622</span>
       </div>
-      <button class="btn-to-top" id="btnToTop">Top ↑</button>
+      <button class="btn-to-top" id="btnToTop">Top &#8593;</button>
     </div>
   </footer>
 
+  <!-- SCRIPTS -->
   <script>
-    // Mobile Menu Toggle
+    // Navigation Toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
-
     if (menuToggle && navLinks) {
       menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
       });
-
       document.querySelectorAll('.nav-links a').forEach(link => {
         link.addEventListener('click', () => {
           navLinks.classList.remove('active');
@@ -1352,35 +975,7 @@
       });
     }
 
-    // Smooth scrolling
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener('click', function (e) {
-        const targetId = this.getAttribute('href');
-        if (targetId.length > 1) {
-          e.preventDefault();
-          const target = document.querySelector(targetId);
-          if (target) {
-            target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-          }
-        }
-      });
-    });
-
-    // Section scroll animation
-    const observer = new IntersectionObserver(
-      entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-          }
-        });
-      },
-      { threshold: 0.1 }
-    );
-
-    document.querySelectorAll('section').forEach(section => observer.observe(section));
-
-    // Typewriter effect
+    // Typewriter
     class TypeWriter {
       constructor(element, words, delay = 2000) {
         this.element = element;
@@ -1391,7 +986,6 @@
         this.isDeleting = false;
         this.type();
       }
-
       type() {
         const currentWord = this.words[this.wordIndex];
         if (this.isDeleting) {
@@ -1401,9 +995,7 @@
           this.element.textContent = currentWord.substring(0, this.charIndex + 1);
           this.charIndex++;
         }
-
         let typeSpeed = this.isDeleting ? 50 : 100;
-
         if (!this.isDeleting && this.charIndex === currentWord.length) {
           typeSpeed = this.delay;
           this.isDeleting = true;
@@ -1412,34 +1004,25 @@
           this.wordIndex = (this.wordIndex + 1) % this.words.length;
           typeSpeed = 500;
         }
-
         setTimeout(() => this.type(), typeSpeed);
       }
     }
-
     document.addEventListener('DOMContentLoaded', () => {
-      new TypeWriter(
-        document.getElementById('typewriter1'),
-        ['Logistics', 'Freight Forwarding', 'Shipping'],
-        2000
-      );
-      new TypeWriter(
-        document.getElementById('typewriter2'),
-        ['Pricing', 'Documentation', 'Sales', 'Customer Service'],
-        1500
-      );
+      new TypeWriter(document.getElementById('typewriter1'), ['Logistics', 'Freight Forwarding', 'Shipping'], 2000);
+      new TypeWriter(document.getElementById('typewriter2'), ['Pricing', 'Documentation', 'Sales', 'Customer Service'], 1500);
     });
 
-    // Header shadow on scroll
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      header.style.boxShadow =
-        window.scrollY > 100
-          ? '0 5px 20px rgba(0,0,0,0.1)'
-          : '0 2px 10px rgba(0,0,0,0.05)';
-    });
+    // Fade-in on Scroll
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('section').forEach(section => observer.observe(section));
 
-    // Modal functionality
+    // Modal
     function openModal(element) {
       const modal = document.getElementById('myModal');
       const modalImg = document.getElementById('img01');
@@ -1447,115 +1030,84 @@
       modal.style.display = 'block';
       modalImg.src = img.src;
     }
-
     function closeModal() {
       document.getElementById('myModal').style.display = 'none';
     }
-
-    window.onclick = function (event) {
+    window.onclick = function(event) {
       const modal = document.getElementById('myModal');
       if (event.target === modal) {
         modal.style.display = 'none';
       }
     };
 
-    window.closeModal = closeModal;
-    window.openModal = openModal;
-
-    // Ticker navigation + auto scroll with mouse wheel support
+    // Ticker Logic (Auto Scroll + Manual + Touch + Mouse Wheel)
     const tickerShell = document.getElementById('tickerShell');
     const tickerPrev = document.getElementById('tickerPrev');
     const tickerNext = document.getElementById('tickerNext');
-
     if (tickerShell && tickerPrev && tickerNext) {
       const scrollAmount = 250;
       let autoScrollSpeed = 0.7;
       let lastTimestamp = null;
       let isAutoScrolling = true;
 
+      // Manual Buttons
       tickerPrev.addEventListener('click', () => {
         tickerShell.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });
-
       tickerNext.addEventListener('click', () => {
         tickerShell.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       });
 
+      // Auto Loop
       function autoScroll(timestamp) {
         if (!lastTimestamp) lastTimestamp = timestamp;
         const delta = timestamp - lastTimestamp;
-
         if (isAutoScrolling) {
           tickerShell.scrollLeft += autoScrollSpeed * (delta / 16);
-
-          const maxScroll = tickerShell.scrollWidth / 2;
-          if (tickerShell.scrollLeft >= maxScroll) {
+          // Reset if reached middle (since duplicate exists)
+          if (tickerShell.scrollLeft >= tickerShell.scrollWidth / 2) {
             tickerShell.scrollLeft = 0;
           }
         }
-
         lastTimestamp = timestamp;
         requestAnimationFrame(autoScroll);
       }
-
       requestAnimationFrame(autoScroll);
 
-      tickerShell.addEventListener('mouseenter', () => {
-        isAutoScrolling = false;
-      });
-
-      tickerShell.addEventListener('mouseleave', () => {
-        isAutoScrolling = true;
+      // Pause on Hover
+      tickerShell.addEventListener('mouseenter', () => { isAutoScrolling = false; });
+      tickerShell.addEventListener('mouseleave', () => { 
+        isAutoScrolling = true; 
         lastTimestamp = null;
       });
 
+      // Mouse Wheel
       tickerShell.addEventListener('wheel', (e) => {
         e.preventDefault();
         isAutoScrolling = false;
-        
-        const scrollDistance = e.deltaY > 0 ? 100 : -100;
-        tickerShell.scrollBy({
-          left: scrollDistance,
-          behavior: 'smooth'
-        });
-
+        tickerShell.scrollLeft += e.deltaY;
         clearTimeout(tickerShell.scrollTimeout);
         tickerShell.scrollTimeout = setTimeout(() => {
           isAutoScrolling = true;
           lastTimestamp = null;
-        }, 3000);
+        }, 2000);
       });
 
+      // Touch Swipe
       let touchStartX = 0;
-      let touchEndX = 0;
-
       tickerShell.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         isAutoScrolling = false;
-      }, false);
-
+      }, {passive: true});
       tickerShell.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-      }, false);
-
-      function handleSwipe() {
-        if (touchStartX - touchEndX > 50) {
-          tickerShell.scrollBy({ left: 100, behavior: 'smooth' });
-        }
-        if (touchEndX - touchStartX > 50) {
-          tickerShell.scrollBy({ left: -100, behavior: 'smooth' });
-        }
-
-        clearTimeout(tickerShell.scrollTimeout);
-        tickerShell.scrollTimeout = setTimeout(() => {
-          isAutoScrolling = true;
-          lastTimestamp = null;
-        }, 3000);
-      }
+        let touchEndX = e.changedTouches[0].screenX;
+        let diff = touchStartX - touchEndX;
+        tickerShell.scrollBy({ left: diff * 2, behavior: 'smooth' });
+        setTimeout(() => { isAutoScrolling = true; lastTimestamp = null; }, 2000);
+      }, {passive: true});
     }
 
-    // Scroll-to-top
+    // Scroll to Top
     const btnToTop = document.getElementById('btnToTop');
     if (btnToTop) {
       btnToTop.addEventListener('click', () => {
