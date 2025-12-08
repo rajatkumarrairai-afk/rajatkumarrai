@@ -14,25 +14,22 @@
     }
 
     :root {
-      /* White background everywhere */
       --bg-color: #ffffff;
       --paper-color: #ffffff;
 
-      /* Dark blue text */
       --text-main: #0a2540;
       --text-secondary: #3e5c76;
       --accent-color: #0a2540;
 
-      /* Shadows & radius */
       --shadow-paper:
-        1px 1px 0px rgba(0,0,0,0.05),
-        2px 2px 0px rgba(0,0,0,0.05),
-        3px 3px 6px rgba(0,0,0,0.1);
-      --shadow-hover:
-        1px 1px 0px rgba(0,0,0,0.05),
-        2px 2px 0px rgba(0,0,0,0.05),
-        4px 4px 12px rgba(0,0,0,0.15);
+        0 1px 1px rgba(15, 23, 42, 0.10),
+        0 4px 6px rgba(15, 23, 42, 0.08);
+      --shadow-hover-paper:
+        0 6px 10px rgba(15, 23, 42, 0.12),
+        0 14px 28px rgba(15, 23, 42, 0.18);
+
       --border-radius: 12px;
+      --card-scale: 1.03;
     }
 
     body {
@@ -95,7 +92,6 @@
       transform: translateY(-1px);
     }
 
-    /* Mobile Menu */
     .menu-toggle {
       display: none;
       flex-direction: column;
@@ -109,7 +105,7 @@
       border-radius: 2px;
     }
 
-    /* SECTIONS – FULL WIDTH, WHITE BACKGROUND */
+    /* SECTIONS */
     section {
       width: 100%;
       padding: 60px 4vw;
@@ -133,7 +129,6 @@
       width: 100%;
     }
 
-    /* Headings */
     .section-top-line {
       width: 60px;
       height: 4px;
@@ -155,7 +150,6 @@
       color: var(--text-main);
     }
 
-    /* Global text justification */
     p {
       color: var(--text-secondary);
       font-weight: 500;
@@ -163,7 +157,7 @@
       text-justify: inter-word;
     }
 
-    /* HERO SECTION */
+    /* HERO */
     section.hero {
       background: #ffffff;
       padding-top: 120px;
@@ -238,9 +232,9 @@
       max-width: 100%;
       height: auto;
       border-radius: var(--border-radius);
-      border: none;           /* no border */
+      border: none;
       box-shadow: var(--shadow-paper);
-      transform: none;        /* no tilt */
+      transform: none;
       background: transparent;
     }
 
@@ -264,6 +258,13 @@
       border-radius: 8px;
       text-align: center;
       box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transform-origin: center;
+    }
+
+    .stat-box:hover {
+      transform: scale(var(--card-scale));
+      box-shadow: var(--shadow-hover-paper);
     }
 
     .stat-number {
@@ -285,22 +286,32 @@
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
-    /* CARDS */
-    .skill-card, .service-card, .portfolio-item {
+    /* GENERIC CARD HOVER (paper cut zoom) */
+    .skill-card,
+    .service-card,
+    .portfolio-item,
+    .timeline-content,
+    .logo-pill {
       background: var(--paper-color);
-      padding: 1.5rem;
       border-radius: 8px;
       border: 1px solid rgba(0,0,0,0.03);
-      box-shadow:
-        -1px -1px 0px rgba(255,255,255,0.8),
-        2px 2px 4px rgba(0,0,0,0.05);
-      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+      box-shadow: var(--shadow-paper);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      transform-origin: center;
     }
 
-    .skill-card:hover, .service-card:hover, .portfolio-item:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-hover);
-      background: var(--paper-color);
+    .skill-card:hover,
+    .service-card:hover,
+    .portfolio-item:hover,
+    .timeline-content:hover,
+    .logo-pill:hover {
+      transform: scale(var(--card-scale));
+      box-shadow: var(--shadow-hover-paper);
+    }
+
+    /* SKILL CARD CONTENT */
+    .skill-card {
+      padding: 1.5rem;
     }
 
     .skill-card::before {
@@ -324,8 +335,18 @@
       color: var(--text-main);
     }
 
+    .service-card {
+      padding: 1.5rem;
+      text-align: center;
+    }
+
     .service-card h3 {
       margin-bottom: 0.6rem;
+    }
+
+    .portfolio-item {
+      cursor: pointer;
+      padding: 1.5rem;
     }
 
     .portfolio-item img {
@@ -335,10 +356,11 @@
       border-radius: 6px;
       margin-bottom: 1rem;
       border: 1px solid #ddd;
+      box-shadow: 0 2px 6px rgba(15,23,42,0.1);
     }
 
-    .portfolio-item {
-      cursor: pointer;
+    .portfolio-info h3 {
+      margin-bottom: 0.35rem;
     }
 
     /* TICKER */
@@ -358,15 +380,11 @@
     }
 
     .logo-pill {
-      background: var(--paper-color);
       padding: 0.8rem 1.5rem;
-      border-radius: 50px;
       display: flex;
       flex-direction: column;
       align-items: center;
       min-width: 120px;
-      border: 1px solid rgba(0,0,0,0.05);
-      box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
 
     .logo-pill img {
@@ -379,6 +397,7 @@
       font-size: 0.8rem;
       font-weight: 700;
       color: var(--text-main);
+      text-align: center;
     }
 
     .ticker-controls {
@@ -434,11 +453,8 @@
 
     .timeline-content {
       width: 45%;
-      background: var(--paper-color);
       padding: 1.5rem;
-      border-radius: 8px;
       position: relative;
-      box-shadow: var(--shadow-paper);
     }
 
     .timeline-item:nth-child(odd) .timeline-content {
@@ -847,6 +863,7 @@
           <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas"><span>Delmas SAS</span></div>
           <div class="logo-pill"><img src="STX.jpg" alt="STX"><span>STX Ocean</span></div>
           <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
+          <div class="logo-pill"><img src="msc.jpg" alt="MSC Alt"><span>MSC Alt</span></div>
           <div class="logo-pill"><img src="qnl-milaha.png" alt="QNL"><span>QNL Milaha</span></div>
           <div class="logo-pill"><img src="HINDFREIGHT.jpg" alt="Hind Freight"><span>Hind Freight</span></div>
           <div class="logo-pill"><img src="SINOKOR.jpg" alt="Sinokor"><span>Sinokor</span></div>
@@ -1032,8 +1049,8 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      new TypeWriter(document.getElementById('typewriter1'), ['Logistics', 'Freight Forwarding', 'Shipping Lines'], 2000);
-      new TypeWriter(document.getElementById('typewriter2'), ['Pricing', 'Documentation', 'Customer Service', 'Reverse Auction & Bidding', 'Liner Sales', 'Rate Negotiation' ], 1500);
+      new TypeWriter(document.getElementById('typewriter1'), ['Logistics', 'Freight Forwarding', 'Shipping'], 2000);
+      new TypeWriter(document.getElementById('typewriter2'), ['Pricing', 'Documentation', 'Sales', 'Customer Service'], 1500);
     });
 
     // Fade-in sections
