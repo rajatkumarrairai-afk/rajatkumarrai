@@ -14,30 +14,30 @@
     }
 
     :root {
-      /* Paper Cut Theme Palette */
-      --bg-color: #eef2f5;           /* Light Grey Background */
-      --paper-color: #ffffff;        /* White Paper */
-      --text-main: #0a2540;          /* Dark Blue Text */
-      --text-secondary: #3e5c76;     /* Lighter Blue-Grey Text */
-      --accent-color: #0a2540;       /* Dark Blue Accent */
-      
-      /* Paper Cut Shadows (Layered depth) */
-      --shadow-paper: 
+      /* White background everywhere */
+      --bg-color: #ffffff;
+      --paper-color: #ffffff;
+
+      /* Dark blue text */
+      --text-main: #0a2540;
+      --text-secondary: #3e5c76;
+      --accent-color: #0a2540;
+
+      /* Shadows & radius */
+      --shadow-paper:
         1px 1px 0px rgba(0,0,0,0.05),
         2px 2px 0px rgba(0,0,0,0.05),
         3px 3px 6px rgba(0,0,0,0.1);
-      
-      --shadow-hover: 
+      --shadow-hover:
         1px 1px 0px rgba(0,0,0,0.05),
         2px 2px 0px rgba(0,0,0,0.05),
         4px 4px 12px rgba(0,0,0,0.15);
-        
       --border-radius: 12px;
     }
 
     body {
       font-family: "Segoe UI", Calibri, system-ui, -apple-system, sans-serif;
-      font-size: 15px; /* Slightly larger for readability */
+      font-size: 15px;
       line-height: 1.6;
       color: var(--text-main);
       background-color: var(--bg-color);
@@ -70,7 +70,6 @@
       letter-spacing: 0.05em;
       color: var(--text-main);
       text-transform: uppercase;
-      /* Cutout text effect */
       text-shadow: 1px 1px 0px #fff, 2px 2px 0px rgba(0,0,0,0.1);
     }
 
@@ -110,19 +109,17 @@
       border-radius: 2px;
     }
 
-    /* SECTIONS (Paper Sheets) */
+    /* SECTIONS – FULL WIDTH, WHITE BACKGROUND */
     section {
-      padding: 60px 2rem;
-      margin: 20px auto;
-      max-width: 1100px; /* Centered paper sheet look */
+      width: 100%;
+      padding: 60px 4vw;
+      margin: 0 auto;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-      
-      /* Paper Cut styling for sections */
-      background: var(--paper-color);
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow-paper);
+      background: #ffffff;
+      border-radius: 0;
+      box-shadow: none;
     }
 
     section.visible {
@@ -130,18 +127,9 @@
       transform: translateY(0);
     }
 
-    /* Remove card styling from Hero to let it span naturally */
-    section.hero {
-      background: transparent;
-      box-shadow: none;
-      margin: 0 auto;
-      padding-top: 120px; /* Clear header */
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-    }
-
     .section-content {
+      max-width: 1200px;
+      margin: 0 auto;
       width: 100%;
     }
 
@@ -167,13 +155,26 @@
       color: var(--text-main);
     }
 
+    /* Global text justification */
     p {
       color: var(--text-secondary);
       font-weight: 500;
+      text-align: justify;
+      text-justify: inter-word;
     }
 
     /* HERO SECTION */
+    section.hero {
+      background: #ffffff;
+      padding-top: 120px;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+    }
+
     .hero-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: grid;
       grid-template-columns: 1.2fr 0.8fr;
       gap: 3rem;
@@ -199,7 +200,7 @@
       font-size: 1.3rem;
       color: var(--text-secondary);
       font-weight: 700;
-      font-family: monospace; /* Typewriter feel */
+      font-family: monospace;
     }
 
     .cursor {
@@ -237,56 +238,71 @@
       max-width: 100%;
       height: auto;
       border-radius: var(--border-radius);
-      border: 8px solid var(--paper-color);
+      border: none;           /* no border */
       box-shadow: var(--shadow-paper);
-      transform: rotate(2deg); /* Slightly tilted photo look */
+      transform: none;        /* no tilt */
+      background: transparent;
     }
 
-    /* ABOUT STATS */
+    /* ABOUT */
+    .about-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .about-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
     .stat-box {
-      background: var(--bg-color); /* Grey box on white paper */
+      background: var(--paper-color);
       padding: 1.5rem;
       border-radius: 8px;
       text-align: center;
-      box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05); /* Inset shadow for cutout look */
+      box-shadow: inset 2px 2px 4px rgba(0,0,0,0.05);
     }
+
     .stat-number {
       font-size: 2rem;
       font-weight: 900;
       color: var(--text-main);
     }
+
     .stat-label {
       font-size: 0.9rem;
       font-weight: 600;
       text-transform: uppercase;
     }
 
-    /* GRID LAYOUTS (Skills, Exposure, Portfolio) */
+    /* GRIDS */
     .skills-grid, .services-grid, .portfolio-grid {
       display: grid;
       gap: 1.5rem;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
-    /* CARDS (Paper Cut Style) */
+    /* CARDS */
     .skill-card, .service-card, .portfolio-item {
-      background: var(--bg-color); /* Grey background card */
+      background: var(--paper-color);
       padding: 1.5rem;
       border-radius: 8px;
-      border: 1px solid rgba(255,255,255,0.5);
-      box-shadow: 
+      border: 1px solid rgba(0,0,0,0.03);
+      box-shadow:
         -1px -1px 0px rgba(255,255,255,0.8),
-        2px 2px 4px rgba(0,0,0,0.05); /* Neumorphic/Paper feel */
-      transition: transform 0.2s;
+        2px 2px 4px rgba(0,0,0,0.05);
+      transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
     }
 
     .skill-card:hover, .service-card:hover, .portfolio-item:hover {
       transform: translateY(-5px);
       box-shadow: var(--shadow-hover);
-      background: var(--paper-color); /* Turns white on hover */
+      background: var(--paper-color);
     }
 
-    /* Progress Bar */
     .skill-card::before {
       content: "";
       display: block;
@@ -297,12 +313,21 @@
       border-radius: 3px;
     }
 
+    .skill-label {
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--text-main);
+    }
+
     .skill-percent {
       font-weight: 800;
       color: var(--text-main);
     }
 
-    /* Portfolio Images */
+    .service-card h3 {
+      margin-bottom: 0.6rem;
+    }
+
     .portfolio-item img {
       width: 100%;
       height: 180px;
@@ -311,14 +336,14 @@
       margin-bottom: 1rem;
       border: 1px solid #ddd;
     }
-    
+
     .portfolio-item {
       cursor: pointer;
     }
 
-    /* TICKER TAPE */
+    /* TICKER */
     .ticker-shell {
-      background: var(--bg-color);
+      background: var(--paper-color);
       border-radius: 8px;
       padding: 1rem;
       overflow: hidden;
@@ -343,13 +368,13 @@
       border: 1px solid rgba(0,0,0,0.05);
       box-shadow: 1px 1px 2px rgba(0,0,0,0.05);
     }
-    
+
     .logo-pill img {
       height: 40px;
       object-fit: contain;
       margin-bottom: 5px;
     }
-    
+
     .logo-pill span {
       font-size: 0.8rem;
       font-weight: 700;
@@ -362,7 +387,7 @@
       gap: 1rem;
       margin-top: 1rem;
     }
-    
+
     .ticker-btn {
       background: var(--paper-color);
       border: 1px solid var(--text-main);
@@ -377,7 +402,7 @@
       justify-content: center;
       transition: 0.2s;
     }
-    
+
     .ticker-btn:hover {
       background: var(--text-main);
       color: var(--paper-color);
@@ -388,7 +413,7 @@
       position: relative;
       padding: 1rem 0;
     }
-    
+
     .timeline::before {
       content: '';
       position: absolute;
@@ -396,7 +421,7 @@
       top: 0;
       bottom: 0;
       width: 2px;
-      background: #ccc; /* Dotted line effect */
+      background: #ccc;
       background-image: linear-gradient(to bottom, var(--text-main) 50%, transparent 50%);
       background-size: 2px 10px;
       transform: translateX(-50%);
@@ -406,20 +431,20 @@
       margin-bottom: 2rem;
       position: relative;
     }
-    
+
     .timeline-content {
       width: 45%;
-      background: var(--bg-color);
+      background: var(--paper-color);
       padding: 1.5rem;
       border-radius: 8px;
       position: relative;
       box-shadow: var(--shadow-paper);
     }
-    
+
     .timeline-item:nth-child(odd) .timeline-content {
       margin-left: auto;
     }
-    
+
     .timeline-dot {
       width: 16px;
       height: 16px;
@@ -433,6 +458,13 @@
       box-shadow: 0 0 0 2px var(--text-main);
     }
 
+    .timeline-date {
+      font-size: 0.85rem;
+      font-style: italic;
+      color: var(--text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
     /* MODAL */
     .modal {
       display: none;
@@ -442,9 +474,10 @@
       top: 0;
       width: 100%;
       height: 100%;
-      background-color: rgba(10, 37, 64, 0.9); /* Dark blue overlay */
+      background-color: rgba(10, 37, 64, 0.9);
       padding-top: 60px;
     }
+
     .modal-content {
       margin: auto;
       display: block;
@@ -455,6 +488,7 @@
       border-radius: 4px;
       box-shadow: 0 0 20px rgba(0,0,0,0.5);
     }
+
     .close {
       position: absolute;
       top: 20px;
@@ -473,16 +507,17 @@
       padding: 2rem;
       margin-top: 4rem;
     }
-    
+
     .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      max-width: 1100px;
-      margin: 0 auto;
       flex-wrap: wrap;
+      gap: 1rem;
     }
-    
+
     .footer-left span {
       margin-right: 15px;
       font-size: 0.9rem;
@@ -499,7 +534,7 @@
       cursor: pointer;
       transition: 0.2s;
     }
-    
+
     .btn-to-top:hover {
       background: #fff;
       color: var(--text-main);
@@ -511,13 +546,13 @@
         grid-template-columns: 1fr;
         text-align: center;
       }
-      
+
       .hero-text h1 { font-size: 2.2rem; }
-      
-      .timeline::before { left: 0; }
+
+      .timeline::before { left: 0; transform: none; }
       .timeline-content { width: 90%; margin-left: 2rem !important; }
-      .timeline-dot { left: 0; }
-      
+      .timeline-dot { left: 0; transform: translateX(-50%); }
+
       .nav-links {
         display: none;
         position: absolute;
@@ -530,14 +565,9 @@
         box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         text-align: center;
       }
-      
+
       .nav-links.active { display: flex; }
       .menu-toggle { display: flex; }
-      
-      .footer-content {
-        flex-direction: column;
-        gap: 1rem;
-      }
     }
   </style>
 </head>
@@ -561,12 +591,12 @@
     </nav>
   </header>
 
-  <!-- HERO SECTION -->
+  <!-- HERO -->
   <section class="hero" id="home">
     <div class="hero-content">
       <div class="hero-text">
         <h1>HELLO<br>I AM <span>RAJAT KUMAR RAI</span></h1>
-        
+
         <div class="typewriter-container">
           <span class="typewriter" id="typewriter1"></span><span class="cursor"></span>
         </div>
@@ -575,24 +605,23 @@
         </div>
 
         <p>13+ years of expertise in logistics, freight forwarding, pricing, and supply chain management.</p>
-        
+
         <a href="#about" class="btn">ABOUT ME</a>
       </div>
 
       <div class="hero-image">
-        <!-- FILENAME ONLY -->
         <img src="profile.jpg" alt="Rajat Kumar Rai Profile" />
       </div>
     </div>
   </section>
 
-  <!-- ABOUT SECTION -->
+  <!-- ABOUT -->
   <section id="about">
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>LET'S INTRODUCE ABOUT MYSELF</h2>
 
-      <div class="about-content" style="display:grid; grid-template-columns: 1fr 1fr; gap:2rem; align-items:center;">
+      <div class="about-content">
         <div class="about-text">
           <p>Experienced logistics and freight forwarding professional with 13+ years of hands-on expertise in pricing, sales support, customer care and documentation across shipping lines and freight-forwarding.</p>
           <br>
@@ -601,7 +630,7 @@
           <p>Focused on delivering efficient, cost-effective solutions that contribute to business growth. Committed to process improvement, regularly reviewing and optimizing existing workflows to enhance efficiency.</p>
         </div>
 
-        <div class="about-stats" style="display:grid; grid-template-columns: 1fr 1fr; gap:1rem;">
+        <div class="about-stats">
           <div class="stat-box">
             <div class="stat-number">13+</div>
             <div class="stat-label">Years Experience</div>
@@ -615,7 +644,7 @@
     </div>
   </section>
 
-  <!-- SKILLS SECTION -->
+  <!-- SKILLS -->
   <section id="skills">
     <div class="section-content">
       <div class="section-top-line"></div>
@@ -686,14 +715,13 @@
     </div>
   </section>
 
-  <!-- CERTIFICATIONS (PORTFOLIO) -->
+  <!-- CERTIFICATIONS -->
   <section id="portfolio">
     <div class="section-content">
       <div class="section-top-line"></div>
       <h2>Certifications &amp; Courses</h2>
 
       <div class="portfolio-grid">
-        <!-- EXACT FILENAMES PRESERVED -->
         <div class="portfolio-item" onclick="openModal(this)">
           <img src="Six-Sigma-Black-Belt.jpg" alt="Six Sigma">
           <div class="portfolio-info">
@@ -789,13 +817,13 @@
     </div>
   </section>
 
-  <!-- IMAGE MODAL -->
+  <!-- MODAL -->
   <div id="myModal" class="modal">
     <span class="close" onclick="closeModal()">&times;</span>
     <img class="modal-content" id="img01">
   </div>
 
-  <!-- ORGANIZATION EXPERIENCE (TICKER) -->
+  <!-- ORGANIZATION EXPERIENCE -->
   <section id="experience-ticker">
     <div class="section-content">
       <div class="section-top-line"></div>
@@ -803,7 +831,6 @@
 
       <div class="ticker-shell" id="tickerShell">
         <div class="ticker-track">
-          <!-- ORIGINAL LIST - FILENAMES ONLY -->
           <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas"><span>Atlas Group</span></div>
           <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd"><span>Nedlloyd</span></div>
           <div class="logo-pill"><img src="SYB.jpg" alt="SYB"><span>SYB</span></div>
@@ -813,19 +840,18 @@
           <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay"><span>Ceekay</span></div>
           <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
           <div class="logo-pill"><img src="TSLINES.jpg" alt="TS Lines"><span>T.S. Lines</span></div>
-          <div class="logo-pill"><img src="ESL.jpg" alt="ESL"><span>Ethiopian S&L</span></div>
+          <div class="logo-pill"><img src="ESL.jpg" alt="ESL"><span>Ethiopian S&amp;L</span></div>
           <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
           <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
           <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT Gulf</span></div>
           <div class="logo-pill"><img src="DELMAS.jpg" alt="Delmas"><span>Delmas SAS</span></div>
           <div class="logo-pill"><img src="STX.jpg" alt="STX"><span>STX Ocean</span></div>
           <div class="logo-pill"><img src="MSC.jpg" alt="MSC"><span>MSC</span></div>
-          <div class="logo-pill"><img src="msc.jpg" alt="MSC Alt"><span>MSC Alt</span></div>
           <div class="logo-pill"><img src="qnl-milaha.png" alt="QNL"><span>QNL Milaha</span></div>
           <div class="logo-pill"><img src="HINDFREIGHT.jpg" alt="Hind Freight"><span>Hind Freight</span></div>
           <div class="logo-pill"><img src="SINOKOR.jpg" alt="Sinokor"><span>Sinokor</span></div>
 
-          <!-- DUPLICATE FOR LOOP -->
+          <!-- duplicate for seamless loop -->
           <div class="logo-pill"><img src="ATLAS.jpg" alt="Atlas"><span>Atlas Group</span></div>
           <div class="logo-pill"><img src="NEDLLOYD.jpg" alt="Nedlloyd"><span>Nedlloyd</span></div>
           <div class="logo-pill"><img src="SYB.jpg" alt="SYB"><span>SYB</span></div>
@@ -835,7 +861,7 @@
           <div class="logo-pill"><img src="CEEKAY.jpg" alt="Ceekay"><span>Ceekay</span></div>
           <div class="logo-pill"><img src="DAL.jpg" alt="DAL"><span>DAL</span></div>
           <div class="logo-pill"><img src="TSLINES.jpg" alt="TS Lines"><span>T.S. Lines</span></div>
-          <div class="logo-pill"><img src="ESL.jpg" alt="ESL"><span>Ethiopian S&L</span></div>
+          <div class="logo-pill"><img src="ESL.jpg" alt="ESL"><span>Ethiopian S&amp;L</span></div>
           <div class="logo-pill"><img src="CHINASHIPPING.jpg" alt="China Shipping"><span>China Shipping</span></div>
           <div class="logo-pill"><img src="HEUNG-A.jpg" alt="Heung-A"><span>Heung-A</span></div>
           <div class="logo-pill"><img src="LMT.jpg" alt="LMT"><span>LMT Gulf</span></div>
@@ -847,7 +873,7 @@
           <div class="logo-pill"><img src="SINOKOR.jpg" alt="Sinokor"><span>Sinokor</span></div>
         </div>
       </div>
-      
+
       <div class="ticker-controls">
         <button class="ticker-btn" id="tickerPrev">&#8592;</button>
         <button class="ticker-btn" id="tickerNext">&#8594;</button>
@@ -959,9 +985,8 @@
     </div>
   </footer>
 
-  <!-- SCRIPTS -->
   <script>
-    // Navigation Toggle
+    // Nav toggle
     const menuToggle = document.getElementById('menuToggle');
     const navLinks = document.getElementById('navLinks');
     if (menuToggle && navLinks) {
@@ -969,9 +994,7 @@
         navLinks.classList.toggle('active');
       });
       document.querySelectorAll('.nav-links a').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('active');
-        });
+        link.addEventListener('click', () => navLinks.classList.remove('active'));
       });
     }
 
@@ -1007,17 +1030,16 @@
         setTimeout(() => this.type(), typeSpeed);
       }
     }
+
     document.addEventListener('DOMContentLoaded', () => {
-      new TypeWriter(document.getElementById('typewriter1'), ['Logistics', 'Freight Forwarding', 'Shipping'], 2000);
-      new TypeWriter(document.getElementById('typewriter2'), ['Pricing', 'Documentation', 'Sales', 'Customer Service'], 1500);
+      new TypeWriter(document.getElementById('typewriter1'), ['Logistics', 'Freight Forwarding', 'Shipping Lines'], 2000);
+      new TypeWriter(document.getElementById('typewriter2'), ['Pricing', 'Documentation', 'Customer Service', 'Reverse Auction & Bidding', 'Liner Sales', 'Rate Negotiation' ], 1500);
     });
 
-    // Fade-in on Scroll
+    // Fade-in sections
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.1 });
     document.querySelectorAll('section').forEach(section => observer.observe(section));
@@ -1035,12 +1057,10 @@
     }
     window.onclick = function(event) {
       const modal = document.getElementById('myModal');
-      if (event.target === modal) {
-        modal.style.display = 'none';
-      }
+      if (event.target === modal) modal.style.display = 'none';
     };
 
-    // Ticker Logic (Auto Scroll + Manual + Touch + Mouse Wheel)
+    // Ticker
     const tickerShell = document.getElementById('tickerShell');
     const tickerPrev = document.getElementById('tickerPrev');
     const tickerNext = document.getElementById('tickerNext');
@@ -1050,7 +1070,6 @@
       let lastTimestamp = null;
       let isAutoScrolling = true;
 
-      // Manual Buttons
       tickerPrev.addEventListener('click', () => {
         tickerShell.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
       });
@@ -1058,13 +1077,11 @@
         tickerShell.scrollBy({ left: scrollAmount, behavior: 'smooth' });
       });
 
-      // Auto Loop
       function autoScroll(timestamp) {
         if (!lastTimestamp) lastTimestamp = timestamp;
         const delta = timestamp - lastTimestamp;
         if (isAutoScrolling) {
           tickerShell.scrollLeft += autoScrollSpeed * (delta / 16);
-          // Reset if reached middle (since duplicate exists)
           if (tickerShell.scrollLeft >= tickerShell.scrollWidth / 2) {
             tickerShell.scrollLeft = 0;
           }
@@ -1074,14 +1091,9 @@
       }
       requestAnimationFrame(autoScroll);
 
-      // Pause on Hover
       tickerShell.addEventListener('mouseenter', () => { isAutoScrolling = false; });
-      tickerShell.addEventListener('mouseleave', () => { 
-        isAutoScrolling = true; 
-        lastTimestamp = null;
-      });
+      tickerShell.addEventListener('mouseleave', () => { isAutoScrolling = true; lastTimestamp = null; });
 
-      // Mouse Wheel
       tickerShell.addEventListener('wheel', (e) => {
         e.preventDefault();
         isAutoScrolling = false;
@@ -1093,21 +1105,20 @@
         }, 2000);
       });
 
-      // Touch Swipe
       let touchStartX = 0;
       tickerShell.addEventListener('touchstart', (e) => {
         touchStartX = e.changedTouches[0].screenX;
         isAutoScrolling = false;
-      }, {passive: true});
+      }, { passive: true });
       tickerShell.addEventListener('touchend', (e) => {
         let touchEndX = e.changedTouches[0].screenX;
         let diff = touchStartX - touchEndX;
         tickerShell.scrollBy({ left: diff * 2, behavior: 'smooth' });
         setTimeout(() => { isAutoScrolling = true; lastTimestamp = null; }, 2000);
-      }, {passive: true});
+      }, { passive: true });
     }
 
-    // Scroll to Top
+    // Scroll to top
     const btnToTop = document.getElementById('btnToTop');
     if (btnToTop) {
       btnToTop.addEventListener('click', () => {
